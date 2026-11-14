@@ -147,7 +147,7 @@
   justify-self: start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
 }
 .heroTitle svg {
