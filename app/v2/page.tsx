@@ -126,11 +126,10 @@ export default function V2() {
 
       {/* HERO */}
       <section className={s.hero}>
-        <h1 className={s.heroTitle}>
-          Sibo{" "}
-          <br />
-          Diary
-        </h1>
+        <div className={s.heroTitle}>
+          <LogoMark size={88} />
+          <h1>Sibo Diary</h1>
+        </div>
         <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
         <div className={s.heroCopy}>
           <p>
