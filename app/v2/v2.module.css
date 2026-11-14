@@ -113,29 +113,33 @@
 .hero {
   position: relative;
   min-height: 100svh;
-  background: var(--stone);
+  background:
+    radial-gradient(50% 60% at 72% 50%, rgba(255, 255, 255, 0.55), transparent 70%),
+    var(--stone);
   display: grid;
-  grid-template-rows: 1fr auto;
-  padding: 96px 48px 128px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 48px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 48px 80px;
   overflow: hidden;
+  box-shadow: 0 0 0 100vmax var(--stone);
+  clip-path: inset(0 -100vmax);
 }
 .heroPhone {
   justify-self: center;
-  align-self: center;
-  width: min(340px, 32vh);
+  width: min(360px, 42vh);
   animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
-.heroBottom {
-  display: grid;
-  grid-template-columns: 1fr minmax(260px, 380px);
-  align-items: end;
-  gap: 32px;
-  margin-top: -120px;
-  position: relative;
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 .hero h1 {
   margin: 0;
-  font-size: clamp(64px, 10vw, 148px);
+  font-size: clamp(64px, 9vw, 136px);
   font-weight: 500;
   line-height: 0.92;
   letter-spacing: -0.035em;
@@ -143,7 +147,8 @@
 .hero p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: clamp(17px, 1.4vw, 19px);
+  max-width: 30em;
 }
 @keyframes rise {
   from {
@@ -583,26 +588,6 @@
   gap: 12px;
   margin-top: 32px;
 }
-.badge {
-  display: inline-flex;
-  flex-direction: column;
-  padding: 10px 20px;
-  border-radius: 12px;
-  background: var(--ink);
-  color: var(--mist);
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.1;
-  min-width: 160px;
-}
-.badge small {
-  font-weight: 400;
-  font-size: 11px;
-  opacity: 0.75;
-}
-.badge:hover {
-  background: var(--sea);
-}
 
 /* ---------- Footer ---------- */
 .footer {
@@ -649,10 +634,11 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
-  .heroBottom {
+  .hero {
     grid-template-columns: 1fr;
-    margin-top: 32px;
-    gap: 16px;
+    text-align: left;
+    padding: 112px 24px 80px;
+    min-height: auto;
   }
   .wrap {
     padding: 0 24px;
@@ -735,11 +721,6 @@
   }
   .heroPhone {
     width: 240px;
-  }
-  .heroBottom {
-    grid-template-columns: 1fr;
-    margin-top: 32px;
-    gap: 16px;
   }
   .intro,
   .dark,

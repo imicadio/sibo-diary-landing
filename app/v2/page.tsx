@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
+import { StoreBadges } from "@/components/StoreBadges";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { asset } from "@/lib/asset";
 import s from "./v2.module.css";
@@ -126,8 +127,7 @@ export default function V2() {
 
       {/* HERO */}
       <section className={s.hero}>
-        <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
-        <div className={s.heroBottom}>
+        <div className={s.heroCopy}>
           <h1>
             Sibo{" "}
             <br />
@@ -137,7 +137,9 @@ export default function V2() {
             Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku. Zapisujesz
             w kilka sekund, a po tygodniu widzisz, co dzieje się z Twoimi jelitami.
           </p>
+          <StoreBadges href={DOWNLOAD} />
         </div>
+        <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
       </section>
 
       {/* INTRO */}
@@ -358,14 +360,7 @@ export default function V2() {
             Darmowy dziennik SIBO na iPhone&rsquo;a i Androida. Krótki przewodnik po pierwszym
             logowaniu pokaże Ci w minutę, gdzie co zapisywać.
           </p>
-          <div className={s.badges}>
-            <a href={DOWNLOAD} className={s.badge}>
-              <small>Pobierz z</small>App Store
-            </a>
-            <a href={DOWNLOAD} className={s.badge}>
-              <small>Pobierz z</small>Google Play
-            </a>
-          </div>
+          <StoreBadges href={DOWNLOAD} className={s.badges} />
         </div>
       </section>
 
