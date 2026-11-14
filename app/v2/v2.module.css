@@ -923,3 +923,8 @@
 .accentSea {
   color: var(--sea);
 }
+.copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

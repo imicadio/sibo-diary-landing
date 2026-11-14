@@ -3,6 +3,7 @@ import { Reveal } from "@/components/Reveal";
 import { FeatureTabs } from "@/components/v2/FeatureTabs";
 import { StoreBadges } from "@/components/StoreBadges";
 import { SiteNav } from "@/components/v2/SiteNav";
+import { AuthorCredit } from "@/components/AuthorCredit";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { asset } from "@/lib/asset";
 import s from "./v2.module.css";
@@ -374,7 +375,10 @@ export default function V2() {
           </a>
         </div>
         <div className={s.footerBottom}>
-          <span>© {new Date().getFullYear()} Sibo Diary</span>
+          <span className={s.copyright}>
+            © {new Date().getFullYear()} Sibo Diary
+            <AuthorCredit />
+          </span>
           <span>Sibo Diary nie jest wyrobem medycznym i nie zastępuje porady lekarza.</span>
         </div>
       </footer>

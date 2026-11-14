@@ -1,6 +1,7 @@
 import { Logo, LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
 import { PhoneShot, ProductCard, ShotCrop } from "@/components/Mockups";
+import { AuthorCredit } from "@/components/AuthorCredit";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import type { ReactNode } from "react";
 
@@ -342,7 +343,11 @@ export default function Home() {
             <a href="#">Regulamin</a>
             <a href="#">Kontakt</a>
           </nav>
-          <small>© {new Date().getFullYear()} Sibo Diary</small>
+          <small className="footer__credit">
+            © {new Date().getFullYear()} Sibo Diary
+            <br />
+            <AuthorCredit />
+          </small>
         </div>
       </footer>
       <VariantSwitch active="a" />
