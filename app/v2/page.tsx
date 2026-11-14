@@ -146,10 +146,11 @@ export default function V2() {
               <Phone src="/screens/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" className={s.tilt} />
             </Reveal>
             <Reveal delay={120}>
+              <p className={`${s.sceneKicker} ${s.kickerDark}`}>Dziennik dnia</p>
               <h2 className={s.h2}>
                 Poznaj rytm
                 <br />
-                swoich jelit.
+                <span className={s.accentSea}>swoich jelit.</span>
               </h2>
               <p className={s.sub}>
                 Gazy, wzdęcia, ból, stres i wypróżnienia zapisane z godziną i nasileniem, dzień po
@@ -206,7 +207,7 @@ export default function V2() {
             <h2 className={`${s.h2} ${s.center}`}>
               Wpis w kilka sekund,
               <br />
-              jednym dotknięciem
+              <span className={s.accentSea}>jednym dotknięciem</span>
             </h2>
             <p className={`${s.sub} ${s.center} ${s.subCenter}`}>
               Każdy objaw ma własny, prosty ekran. Zamiast pisać notatki, przesuwasz suwak albo
@@ -238,10 +239,11 @@ export default function V2() {
           <div className={s.foodGrid}>
             <div>
               <Reveal>
+                <p className={s.sceneKicker}>Przewodnik i jadłospis</p>
                 <h2 className={`${s.h2} ${s.h2Light}`}>
                   Jedzenie,
                   <br />
-                  które Ci służy
+                  <span className={s.accentMint}>które Ci służy.</span>
                 </h2>
                 <p className={`${s.bodyLight} ${s.foodLead}`}>
                   Przewodnik po produktach, przepisy low-FODMAP i plan dnia w jednej zakładce. Bez
@@ -298,10 +300,11 @@ export default function V2() {
               <Phone src="/screens/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia" className={s.tiltRight} />
             </Reveal>
             <Reveal>
+              <p className={`${s.sceneKicker} ${s.kickerDark}`}>Raporty</p>
               <h2 className={s.h2}>
                 Tydzień
                 <br />
-                w jednym widoku.
+                <span className={s.accentSea}>w jednym widoku.</span>
               </h2>
               <p className={s.sub}>
                 Raport pokazuje dni z wpisami oraz posiłki, objawy i wypróżnienia na jednej siatce.
@@ -319,7 +322,12 @@ export default function V2() {
       {/* FAQ */}
       <section className={s.faq} id="faq">
         <div className={s.wrap}>
-          <h2 className={s.h2}>FAQ</h2>
+          <p className={`${s.sceneKicker} ${s.kickerDark}`}>FAQ</p>
+          <h2 className={s.h2}>
+            Masz pytania?
+            <br />
+            <span className={s.accentSea}>Mamy odpowiedzi.</span>
+          </h2>
           <div className={s.faqList}>
             {faq.map((f, i) => (
               <details key={f.q}>

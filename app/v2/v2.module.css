@@ -984,3 +984,6 @@
     margin-bottom: -300px;
   }
 }
+.accentSea {
+  color: var(--sea);
+}
