@@ -356,10 +356,57 @@
 }
 
 /* ---------- Food list ---------- */
-.foodPhoneWrap {
+.foodGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 80px;
+  align-items: center;
+}
+.foodLead {
+  margin-bottom: 40px;
+}
+.foodArt {
+  position: relative;
   display: flex;
-  justify-content: flex-end;
-  margin: 0 8% 96px 0;
+  justify-content: center;
+  align-items: center;
+  min-height: 680px;
+}
+.foodGlow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 197, 126, 0.32), transparent 65%);
+}
+.foodArt > :not(.foodGlow) {
+  position: relative;
+}
+.foodBubble {
+  position: absolute !important;
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.6);
+}
+.foodBubble1 {
+  top: 6%;
+  left: 2%;
+}
+.foodBubble2 {
+  top: 44%;
+  right: -2%;
+  width: 116px;
+  height: 116px;
+}
+.foodBubble3 {
+  bottom: 4%;
+  left: 8%;
+  width: 104px;
+  height: 104px;
 }
 .list {
   display: flex;
@@ -635,9 +682,12 @@
   .sceneFoods {
     display: none;
   }
-  .foodPhoneWrap {
-    justify-content: center;
-    margin: 0 0 72px;
+  .foodGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .foodArt {
+    min-height: 600px;
   }
   .download {
     grid-template-columns: 1fr;
@@ -652,6 +702,18 @@
 }
 
 @media (max-width: 640px) {
+  .foodArt {
+    min-height: 520px;
+  }
+  .foodGlow {
+    width: 340px;
+    height: 340px;
+  }
+  .foodBubble {
+    width: 84px !important;
+    height: 84px !important;
+    padding: 10px;
+  }
   .nav {
     padding: 14px 16px;
   }

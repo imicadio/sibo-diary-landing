@@ -243,25 +243,43 @@ export default function V2() {
       {/* FOOD (dark) */}
       <section className={s.dark}>
         <div className={s.wrap}>
-          <Reveal className={s.foodPhoneWrap}>
-            <Phone src="/screens/meals.jpg" alt="Ekran Jadłospis z przepisami low-FODMAP" className={s.tiltRight} />
-          </Reveal>
-          <div className={s.split}>
-            <Reveal>
-              <h2 className={`${s.h2} ${s.h2Light}`}>
-                Jedzenie,
-                <br />
-                które Ci służy
-              </h2>
-            </Reveal>
-            <div className={s.list}>
-              {foodFeatures.map((f, i) => (
-                <Reveal key={f.title} delay={i * 80} className={s.listItem}>
-                  <h3>{f.title}</h3>
-                  <p>{f.text}</p>
-                </Reveal>
-              ))}
+          <div className={s.foodGrid}>
+            <div>
+              <Reveal>
+                <h2 className={`${s.h2} ${s.h2Light}`}>
+                  Jedzenie,
+                  <br />
+                  które Ci służy
+                </h2>
+                <p className={`${s.bodyLight} ${s.foodLead}`}>
+                  Przewodnik po produktach, przepisy low-FODMAP i plan dnia w jednej zakładce. Bez
+                  szukania w tabelach i notatkach.
+                </p>
+              </Reveal>
+              <div className={s.list}>
+                {foodFeatures.map((f, i) => (
+                  <Reveal key={f.title} delay={i * 80} className={s.listItem}>
+                    <h3>{f.title}</h3>
+                    <p>{f.text}</p>
+                  </Reveal>
+                ))}
+              </div>
             </div>
+            <Reveal delay={120} className={s.foodArt}>
+              <div className={s.foodGlow} aria-hidden="true" />
+              <Phone src="/screens/meals.jpg" alt="Ekran Jadłospis z przepisami low-FODMAP" className={s.tiltRight} />
+              {(["quinoa", "ananas", "herbata"] as const).map((f, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={f}
+                  src={asset(`/foods/${f}.png`)}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className={`${s.foodBubble} ${s[`foodBubble${i + 1}`]}`}
+                />
+              ))}
+            </Reveal>
           </div>
 
           <Reveal>
