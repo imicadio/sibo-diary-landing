@@ -10,6 +10,13 @@ const DOWNLOAD = "#pobierz";
 
 const sources = ["Apple Watch", "Garmin", "Samsung", "Fitbit", "Amazfit", "Xiaomi"];
 
+const highlights = [
+  { icon: "＋", title: "Wpis jednym dotknięciem", sub: "szybkie dodawanie" },
+  { icon: "🍌", title: "Przewodnik FODMAP", sub: "produkty i porcje" },
+  { icon: "📊", title: "Raport tygodnia", sub: "objawy obok posiłków" },
+  { icon: "⌚", title: "Kroki i sen", sub: "z telefonu i zegarka" },
+];
+
 const quickFeatures = [
   {
     icon: "＋",
@@ -132,6 +139,19 @@ export default function V2() {
           </p>
           <StoreBadges href={DOWNLOAD} className={s.heroBadges} />
         </div>
+        <ul className={s.highlights}>
+          {highlights.map((h) => (
+            <li key={h.title}>
+              <span className={s.highlightIcon} aria-hidden="true">
+                {h.icon}
+              </span>
+              <span>
+                <b>{h.title}</b>
+                <small>{h.sub}</small>
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* INTRO */}
