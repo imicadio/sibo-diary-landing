@@ -112,14 +112,16 @@ export default function V2() {
         <div className={s.heroTitle}>
           <LogoMark size={88} />
           <h1>Sibo Diary</h1>
+          <StoreBadges href={DOWNLOAD} className={s.heroBadges} />
         </div>
         <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
         <div className={s.heroCopy}>
-          <p>
-            Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku. Zapisujesz
-            w kilka sekund, a po tygodniu widzisz, co dzieje się z Twoimi jelitami.
+          <p className={s.heroQuote}>
+            Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku.
           </p>
-          <StoreBadges href={DOWNLOAD} className={s.heroBadges} />
+          <p className={s.heroQuoteSub}>
+            Zapisujesz w kilka sekund, a po tygodniu widzisz, co dzieje się z Twoimi jelitami.
+          </p>
         </div>
         <ul className={s.highlights}>
           {highlights.map((h) => (
