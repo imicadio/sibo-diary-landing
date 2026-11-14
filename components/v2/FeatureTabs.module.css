@@ -1,0 +1,341 @@
+.root {
+  --ink: #12302c;
+  --sea: #0e5e56;
+  --leaf: #7cc57e;
+  --mint: #bfe6d3;
+  --hair: rgba(18, 48, 44, 0.14);
+  --muted: rgba(18, 48, 44, 0.66);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: center;
+  margin-top: 72px;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hair);
+}
+.tab {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--hair);
+  padding: 26px 0 28px;
+  cursor: pointer;
+}
+.tabHead {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+.num {
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  width: 28px;
+}
+.label {
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: rgba(18, 48, 44, 0.38);
+  transition: color 0.3s ease;
+}
+.tab:hover .label,
+.tabOn .label {
+  color: var(--ink);
+}
+.tabBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.tabOn .tabBody {
+  grid-template-rows: 1fr;
+}
+.tabInner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 48px;
+}
+.tabInner b {
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.text {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 34em;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 2px;
+}
+.chips span {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  font-size: 13px;
+  font-weight: 500;
+}
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  overflow: hidden;
+}
+.progress span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--sea);
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.running .progress span {
+  animation: fill var(--duration) linear both;
+}
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Stage ---------- */
+.stage {
+  position: relative;
+  min-height: 680px;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+.blob,
+.blob2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: -1;
+}
+.blob {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(124, 197, 126, 0.55), transparent 70%);
+  animation: drift 14s ease-in-out infinite;
+}
+.blob2 {
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(14, 94, 86, 0.35), transparent 70%);
+  animation: drift 18s ease-in-out infinite reverse;
+}
+.ring {
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  border: 1px dashed rgba(14, 94, 86, 0.25);
+  z-index: -1;
+  animation: spin 60s linear infinite;
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(-60px, -40px) scale(1);
+  }
+  50% {
+    transform: translate(60px, 50px) scale(1.15);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.phone {
+  position: relative;
+  width: 300px;
+  aspect-ratio: 1206 / 2622;
+  padding: 9px;
+  border-radius: 52px;
+  background: linear-gradient(145deg, #2b3a37, #0b1513);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.12),
+    0 60px 100px -30px rgba(18, 48, 44, 0.6);
+  animation: bob 7s ease-in-out infinite;
+}
+.shot,
+.shotOn {
+  position: absolute;
+  inset: 9px;
+  width: calc(100% - 18px);
+  height: calc(100% - 18px);
+  object-fit: cover;
+  border-radius: 44px;
+  transition:
+    opacity 0.6s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.shot {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+}
+.shotOn {
+  opacity: 1;
+  transform: none;
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-2deg);
+  }
+}
+
+.toast {
+  position: absolute;
+  top: 22%;
+  left: -2%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px 12px 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 50px -20px rgba(18, 48, 44, 0.45);
+  animation: pop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 0.35s both;
+}
+.toastIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--leaf);
+  color: var(--ink);
+  font-weight: 700;
+}
+.toast b {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+.toast small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+.stat {
+  position: absolute;
+  right: 0;
+  bottom: 16%;
+  padding: 16px 20px;
+  border-radius: 20px;
+  background: var(--ink);
+  color: #f5fbf8;
+  box-shadow: 0 24px 50px -20px rgba(18, 48, 44, 0.6);
+  animation: pop 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) 0.55s both;
+}
+.stat b {
+  display: block;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--mint);
+}
+.stat small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .root {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 48px;
+  }
+  .stage {
+    order: -1;
+    min-height: 560px;
+  }
+  .ring {
+    width: 440px;
+    height: 440px;
+  }
+}
+@media (max-width: 640px) {
+  .stage {
+    min-height: 500px;
+  }
+  .phone {
+    width: 230px;
+    border-radius: 40px;
+  }
+  .shot,
+  .shotOn {
+    border-radius: 32px;
+  }
+  .ring {
+    width: 340px;
+    height: 340px;
+  }
+  .toast {
+    left: 0;
+    top: 8%;
+  }
+  .stat {
+    bottom: 6%;
+  }
+  .tabInner {
+    padding-left: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .blob,
+  .blob2,
+  .ring,
+  .phone,
+  .toast,
+  .stat {
+    animation: none;
+  }
+}

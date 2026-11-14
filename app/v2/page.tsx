@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
+import { FeatureTabs } from "@/components/v2/FeatureTabs";
 import { StoreBadges } from "@/components/StoreBadges";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { asset } from "@/lib/asset";
@@ -15,24 +16,6 @@ const highlights = [
   { icon: "🍌", title: "Przewodnik FODMAP", sub: "produkty i porcje" },
   { icon: "📊", title: "Raport tygodnia", sub: "objawy obok posiłków" },
   { icon: "⌚", title: "Kroki i sen", sub: "z telefonu i zegarka" },
-];
-
-const quickFeatures = [
-  {
-    icon: "＋",
-    title: "Szybkie dodawanie",
-    text: "Zielony „+” jest zawsze pod ręką. Toaleta, gazy, wzdęcia, ból, stres, woda, kroki, posiłek albo suplement — wybierasz i gotowe.",
-  },
-  {
-    icon: "◐",
-    title: "Toaleta w skali Bristol",
-    text: "Forma, kolor, wielkość i godzina. Wielkość porównujesz do orzecha, banana albo ogórka, więc nie trzeba niczego ważyć ani opisywać.",
-  },
-  {
-    icon: "≋",
-    title: "Objawy z nasileniem",
-    text: "Włączasz objawy, które chcesz dziś śledzić, i dodajesz wpis z godziną i siłą. Wszystko trafia do dnia wybranego w kalendarzu.",
-  },
 ];
 
 const foodFeatures = [
@@ -217,23 +200,18 @@ export default function V2() {
       <section className={s.light}>
         <div className={s.wrap}>
           <Reveal>
+            <p className={`${s.sceneKicker} ${s.kickerDark} ${s.center}`}>Objawy i suplementy</p>
             <h2 className={`${s.h2} ${s.center}`}>
               Wpis w kilka sekund,
               <br />
               jednym dotknięciem
             </h2>
+            <p className={`${s.sub} ${s.center} ${s.subCenter}`}>
+              Każdy objaw ma własny, prosty ekran. Zamiast pisać notatki, przesuwasz suwak albo
+              wybierasz obrazek — a wpis od razu trafia do dnia z godziną.
+            </p>
           </Reveal>
-          <div className={s.cols}>
-            {quickFeatures.map((f, i) => (
-              <Reveal key={f.title} delay={i * 80}>
-                <h3 className={s.colTitle}>
-                  <span aria-hidden="true">{f.icon}</span>
-                  {f.title}
-                </h3>
-                <p className={s.colText}>{f.text}</p>
-              </Reveal>
-            ))}
-          </div>
+          <FeatureTabs />
         </div>
         <div className={s.scene}>
           <div className={s.sceneInner}>
