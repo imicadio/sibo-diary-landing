@@ -127,19 +127,19 @@ export default function V2() {
 
       {/* HERO */}
       <section className={s.hero}>
+        <h1 className={s.heroTitle}>
+          Sibo{" "}
+          <br />
+          Diary
+        </h1>
+        <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
         <div className={s.heroCopy}>
-          <h1>
-            Sibo{" "}
-            <br />
-            Diary
-          </h1>
           <p>
             Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku. Zapisujesz
             w kilka sekund, a po tygodniu widzisz, co dzieje się z Twoimi jelitami.
           </p>
-          <StoreBadges href={DOWNLOAD} />
+          <StoreBadges href={DOWNLOAD} className={s.heroBadges} />
         </div>
-        <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
       </section>
 
       {/* INTRO */}

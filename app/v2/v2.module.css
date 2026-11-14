@@ -114,13 +114,13 @@
   position: relative;
   min-height: 100svh;
   background:
-    radial-gradient(50% 60% at 72% 50%, rgba(255, 255, 255, 0.55), transparent 70%),
+    radial-gradient(40% 60% at 50% 50%, rgba(255, 255, 255, 0.55), transparent 70%),
     var(--stone);
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 48px;
-  max-width: 1280px;
+  gap: 56px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 120px 48px 80px;
   overflow: hidden;
@@ -136,10 +136,19 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  max-width: 380px;
+  justify-self: end;
+}
+.heroBadges {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.heroTitle {
+  justify-self: start;
 }
 .hero h1 {
   margin: 0;
-  font-size: clamp(64px, 9vw, 136px);
+  font-size: clamp(56px, 7.6vw, 128px);
   font-weight: 500;
   line-height: 0.92;
   letter-spacing: -0.035em;
@@ -636,9 +645,19 @@
 @media (max-width: 1000px) {
   .hero {
     grid-template-columns: 1fr;
-    text-align: left;
+    gap: 32px;
     padding: 112px 24px 80px;
     min-height: auto;
+  }
+  .heroCopy {
+    justify-self: start;
+    max-width: 34em;
+  }
+  .heroBadges {
+    flex-direction: row;
+  }
+  .heroPhone {
+    order: 3;
   }
   .wrap {
     padding: 0 24px;
