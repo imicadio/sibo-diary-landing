@@ -874,3 +874,70 @@
   color: var(--muted);
   max-width: 34em;
 }
+
+/* ---------- Closing CTA ---------- */
+.closing {
+  position: relative;
+  overflow: hidden;
+  background: var(--sea);
+  color: var(--mist);
+  text-align: center;
+  padding: 160px 24px;
+  isolation: isolate;
+}
+.closingGlow {
+  position: absolute;
+  inset: auto -10% -40% -10%;
+  height: 80%;
+  background: radial-gradient(50% 60% at 50% 100%, rgba(124, 197, 126, 0.45), transparent 70%);
+  z-index: -1;
+}
+.closingInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+.closingTitle {
+  margin: 0;
+  font-size: clamp(42px, 6.2vw, 92px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.closingTitle span {
+  color: var(--mint);
+}
+.closingLead {
+  margin: 0 auto;
+  max-width: 36em;
+  font-size: clamp(17px, 1.5vw, 20px);
+  color: rgba(245, 251, 248, 0.85);
+}
+.closingCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.closingCta > svg {
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.25));
+}
+.closingBadges {
+  justify-content: center;
+}
+.closingCta small {
+  color: var(--mint);
+  font-size: 14px;
+}
+@media (max-width: 640px) {
+  .closing {
+    padding: 96px 16px 120px;
+  }
+  .closingInner {
+    gap: 32px;
+  }
+}

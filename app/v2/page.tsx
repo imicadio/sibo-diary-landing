@@ -333,22 +333,28 @@ export default function V2() {
         </div>
       </section>
 
-      {/* DOWNLOAD */}
-      <section className={s.download} id="pobierz">
-        <div className={s.downloadArt}>
-          <Phone src="/screens/today.jpg" alt="" className={s.downloadPhone} />
-        </div>
-        <div className={s.downloadCopy}>
-          <h2 className={s.h2}>
-            Pobierz
-            <br />
-            Sibo Diary
-          </h2>
-          <p className={s.body}>
-            Darmowy dziennik SIBO na iPhone&rsquo;a i Androida. Krótki przewodnik po pierwszym
-            logowaniu pokaże Ci w minutę, gdzie co zapisywać.
-          </p>
-          <StoreBadges href={DOWNLOAD} className={s.badges} />
+      {/* CLOSING CTA */}
+      <section className={s.closing} id="pobierz">
+        <div className={s.closingGlow} aria-hidden="true" />
+        <div className={s.closingInner}>
+          <Reveal>
+            <h2 className={s.closingTitle}>
+              Zapisuj na bieżąco.
+              <br />
+              <span>Rozmawiaj z lekarzem konkretnie.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className={s.closingLead}>
+              Zamiast odtwarzać z pamięci ostatnie tygodnie, otwierasz raport i pokazujesz, kiedy
+              było gorzej i jakie posiłki oraz suplementy były wtedy w planie dnia.
+            </p>
+          </Reveal>
+          <Reveal delay={180} className={s.closingCta}>
+            <LogoMark size={72} variant="reversed" />
+            <StoreBadges href={DOWNLOAD} className={s.closingBadges} />
+            <small>Darmowa aplikacja na iPhone&rsquo;a i Androida.</small>
+          </Reveal>
         </div>
       </section>
 
