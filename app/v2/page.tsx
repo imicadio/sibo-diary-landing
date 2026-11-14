@@ -129,7 +129,7 @@ export default function V2() {
         <Phone src="/v2/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
         <div className={s.heroBottom}>
           <h1>
-            Sibo
+            Sibo{" "}
             <br />
             Diary
           </h1>

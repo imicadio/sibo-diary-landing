@@ -602,6 +602,11 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1000px) {
+  .heroBottom {
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+    gap: 16px;
+  }
   .wrap {
     padding: 0 24px;
   }
