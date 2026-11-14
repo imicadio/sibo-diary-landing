@@ -26,37 +26,7 @@
   padding: 0 48px;
 }
 
-/* ---------- Nav ---------- */
-.nav {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 60;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 18px 32px;
-  pointer-events: none;
-}
-.nav > * {
-  pointer-events: auto;
-}
-.navBtn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--hair);
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(10px);
-  display: grid;
-  place-content: center;
-  gap: 5px;
-}
-.navBtn span {
-  display: block;
-  width: 16px;
-  height: 1.5px;
-  background: var(--ink);
-}
+/* ---------- Brand (footer) ---------- */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -71,21 +41,6 @@
 }
 .brand b {
   font-weight: 700;
-}
-.navCta {
-  justify-self: end;
-  padding: 10px 20px;
-  border-radius: 999px;
-  border: 1px solid var(--ink);
-  font-weight: 600;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(10px);
-  transition: background 0.2s, color 0.2s;
-}
-.navCta:hover {
-  background: var(--ink);
-  color: var(--mist);
 }
 
 /* ---------- Phone frame ---------- */
@@ -757,18 +712,6 @@
     width: 84px !important;
     height: 84px !important;
     padding: 10px;
-  }
-  .nav {
-    padding: 14px 16px;
-  }
-  .navBtn {
-    display: none;
-  }
-  .nav {
-    grid-template-columns: auto 1fr;
-  }
-  .navCta {
-    justify-self: end;
   }
   .wrap {
     padding: 0 16px;

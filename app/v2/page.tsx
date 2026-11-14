@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
 import { FeatureTabs } from "@/components/v2/FeatureTabs";
 import { StoreBadges } from "@/components/StoreBadges";
+import { SiteNav } from "@/components/v2/SiteNav";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { asset } from "@/lib/asset";
 import s from "./v2.module.css";
@@ -91,21 +91,7 @@ function Phone({
 export default function V2() {
   return (
     <div className={s.page}>
-      <header className={s.nav}>
-        <a href="#funkcje" className={s.navBtn} aria-label="Przejdź do funkcji">
-          <span />
-          <span />
-        </a>
-        <Link href="/v2/" className={s.brand}>
-          <LogoMark size={28} />
-          <span>
-            <b>Sibo</b> | Diary
-          </span>
-        </Link>
-        <a href={DOWNLOAD} className={s.navCta}>
-          Pobierz
-        </a>
-      </header>
+      <SiteNav downloadHref={DOWNLOAD} />
 
       {/* HERO */}
       <section className={s.hero}>
@@ -168,7 +154,7 @@ export default function V2() {
       </section>
 
       {/* HEALTH (dark) */}
-      <section className={s.dark}>
+      <section className={s.dark} id="zegarek">
         <div className={s.wrap}>
           <div className={s.split}>
             <Reveal>
@@ -234,7 +220,7 @@ export default function V2() {
       </section>
 
       {/* FOOD (dark) */}
-      <section className={s.dark}>
+      <section className={s.dark} id="jedzenie">
         <div className={s.wrap}>
           <div className={s.foodGrid}>
             <div>
@@ -293,7 +279,7 @@ export default function V2() {
       </section>
 
       {/* REPORTS */}
-      <section className={s.intro}>
+      <section className={s.intro} id="raporty">
         <div className={s.wrap}>
           <div className={`${s.split} ${s.splitFlip}`}>
             <Reveal delay={120} className={s.introPhoneWrap}>
