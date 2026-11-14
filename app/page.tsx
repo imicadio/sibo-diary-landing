@@ -343,11 +343,11 @@ export default function Home() {
             <a href="#">Regulamin</a>
             <a href="#">Kontakt</a>
           </nav>
-          <small className="footer__credit">
-            © {new Date().getFullYear()} Sibo Diary
-            <br />
+          <div className="footer__bottom">
             <AuthorCredit />
-          </small>
+            <small>© {new Date().getFullYear()} Sibo Diary</small>
+            <span aria-hidden="true" />
+          </div>
         </div>
       </footer>
       <VariantSwitch active="a" />

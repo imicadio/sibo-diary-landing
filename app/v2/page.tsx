@@ -375,10 +375,8 @@ export default function V2() {
           </a>
         </div>
         <div className={s.footerBottom}>
-          <span className={s.copyright}>
-            © {new Date().getFullYear()} Sibo Diary
-            <AuthorCredit />
-          </span>
+          <AuthorCredit />
+          <span className={s.copyright}>© {new Date().getFullYear()} Sibo Diary</span>
           <span>Sibo Diary nie jest wyrobem medycznym i nie zastępuje porady lekarza.</span>
         </div>
       </footer>
