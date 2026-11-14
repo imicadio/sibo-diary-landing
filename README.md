@@ -21,9 +21,9 @@ Strona będzie pod [http://localhost:3000](http://localhost:3000).
 ## Struktura
 
 - `app/page.tsx` — wersja A: sekcje strony i treści
-- `components/Mockups.tsx` — wersja A: makiety ekranów aplikacji (HTML/CSS)
+- `components/Mockups.tsx` — wersja A: ramka telefonu na zrzuty ekranów i karta produktu
 - `app/v2/page.tsx`, `app/v2/v2.module.css` — wersja B (prawdziwe zrzuty ekranów z aplikacji w trybie demo)
-- `public/v2/screens/`, `public/v2/foods/` — zrzuty ekranów i zdjęcia produktów z aplikacji
+- `public/screens/`, `public/foods/` — zrzuty ekranów (tryb demo) i zdjęcia produktów z aplikacji, wspólne dla obu wersji
 - `components/VariantSwitch.tsx` — przełącznik wersji A / B
 - `components/Logo.tsx` — znak i logo
 - `app/globals.css` — style i paleta kolorów marki

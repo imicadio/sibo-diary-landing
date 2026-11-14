@@ -11,9 +11,9 @@ const nunito = Nunito({
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
-  title: "Sibo Diary — dziennik objawów SIBO, który pokazuje, co Ci szkodzi",
+  title: "Sibo Diary — dziennik objawów SIBO na cały dzień",
   description:
-    "Zapisuj posiłki, objawy, wypróżnienia i leki w kilka sekund. Sibo Diary łączy kropki i przygotowuje czytelny raport na wizytę u gastroenterologa.",
+    "Objawy, toaleta w skali Bristol, posiłki, suplementy, woda, kroki i sen w jednym dzienniku. Przewodnik po produktach low-FODMAP, jadłospis i raport tygodnia.",
   manifest: `${base}/site.webmanifest`,
   icons: {
     icon: [

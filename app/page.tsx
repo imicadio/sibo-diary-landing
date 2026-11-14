@@ -1,36 +1,31 @@
 import { Logo, LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
-import {
-  BristolCard,
-  FodmapCard,
-  MedsCard,
-  PatternCard,
-  PhoneMockup,
-  ReportCard,
-  Ring,
-  SymptomCard,
-} from "@/components/Mockups";
+import { PhoneShot, ProductCard, ShotCrop } from "@/components/Mockups";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import type { ReactNode } from "react";
 
 const APP_URL = "#pobierz";
 
 const highlights = [
-  { icon: "⏱", title: "Wpis w 5 sekund", sub: "posiłek, objaw, wypróżnienie" },
-  { icon: "🔎", title: "Wyzwalacze", sub: "dziennik łączy kropki" },
-  { icon: "🩺", title: "Raport PDF", sub: "gotowy na wizytę" },
-  { icon: "🔒", title: "Prywatnie", sub: "Twoje dane zostają u Ciebie" },
+  { icon: "＋", title: "Wpis jednym dotknięciem", sub: "szybkie dodawanie" },
+  { icon: "🍌", title: "Przewodnik FODMAP", sub: "produkty i porcje" },
+  { icon: "📊", title: "Raport tygodnia", sub: "objawy obok posiłków" },
+  { icon: "⌚", title: "Kroki i sen", sub: "z telefonu i zegarka" },
 ];
 
 const quickChips = [
-  "Owsianka na mleku bez laktozy",
-  "Wzdęcia 7/10",
-  "Typ 4 rano",
-  "Rifaksymina, dawka 2",
-  "Ból po obiedzie",
-  "Sen: 6 h",
-  "Stres w pracy",
-  "Bez objawów do wieczora",
+  "Toaleta",
+  "Gazy",
+  "Wzdęcia",
+  "Ból",
+  "Stres",
+  "Woda",
+  "Kroki",
+  "Sen",
+  "Posiłek",
+  "Przepis",
+  "Produkty",
+  "Suplement",
 ];
 
 type Story = {
@@ -43,97 +38,115 @@ type Story = {
 const stories: Story[] = [
   {
     kicker: "Ty, po obiedzie",
-    quote: "Wzdęcia, siedem na dziesięć.",
+    quote: "Ból, cztery na dziesięć.",
     body: (
       <>
-        Zaznacz objaw i jego nasilenie suwakiem. Sibo Diary zapisuje godzinę i sam łączy wpis z
-        ostatnim posiłkiem, więc nie trzeba pamiętać, co było na talerzu trzy godziny temu.
+        Ustawiasz natężenie na skali od 0 do 10, zaznaczasz rodzaj bólu (tępy, kłujący,
+        skurczowy…), miejsce i to, co przynosi ulgę. Wpis zapisuje się z godziną w dniu wybranym w
+        kalendarzu.
       </>
     ),
-    visual: <SymptomCard />,
+    visual: <PhoneShot src="/screens/pain.jpg" alt="Ekran Ból: natężenie 4 na 10 i rodzaj bólu" />,
   },
   {
-    kicker: "Ty, w sklepie",
-    quote: "Czy mogę zjeść awokado?",
+    kicker: "Ty, gdy brzuch puchnie",
+    quote: "Dziś bez wzdęć.",
     body: (
       <>
-        Baza produktów podpowiada, które porcje mają niską zawartość FODMAP, i pokazuje, jak dany
-        produkt wypadał w Twoim własnym dzienniku. Pytanie niczego nie zapisuje.
+        Powiększenie brzucha wybierasz z obrazków, a napięcie i uczucie pełności oceniasz osobno, bo
+        to różne objawy. Gazy zapisujesz z częstotliwością, zapachem i dyskomfortem od 0 do 10.
       </>
     ),
-    visual: <FodmapCard />,
+    visual: (
+      <PhoneShot src="/screens/bloating.jpg" alt="Ekran Wzdęcia: powiększenie brzucha na obrazkach i napięcie" />
+    ),
   },
   {
     kicker: "Ty, rano",
     quote: "Typ czwarty.",
     body: (
       <>
-        Wypróżnienia zapisujesz jednym dotknięciem w skali bristolskiej. Bez opisywania, bez
-        krępujących notatek, a lekarz od razu widzi trend.
+        W „Toalecie” wybierasz typ stolca na skali Bristol, kolor i wielkość, którą porównujesz do
+        orzecha, śliwki, banana albo ogórka. Do tego godzina i zapach — bez opisywania i bez
+        krępujących notatek.
       </>
     ),
-    visual: <BristolCard />,
+    visual: <PhoneShot src="/screens/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" />,
   },
   {
-    kicker: "Ty, w trakcie kuracji",
-    quote: "Dawka rifaksyminy wzięta.",
+    kicker: "Ty, w sklepie",
+    quote: "Czy banan jest OK?",
     body: (
       <>
-        Dodaj plan leczenia, suplementy albo etap diety: eliminację, reintrodukcję, utrzymanie.
-        Przypomnienia przychodzą o właściwej porze, a każda dawka trafia do historii.
+        Wpisz nazwę w Przewodniku i zobacz poziom FODMAP, bezpieczną porcję oraz rozbicie na
+        fruktany, GOS, laktozę, sorbitol i mannitol. Do tego kalorie i makro na 100 g. Serduszko
+        dodaje produkt do ulubionych.
       </>
     ),
-    visual: <MedsCard />,
+    visual: <ProductCard />,
+  },
+  {
+    kicker: "Ty, przy planowaniu",
+    quote: "Co dziś zjem?",
+    body: (
+      <>
+        W Jadłospisie są przepisy low-FODMAP z kaloriami i makro. Dodajesz posiłek do planu dnia,
+        odhaczasz, gdy go zjesz, albo wymieniasz na inny. Plan możesz skopiować z innego dnia lub
+        powtarzać co tydzień, a własne przepisy tworzysz od zera.
+      </>
+    ),
+    visual: <PhoneShot src="/screens/meals.jpg" alt="Ekran Jadłospis z przepisami low-FODMAP" />,
+  },
+  {
+    kicker: "Ty, z suplementami",
+    quote: "Probiotyk o ósmej.",
+    body: (
+      <>
+        Dodaj suplementy i leki, które bierzesz, z godzinami i dawkami. Pojawiają się w planie
+        dnia, a po wzięciu odhaczasz je jednym dotknięciem. Obok przełączasz objawy, które chcesz
+        dziś śledzić.
+      </>
+    ),
+    visual: <PhoneShot src="/screens/plan.jpg" alt="Plan dnia z probiotykiem i magnezem oraz lista objawów" />,
   },
   {
     kicker: "Ty, w niedzielę wieczorem",
-    quote: "Co mi szkodzi?",
+    quote: "Jak minął tydzień?",
     body: (
       <>
-        Po kilku tygodniach wpisów Sibo Diary szuka powtarzających się wzorców między jedzeniem,
-        snem, stresem i objawami. Pokazuje je ostrożnie, jako podpowiedź do sprawdzenia, a nie
-        diagnozę.
+        Raport pokazuje dni z wpisami i jedną siatkę z posiłkami, lekami, wypróżnieniami i
+        objawami — im ciemniej, tym silniej. Wykresy pod spodem pokazują godziny posiłków, przyjęć
+        i wypróżnień oraz sen na tle Twojego celu.
       </>
     ),
-    visual: <PatternCard />,
-  },
-  {
-    kicker: "Ty, przed wizytą",
-    quote: "Wyślij to lekarzowi.",
-    body: (
-      <>
-        Jeden przycisk tworzy czytelny raport PDF z wybranego okresu: objawy, wypróżnienia,
-        przebieg kuracji i podejrzane produkty. Zamiast „chyba było lepiej” masz konkretne liczby.
-      </>
-    ),
-    visual: <ReportCard />,
+    visual: <PhoneShot src="/screens/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia" />,
   },
 ];
 
 const faq = [
   {
     q: "Ile kosztuje Sibo Diary?",
-    a: "Dziennik objawów, posiłków i wypróżnień jest darmowy na zawsze. Wzorce, raport PDF i pełna baza FODMAP są w subskrypcji Premium, którą możesz przetestować przez 14 dni za darmo.",
+    a: "Dziennik jest darmowy. Jeśli kiedyś pojawią się funkcje płatne, napiszemy o tym wyraźnie przed premierą w sklepach.",
   },
   {
     q: "Czy aplikacja diagnozuje SIBO?",
-    a: "Nie. Sibo Diary to dziennik, a nie wyrób medyczny. Pomaga zebrać dane i zauważyć wzorce, ale diagnozę i leczenie zawsze ustala lekarz, zwykle na podstawie testu oddechowego.",
+    a: "Nie. Sibo Diary to dziennik, a nie wyrób medyczny. Pomaga zebrać dane i przygotować się do rozmowy z lekarzem lub dietetykiem, ale diagnozę i leczenie ustala specjalista.",
   },
   {
-    q: "Czy nadaje się też przy IBS lub innych problemach jelitowych?",
-    a: "Tak. Objawy, skala bristolska, dieta low FODMAP i raporty przydają się przy IBS, nietolerancjach pokarmowych i wszędzie tam, gdzie szukasz związku między jedzeniem a samopoczuciem.",
+    q: "Co mogę zapisywać?",
+    a: "Toaletę w skali Bristol, gazy, wzdęcia, ból, stres, wodę, kroki, sen, posiłki, przepisy, produkty, suplementy i leki. Każdy wpis trafia do dnia wybranego w kalendarzu.",
   },
   {
-    q: "Ile czasu zajmuje prowadzenie dziennika?",
-    a: "Większość wpisów to jedno lub dwa dotknięcia. Ulubione posiłki i stałe leki zapisujesz raz, a potem dodajesz je z listy.",
+    q: "Czy muszę być na diecie low-FODMAP?",
+    a: "Nie. Przewodnik po produktach i jadłospis przydają się na tej diecie, ale dziennik objawów i toalety działa niezależnie od tego, co jesz.",
   },
   {
-    q: "Co dzieje się z moimi danymi?",
-    a: "Dane zdrowotne są szyfrowane i nie sprzedajemy ich nikomu. Możesz w każdej chwili wyeksportować wszystko do pliku albo usunąć konto razem z danymi.",
+    q: "Jak połączyć zegarek?",
+    a: "Otwórz kafelek Kroki albo Sen i dotknij „Połącz”. Aplikacja czyta dane z Apple Zdrowie na iPhonie i z Health Connect na Androidzie, więc działa z Apple Watch, Garminem, Samsungiem, Fitbitem, Amazfitem i innymi. Kroki i sen możesz też dopisać ręcznie.",
   },
   {
-    q: "Na jakich urządzeniach działa?",
-    a: "Na iPhonie i telefonach z Androidem. Dziennik synchronizuje się między urządzeniami, jeśli tego chcesz.",
+    q: "Na jakich telefonach działa?",
+    a: "Na iPhonie i na Androidzie. Dane trzymasz na swoim koncie, więc widzisz je na każdym telefonie, na którym się zalogujesz.",
   },
 ];
 
@@ -161,10 +174,10 @@ export default function Home() {
         <section className="hero">
           <div className="container hero__grid">
             <div className="hero__copy">
-              <h1>Dziennik SIBO, który pokazuje, co Ci szkodzi</h1>
+              <h1>Twój dziennik SIBO na cały dzień</h1>
               <p className="lead">
-                Zapisz posiłek, objaw albo dawkę leku w kilka sekund. Sibo Diary łączy kropki
-                między jedzeniem a samopoczuciem i przygotowuje raport na wizytę u lekarza.
+                Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednej aplikacji. Wpis
+                dodajesz jednym dotknięciem, a raport tygodnia pokazuje objawy obok tego, co było na talerzu.
               </p>
               <div className="hero__cta">
                 <StoreButtons />
@@ -172,11 +185,16 @@ export default function Home() {
             </div>
             <div className="hero__visual">
               <div className="chips-float" aria-hidden="true">
-                <span className="chip chip--a">＋ Wzdęcia 7/10</span>
-                <span className="chip chip--b">＋ Obiad: makaron z czosnkiem</span>
-                <span className="chip chip--c">„Co mi szkodzi?”</span>
+                <span className="chip chip--a">＋ Ból 4/10</span>
+                <span className="chip chip--b">＋ Toaleta · typ 4</span>
+                <span className="chip chip--c">✓ Probiotyk wzięty</span>
               </div>
-              <PhoneMockup />
+              <PhoneShot
+                src="/screens/today.jpg"
+                alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda"
+                className="shot--hero"
+                priority
+              />
             </div>
           </div>
 
@@ -201,21 +219,22 @@ export default function Home() {
         <section className="intro" id="jak-to-dziala">
           <div className="container intro__inner">
             <Reveal>
-              <h2>Zapisz, co jesz i jak się czujesz. Resztą zajmie się dziennik.</h2>
+              <h2>Dotknij „+” i wybierz, co zapisać. Tyle.</h2>
               <p className="lead lead--dark">
-                Posiłki, objawy, wypróżnienia, sen, stres i leki w jednym miejscu, na osi czasu
-                jednego dnia. Bez arkuszy, bez karteczek, bez zgadywania po tygodniu, co mogło
-                zaszkodzić.
+                Zielony przycisk jest zawsze pod ręką, na każdym ekranie. Wpis trafia do dnia
+                wybranego w kalendarzu, a zielone kółko przy dacie pokazuje, że ten dzień ma wpisy.
+                Krótki przewodnik po pierwszym logowaniu pokaże Ci wszystko w minutę.
               </p>
-            </Reveal>
-            <Reveal delay={120}>
               <div className="chip-cloud">
                 {quickChips.map((c, i) => (
-                  <span key={c} className={`chip chip--soft ${i % 3 === 0 ? "chip--accent" : ""}`}>
+                  <span key={c} className={`chip chip--soft ${i % 4 === 0 ? "chip--accent" : ""}`}>
                     {c}
                   </span>
                 ))}
               </div>
+            </Reveal>
+            <Reveal delay={120} className="intro__visual">
+              <PhoneShot src="/screens/quickadd.jpg" alt="Panel Szybkie dodawanie z kafelkami wpisów" />
             </Reveal>
           </div>
         </section>
@@ -242,42 +261,29 @@ export default function Home() {
         <section className="dark">
           <div className="container dark__grid">
             <Reveal>
-              <p className="kicker kicker--light">Ekran „Dzisiaj”</p>
+              <p className="kicker kicker--light">Kroki, sen i woda</p>
               <h2>
-                Twój dzień jest dziś
+                Zegarek liczy,
                 <br />
-                <span className="accent">spokojniejszy niż wczoraj.</span>
+                <span className="accent">dziennik pamięta.</span>
               </h2>
               <p className="lead">
-                Pierścień samopoczucia zbiera objawy z całego dnia w jedną liczbę, a pod nim widać
-                jedzenie, sen i stres. Tak łatwiej zauważyć, że idzie ku lepszemu, nawet gdy
-                pojedynczy dzień jest gorszy.
+                Połącz aplikację z Apple Zdrowie albo Health Connect, a kroki i sen pobiorą się
+                same — z długością nocy, godziną zaśnięcia i pobudki oraz fazami snu. Wodę dodajesz
+                szklanka po szklance. Cele ustawiasz w Ustawieniach.
               </p>
+              <ul className="sources">
+                {["Apple Watch", "Garmin", "Samsung", "Fitbit", "Amazfit", "Xiaomi"].map((s) => (
+                  <li key={s}>{s}</li>
+                ))}
+              </ul>
             </Reveal>
             <Reveal delay={120}>
-              <div className="day-ring">
-                <div className="day-ring__ring">
-                  <Ring value={0.62} size={240} stroke={22} track="rgba(191,230,211,.15)" color="#7CC57E" />
-                  <div className="day-ring__center">
-                    <b>6,2</b>
-                    <small>na 10</small>
-                  </div>
-                </div>
-                <div className="day-ring__stats">
-                  <div>
-                    <small>Posiłki</small>
-                    <b>3 · 1 wysoki FODMAP</b>
-                  </div>
-                  <div>
-                    <small>Sen</small>
-                    <b>7 h 20 min</b>
-                  </div>
-                  <div>
-                    <small>Stres</small>
-                    <b>niski</b>
-                  </div>
-                </div>
-              </div>
+              <ShotCrop
+                src="/screens/today.jpg"
+                alt="Kafelki Kroki 5 500 z 10 000, Sen 7 h 30 min i Woda 1,5 z 3 litrów"
+                position="50% 78%"
+              />
             </Reveal>
           </div>
         </section>
@@ -297,31 +303,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FOUNDER + CTA */}
+        {/* CTA */}
         <section className="closing" id="pobierz">
           <div className="container closing__inner">
             <Reveal>
               <h2 className="closing__title">
-                Jedz spokojniej.
+                Zapisuj na bieżąco.
                 <br />
-                <span>Rozumiej swoje jelita.</span>
+                <span>Rozmawiaj z lekarzem konkretnie.</span>
               </h2>
             </Reveal>
             <Reveal delay={100}>
-              <blockquote className="founder">
-                <p>
-                  Po diagnozie SIBO prowadziłem dziennik w notatkach i arkuszu, ale nigdy nie
-                  umiałem z niego nic wyczytać. Zbudowałem aplikację, której sam potrzebowałem.
-                  Pracuję nad nią sam, więc każda wiadomość trafia prosto do mnie.
-                </p>
-                <footer>— twórca Sibo Diary</footer>
-              </blockquote>
+              <p className="closing__lead">
+                Zamiast odtwarzać z pamięci ostatnie tygodnie, otwierasz raport i pokazujesz, kiedy
+                było gorzej i jakie posiłki oraz suplementy były wtedy w planie dnia.
+              </p>
             </Reveal>
             <Reveal delay={180}>
               <div className="closing__cta">
                 <LogoMark size={72} variant="reversed" />
                 <StoreButtons light />
-                <small>Dziennik jest darmowy. Premium możesz testować 14 dni za darmo.</small>
+                <small>Darmowa aplikacja na iPhone&rsquo;a i Androida.</small>
               </div>
             </Reveal>
           </div>

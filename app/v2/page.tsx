@@ -126,7 +126,7 @@ export default function V2() {
 
       {/* HERO */}
       <section className={s.hero}>
-        <Phone src="/v2/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
+        <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
         <div className={s.heroBottom}>
           <h1>
             Sibo{" "}
@@ -145,7 +145,7 @@ export default function V2() {
         <div className={s.wrap}>
           <div className={s.split}>
             <Reveal className={s.introPhoneWrap}>
-              <Phone src="/v2/screens/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" className={s.tilt} />
+              <Phone src="/screens/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" className={s.tilt} />
             </Reveal>
             <Reveal delay={120}>
               <h2 className={s.h2}>
@@ -194,7 +194,7 @@ export default function V2() {
             <Reveal delay={120} className={s.cropWrap}>
               <div className={s.crop}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset("/v2/screens/today.jpg")} alt="Kafelki Kroki, Sen i Woda w aplikacji" loading="lazy" />
+                <img src={asset("/screens/today.jpg")} alt="Kafelki Kroki, Sen i Woda w aplikacji" loading="lazy" />
               </div>
             </Reveal>
           </div>
@@ -225,16 +225,16 @@ export default function V2() {
         </div>
         <div className={s.scene}>
           <div className={s.sceneInner}>
-            <Phone src="/v2/screens/quickadd.jpg" alt="Panel Szybkie dodawanie z kafelkami wpisów" className={s.scenePhone} />
+            <Phone src="/screens/quickadd.jpg" alt="Panel Szybkie dodawanie z kafelkami wpisów" className={s.scenePhone} />
             <div className={s.sceneCopy}>
               <p className={s.sceneKicker}>Szybkie dodawanie</p>
               <p className={s.sceneBig}>Toaleta. Gazy. Wzdęcia. Ból. Stres. Woda. Kroki. Posiłek.</p>
             </div>
             <div className={s.sceneFoods} aria-hidden="true">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset("/v2/foods/banana.png")} alt="" />
+              <img src={asset("/foods/banana.png")} alt="" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset("/v2/foods/ananas.png")} alt="" />
+              <img src={asset("/foods/ananas.png")} alt="" />
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@ export default function V2() {
       <section className={s.dark}>
         <div className={s.wrap}>
           <Reveal className={s.foodPhoneWrap}>
-            <Phone src="/v2/screens/meals.jpg" alt="Ekran Jadłospis z przepisami low-FODMAP" className={s.tiltRight} />
+            <Phone src="/screens/meals.jpg" alt="Ekran Jadłospis z przepisami low-FODMAP" className={s.tiltRight} />
           </Reveal>
           <div className={s.split}>
             <Reveal>
@@ -269,7 +269,7 @@ export default function V2() {
               {foods.map((f) => (
                 <li key={f.name}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={asset(`/v2/foods/${f.img}.png`)} alt="" loading="lazy" />
+                  <img src={asset(`/foods/${f.img}.png`)} alt="" loading="lazy" />
                   <b>{f.name}</b>
                   <small>{f.cat}</small>
                   <span className={`${s.level} ${s[`level_${f.level}`]}`}>{levelLabel[f.level]}</span>
@@ -285,7 +285,7 @@ export default function V2() {
         <div className={s.wrap}>
           <div className={`${s.split} ${s.splitFlip}`}>
             <Reveal delay={120} className={s.introPhoneWrap}>
-              <Phone src="/v2/screens/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia" className={s.tiltRight} />
+              <Phone src="/screens/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia" className={s.tiltRight} />
             </Reveal>
             <Reveal>
               <h2 className={s.h2}>
@@ -328,7 +328,7 @@ export default function V2() {
       {/* DOWNLOAD */}
       <section className={s.download} id="pobierz">
         <div className={s.downloadArt}>
-          <Phone src="/v2/screens/today.jpg" alt="" className={s.downloadPhone} />
+          <Phone src="/screens/today.jpg" alt="" className={s.downloadPhone} />
         </div>
         <div className={s.downloadCopy}>
           <h2 className={s.h2}>
