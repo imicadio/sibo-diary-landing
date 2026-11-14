@@ -8,17 +8,19 @@ const nunito = Nunito({
   weight: ["400", "600", "700", "800", "900"],
 });
 
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
   title: "Sibo Diary — dziennik objawów SIBO, który pokazuje, co Ci szkodzi",
   description:
     "Zapisuj posiłki, objawy, wypróżnienia i leki w kilka sekund. Sibo Diary łączy kropki i przygotowuje czytelny raport na wizytę u gastroenterologa.",
-  manifest: "/site.webmanifest",
+  manifest: `${base}/site.webmanifest`,
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: `${base}/favicon.ico`, sizes: "48x48" },
+      { url: `${base}/favicon.svg`, type: "image/svg+xml" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: `${base}/apple-touch-icon.png`,
   },
 };
 
