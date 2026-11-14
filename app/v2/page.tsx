@@ -8,15 +8,7 @@ import s from "./v2.module.css";
 
 const DOWNLOAD = "#pobierz";
 
-const sources = [
-  "Apple Zdrowie",
-  "Health Connect",
-  "Apple Watch",
-  "Garmin",
-  "Samsung",
-  "Fitbit",
-  "Amazfit",
-];
+const sources = ["Apple Watch", "Garmin", "Samsung", "Fitbit", "Amazfit", "Xiaomi"];
 
 const quickFeatures = [
   {
@@ -173,19 +165,18 @@ export default function V2() {
       {/* HEALTH (dark) */}
       <section className={s.dark}>
         <div className={s.wrap}>
-          <Reveal>
-            <h2 className={`${s.h2} ${s.h2Light}`}>
-              Kroki i sen
-              <br />
-              prosto z zegarka
-            </h2>
-          </Reveal>
           <div className={s.split}>
             <Reveal>
+              <p className={s.sceneKicker}>Kroki, sen i woda</p>
+              <h2 className={`${s.h2} ${s.h2Light}`}>
+                Zegarek liczy,
+                <br />
+                <span className={s.accentMint}>dziennik pamięta.</span>
+              </h2>
               <p className={s.bodyLight}>
-                Połącz aplikację z Apple Zdrowie albo Health Connect, a kroki i sen pobiorą się same.
-                Widzisz długość nocy, godziny zaśnięcia i pobudki oraz fazy snu z ostatnich 7 nocy.
-                Sen wpisany ręcznie ma pierwszeństwo, więc zawsze masz ostatnie słowo.
+                Połącz aplikację z Apple Zdrowie albo Health Connect, a kroki i sen pobiorą się
+                same — z długością nocy, godziną zaśnięcia i pobudki oraz fazami snu. Wodę dodajesz
+                szklanka po szklance. Cele ustawiasz w Ustawieniach.
               </p>
               <ul className={s.sources}>
                 {sources.map((src) => (
