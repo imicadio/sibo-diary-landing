@@ -1038,3 +1038,42 @@ a {
     animation: none;
   }
 }
+
+/* ---------- A/B variant switch (shared) ---------- */
+.variant-switch {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 999px;
+  background: #12302c;
+  color: #f5fbf8;
+  font: 700 13px/1 var(--font-nunito), system-ui, sans-serif;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.variant-switch__label {
+  padding: 0 8px 0 10px;
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+.variant-switch a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #bfe6d3;
+}
+.variant-switch a:hover {
+  background: rgba(191, 230, 211, 0.15);
+}
+.variant-switch a[aria-current="page"] {
+  background: #7cc57e;
+  color: #12302c;
+}

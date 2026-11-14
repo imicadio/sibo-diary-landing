@@ -1,0 +1,725 @@
+/* Variant B — minimal, product-style layout. Brand palette from the logo kit. */
+.page {
+  --sea: #0e5e56;
+  --leaf: #7cc57e;
+  --mint: #bfe6d3;
+  --ink: #12302c;
+  --mist: #f5fbf8;
+  --stone: #d9e3df; /* muted sea-grey hero background */
+  --paper: #f3f5f4;
+  --hair: rgba(18, 48, 44, 0.14);
+  --hair-light: rgba(245, 251, 248, 0.16);
+  --muted: rgba(18, 48, 44, 0.66);
+  --muted-light: rgba(245, 251, 248, 0.68);
+
+  font-family: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 18px 32px;
+  pointer-events: none;
+}
+.nav > * {
+  pointer-events: auto;
+}
+.navBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--hair);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-content: center;
+  gap: 5px;
+}
+.navBtn span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--ink);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 6px 14px 6px 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+}
+.brand b {
+  font-weight: 700;
+}
+.navCta {
+  justify-self: end;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  transition: background 0.2s, color 0.2s;
+}
+.navCta:hover {
+  background: var(--ink);
+  color: var(--mist);
+}
+
+/* ---------- Phone frame ---------- */
+.phone {
+  width: 300px;
+  aspect-ratio: 1206 / 2622;
+  padding: 9px;
+  border-radius: 52px;
+  background: linear-gradient(145deg, #2b3a37, #0b1513);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.12),
+    0 50px 90px -30px rgba(18, 48, 44, 0.55),
+    0 20px 40px -20px rgba(18, 48, 44, 0.35);
+  flex: none;
+}
+.phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 44px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background: var(--stone);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 96px 48px 128px;
+  overflow: hidden;
+}
+.heroPhone {
+  justify-self: center;
+  align-self: center;
+  width: min(340px, 32vh);
+  animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.heroBottom {
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 380px);
+  align-items: end;
+  gap: 32px;
+  margin-top: -120px;
+  position: relative;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(64px, 10vw, 148px);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Typography ---------- */
+.h2 {
+  margin: 0 0 24px;
+  font-size: clamp(40px, 5.2vw, 76px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.h2Light {
+  color: var(--mist);
+}
+.center {
+  text-align: center;
+}
+.sub {
+  margin: 0 0 24px;
+  font-size: clamp(19px, 1.7vw, 24px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  max-width: 26em;
+}
+.body {
+  margin: 0;
+  color: var(--muted);
+  max-width: 36em;
+}
+.bodyLight {
+  margin: 0;
+  color: var(--muted-light);
+  max-width: 34em;
+}
+
+/* ---------- Split sections ---------- */
+.intro {
+  background: #fff;
+  padding: 140px 0;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.splitFlip > :first-child {
+  order: 2;
+}
+.introPhoneWrap {
+  display: flex;
+  justify-content: center;
+}
+.tilt {
+  transform: rotate(-9deg);
+}
+.tiltRight {
+  transform: rotate(8deg);
+}
+
+/* ---------- Dark ---------- */
+.dark {
+  background: var(--ink);
+  color: var(--mist);
+  padding: 140px 0;
+}
+.sources {
+  list-style: none;
+  margin: 40px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.sources li {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--hair-light);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mist);
+}
+.cropWrap {
+  display: flex;
+  justify-content: center;
+}
+.crop {
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 5;
+  border-radius: 36px;
+  overflow: hidden;
+  background: #f7f9fb;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.6);
+}
+.crop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 72%;
+  transform: scale(1.02);
+}
+
+/* ---------- Light / columns ---------- */
+.light {
+  background: var(--paper);
+  padding: 140px 0 0;
+}
+.cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin-top: 72px;
+}
+.colTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.colTitle span {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--leaf);
+  font-size: 15px;
+}
+.colText {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Full-bleed scene */
+.scene {
+  margin-top: 120px;
+  background:
+    radial-gradient(120% 90% at 85% 10%, rgba(191, 230, 211, 0.55), transparent 60%),
+    linear-gradient(160deg, #1a6b62 0%, var(--sea) 45%, #0a4741 100%);
+  color: var(--mist);
+  overflow: hidden;
+}
+.sceneInner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px 48px 0;
+  min-height: 680px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.scenePhone {
+  width: 320px;
+  margin-bottom: -180px;
+}
+.sceneCopy {
+  padding-top: 40px;
+  max-width: 640px;
+}
+.sceneKicker {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+.sceneBig {
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 52px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.sceneFoods {
+  position: absolute;
+  right: 48px;
+  bottom: 40px;
+  display: flex;
+  gap: 8px;
+}
+.sceneFoods img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  padding: 18px;
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.5);
+}
+.sceneFoods img:last-child {
+  transform: translateY(-50px);
+}
+
+/* ---------- Food list ---------- */
+.foodPhoneWrap {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 8% 96px 0;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+}
+.listItem {
+  padding: 28px 0;
+  border-top: 1px solid var(--hair-light);
+}
+.listItem:last-child {
+  border-bottom: 1px solid var(--hair-light);
+}
+.listItem h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.listItem p {
+  margin: 0;
+  color: var(--muted-light);
+  font-size: 15px;
+}
+.foods {
+  list-style: none;
+  margin: 120px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+.foods li {
+  background: #fff;
+  color: var(--ink);
+  border-radius: 24px;
+  padding: 16px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.foods img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+.foods b {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.25;
+}
+.foods small {
+  color: var(--muted);
+  font-size: 13px;
+}
+.level {
+  margin-top: 10px;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.level::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.level_low {
+  color: #0b7a55;
+}
+.level_mid {
+  color: #c25a0a;
+}
+.level_high {
+  color: #c53045;
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+  background: var(--paper);
+  padding: 140px 0;
+}
+.faqList {
+  margin-top: 40px;
+  border-top: 1px solid var(--hair);
+}
+.faqList details {
+  border-bottom: 1px solid var(--hair);
+}
+.faqList summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 120px 1fr 24px;
+  align-items: center;
+  gap: 16px;
+  padding: 26px 0;
+}
+.faqList summary::-webkit-details-marker {
+  display: none;
+}
+.faqNum {
+  font-size: 13px;
+  color: var(--muted);
+}
+.faqQ {
+  font-size: clamp(17px, 1.6vw, 21px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.faqPlus {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+.faqPlus::before,
+.faqPlus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 16px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform 0.25s ease;
+}
+.faqPlus::after {
+  transform: rotate(90deg);
+}
+.faqList details[open] .faqPlus::after {
+  transform: rotate(0deg);
+}
+.faqList details p {
+  margin: 0;
+  padding: 0 40px 28px 136px;
+  color: var(--muted);
+  max-width: 60em;
+}
+
+/* ---------- Download ---------- */
+.download {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 640px;
+  background: var(--stone);
+  overflow: hidden;
+}
+.downloadArt {
+  position: relative;
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(124, 197, 126, 0.55), transparent 70%),
+    var(--ink);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-top: 80px;
+}
+.downloadPhone {
+  width: 330px;
+  margin-bottom: -200px;
+  transform: rotate(-6deg);
+}
+.downloadCopy {
+  padding: 120px 64px;
+  align-self: center;
+}
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+.badge {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--mist);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.1;
+  min-width: 160px;
+}
+.badge small {
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.75;
+}
+.badge:hover {
+  background: var(--sea);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--ink);
+  color: var(--mist);
+  padding: 56px 48px 32px;
+}
+.footer .brand {
+  background: rgba(245, 251, 248, 0.08);
+}
+.footerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--hair-light);
+}
+.footerLinks {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  font-size: 15px;
+  color: var(--muted-light);
+}
+.footerLinks a:hover,
+.toTop:hover {
+  color: var(--mist);
+}
+.toTop {
+  font-size: 15px;
+  color: var(--muted-light);
+}
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  font-size: 13px;
+  color: var(--muted-light);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .wrap {
+    padding: 0 24px;
+  }
+  .split {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .splitFlip > :first-child {
+    order: 0;
+  }
+  .foods {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sceneInner {
+    grid-template-columns: 1fr;
+    padding: 80px 24px 0;
+    gap: 40px;
+  }
+  .sceneCopy {
+    padding-top: 0;
+    order: -1;
+  }
+  .scenePhone {
+    justify-self: center;
+  }
+  .sceneFoods {
+    display: none;
+  }
+  .foodPhoneWrap {
+    justify-content: center;
+    margin: 0 0 72px;
+  }
+  .download {
+    grid-template-columns: 1fr;
+  }
+  .downloadArt {
+    min-height: 420px;
+    order: 2;
+  }
+  .downloadPhone {
+    margin-bottom: -320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 14px 16px;
+  }
+  .navBtn {
+    display: none;
+  }
+  .nav {
+    grid-template-columns: auto 1fr;
+  }
+  .navCta {
+    justify-self: end;
+  }
+  .wrap {
+    padding: 0 16px;
+  }
+  .hero {
+    padding: 88px 16px 96px;
+    min-height: auto;
+  }
+  .heroPhone {
+    width: 240px;
+  }
+  .heroBottom {
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+    gap: 16px;
+  }
+  .intro,
+  .dark,
+  .faq {
+    padding: 88px 0;
+  }
+  .light {
+    padding-top: 88px;
+  }
+  .phone {
+    width: 250px;
+  }
+  .cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .scene {
+    margin-top: 80px;
+  }
+  .sceneInner {
+    min-height: 0;
+    padding: 64px 16px 0;
+  }
+  .scenePhone {
+    margin-bottom: -120px;
+  }
+  .foods {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 72px;
+  }
+  .faqList summary {
+    grid-template-columns: 40px 1fr 16px;
+  }
+  .faqList details p {
+    padding: 0 0 24px 56px;
+  }
+  .downloadCopy {
+    padding: 72px 16px;
+  }
+  .footer {
+    padding: 48px 16px 88px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroPhone {
+    animation: none;
+  }
+}

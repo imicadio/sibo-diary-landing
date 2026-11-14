@@ -10,6 +10,7 @@ import {
   Ring,
   SymptomCard,
 } from "@/components/Mockups";
+import { VariantSwitch } from "@/components/VariantSwitch";
 import type { ReactNode } from "react";
 
 const APP_URL = "#pobierz";
@@ -342,6 +343,7 @@ export default function Home() {
           <small>© {new Date().getFullYear()} Sibo Diary</small>
         </div>
       </footer>
+      <VariantSwitch active="a" />
     </>
   );
 }
