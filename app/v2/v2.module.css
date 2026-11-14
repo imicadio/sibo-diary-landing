@@ -31,13 +31,9 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 500;
-  letter-spacing: -0.01em;
-  padding: 6px 14px 6px 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(10px);
+  letter-spacing: -0.02em;
 }
 .brand b {
   font-weight: 700;
@@ -597,9 +593,6 @@
   background: var(--ink);
   color: var(--mist);
   padding: 56px 48px 32px;
-}
-.footer .brand {
-  background: rgba(245, 251, 248, 0.08);
 }
 .footerTop {
   display: flex;

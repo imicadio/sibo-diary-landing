@@ -360,7 +360,7 @@ export default function V2() {
           <div className={s.brand}>
             <LogoMark size={28} />
             <span>
-              <b>Sibo</b> | Diary
+              <b>Sibo</b> Diary
             </span>
           </div>
           <nav className={s.footerLinks} aria-label="Stopka">
