@@ -882,7 +882,7 @@
   background: var(--sea);
   color: var(--mist);
   text-align: center;
-  padding: 160px 24px;
+  padding: 160px 24px 0;
   isolation: isolate;
 }
 .closingGlow {
@@ -935,9 +935,21 @@
 }
 @media (max-width: 640px) {
   .closing {
-    padding: 96px 16px 120px;
+    padding: 96px 16px 0;
   }
   .closingInner {
     gap: 32px;
+  }
+}
+.closingPhone {
+  width: 340px;
+  margin-top: 24px;
+  margin-bottom: -360px;
+  transform: rotate(-4deg);
+}
+@media (max-width: 640px) {
+  .closingPhone {
+    width: 260px;
+    margin-bottom: -300px;
   }
 }

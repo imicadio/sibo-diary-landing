@@ -355,6 +355,7 @@ export default function V2() {
             <StoreBadges href={DOWNLOAD} className={s.closingBadges} />
             <small>Darmowa aplikacja na iPhone&rsquo;a i Androida.</small>
           </Reveal>
+          <Phone src="/screens/today.jpg" alt="" className={s.closingPhone} />
         </div>
       </section>
 
