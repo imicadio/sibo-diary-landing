@@ -208,13 +208,13 @@ export default function V2() {
               <p className={s.sceneKicker}>Szybkie dodawanie</p>
               <p className={s.sceneBig}>Toaleta. Gazy. Wzdęcia. Ból. Stres. Woda. Kroki. Posiłek.</p>
               <p className={s.sceneLead}>
-                Dotykasz „+”, wybierasz kafelek i gotowe. Godzina zapisuje się sama, więc nie
-                musisz niczego uzupełniać wieczorem z pamięci.
+                Brzuch nie czeka, aż znajdziesz chwilę na notatki. Wpis robisz od razu: w kolejce,
+                w pracy, w środku nocy. Zanim schowasz telefon, jest już zapisany.
               </p>
               <ul className={s.sceneStats}>
                 <li>
-                  <b>8</b>
-                  <span>rodzajów wpisów</span>
+                  <b>10+</b>
+                  <span>możliwości szybkiego wpisu</span>
                 </li>
                 <li>
                   <b>1</b>

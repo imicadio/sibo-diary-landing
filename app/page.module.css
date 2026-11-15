@@ -316,8 +316,8 @@
   color: var(--muted-light);
 }
 .sceneStats {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, max-content));
   gap: 12px 40px;
   margin: 36px 0 0;
   padding: 24px 0 0;
