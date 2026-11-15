@@ -21,15 +21,15 @@ const highlights = [
 const foodFeatures = [
   {
     title: "Przewodnik po produktach",
-    text: "Wpisz „banan” i zobacz poziom FODMAP, bezpieczną porcję i rozbicie na fruktany, GOS, laktozę, sorbitol i mannitol. Serduszko dodaje produkt do ulubionych.",
+    text: "Wpisz „banan” i zobacz poziom FODMAP, bezpieczną porcję i rozbicie na fruktany, GOS, laktozę, sorbitol i mannitol. Te, które Ci służą, oznaczasz serduszkiem.",
   },
   {
     title: "Jadłospis i plan dnia",
-    text: "Przepisy low-FODMAP z kaloriami i makro. Dodaj posiłek do planu, odhacz, gdy zjesz, albo wymień na inny. Plan dnia możesz powtarzać co tydzień.",
+    text: "Przepisy low-FODMAP z kaloriami i makro. Dodaj posiłek do planu, odhacz, gdy zjesz, albo wymień na inny. Dobry dzień możesz powtórzyć w kolejnym tygodniu.",
   },
   {
     title: "Twoje cele i limity",
-    text: "Ustaw kalorie i makro, limity FODMAP, kroki, wodę i sen. Paski na ekranie dnia pokazują, ile zostało do celu.",
+    text: "Ustaw kalorie i makro, limity FODMAP, kroki, wodę i sen. Na ekranie dnia od razu widać, ile jeszcze zostało.",
   },
 ];
 
@@ -47,11 +47,11 @@ const levelLabel = { low: "niski FODMAP", mid: "uważaj na porcję", high: "wyso
 const faq = [
   {
     q: "Czy aplikacja jest darmowa?",
-    a: "Tak, dziennik objawów, toalety, posiłków i nawodnienia jest darmowy. Informację o ewentualnych funkcjach płatnych podamy przed premierą w sklepach.",
+    a: "Tak. Dziennik objawów, toalety, posiłków i wody jest darmowy. Jeśli kiedyś pojawią się płatne funkcje, napiszemy o tym przed premierą w sklepach.",
   },
   {
     q: "Czy Sibo Diary stawia diagnozę?",
-    a: "Nie. To dziennik, a nie wyrób medyczny. Pomaga zebrać dane do rozmowy z lekarzem lub dietetykiem, ale diagnozę i leczenie zawsze ustala specjalista.",
+    a: "Nie. Sibo Diary pomaga zebrać zapiski na wizytę u lekarza albo dietetyka. Diagnozę i leczenie ustala specjalista.",
   },
   {
     q: "Jak połączyć zegarek?",
@@ -59,7 +59,7 @@ const faq = [
   },
   {
     q: "Czy muszę być na diecie low-FODMAP?",
-    a: "Nie. Przewodnik po produktach i jadłospis pomagają, jeśli jesteś na tej diecie, ale sam dziennik objawów i toalety działa niezależnie od tego, co jesz.",
+    a: "Nie. Przewodnik po produktach i jadłospis przydadzą się na tej diecie, ale dziennik objawów i toalety działa przy każdym jadłospisie.",
   },
   {
     q: "Gdzie są przechowywane moje dane?",
@@ -67,7 +67,7 @@ const faq = [
   },
   {
     q: "Jak wrócić do przewodnika po aplikacji?",
-    a: "Krótki przewodnik pojawia się po pierwszym logowaniu. Możesz go pominąć i obejrzeć później w Ustawieniach.",
+    a: "Krótki przewodnik pokazuje się po pierwszym logowaniu. Jeśli go pominiesz, znajdziesz go w Ustawieniach.",
   },
 ];
 
@@ -103,10 +103,11 @@ export default function V2() {
         <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
         <div className={s.heroCopy}>
           <p className={s.heroQuote}>
-            Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku.
+            Zapisuj, co jesz, co boli i jak było w toalecie.
           </p>
           <p className={s.heroQuoteSub}>
-            Zapisujesz w kilka sekund, a po tygodniu widzisz, co dzieje się z Twoimi jelitami.
+            Kroki i sen aplikacja pobierze z telefonu albo zegarka. Po tygodniu widzisz na jednym
+            ekranie, jak było naprawdę.
           </p>
         </div>
         <ul className={s.highlights}>
@@ -134,13 +135,12 @@ export default function V2() {
             <Reveal delay={120}>
               <p className={`${s.sceneKicker} ${s.kickerDark}`}>Dziennik dnia</p>
               <h2 className={s.h2}>
-                Poznaj rytm
+                Każdy dzień
                 <br />
-                <span className={s.accentSea}>swoich jelit.</span>
+                <span className={s.accentSea}>na osobnej kartce.</span>
               </h2>
               <p className={s.sub}>
-                Gazy, wzdęcia, ból, stres i wypróżnienia zapisane z godziną i nasileniem, dzień po
-                dniu.
+                Gazy, wzdęcia, ból, stres i wypróżnienia zapisujesz z godziną i nasileniem.
               </p>
               <p className={s.body}>
                 Po tygodniu mało kto pamięta, który dzień był gorszy i co było wtedy na obiad.
@@ -165,8 +165,8 @@ export default function V2() {
               </h2>
               <p className={s.bodyLight}>
                 Połącz aplikację z Apple Zdrowie albo Health Connect, a kroki i sen pobiorą się
-                same — z długością nocy, godziną zaśnięcia i pobudki oraz fazami snu. Wodę dodajesz
-                szklanka po szklance. Cele ustawiasz w Ustawieniach.
+                same, razem z godziną zaśnięcia, pobudki i fazami snu. Wodę dodajesz szklanka po
+                szklance, jednym dotknięciem.
               </p>
               <ul className={s.sources}>
                 {sources.map((src) => (
@@ -190,13 +190,13 @@ export default function V2() {
           <Reveal>
             <p className={`${s.sceneKicker} ${s.kickerDark} ${s.center}`}>Objawy i suplementy</p>
             <h2 className={`${s.h2} ${s.center}`}>
-              Wpis w kilka sekund,
+              Ból 4 na 10.
               <br />
-              <span className={s.accentSea}>jednym dotknięciem</span>
+              <span className={s.accentSea}>Wzdęcia lekkie.</span>
             </h2>
             <p className={`${s.sub} ${s.center} ${s.subCenter}`}>
-              Każdy objaw ma własny, prosty ekran. Zamiast pisać notatki, przesuwasz suwak albo
-              wybierasz obrazek — a wpis od razu trafia do dnia z godziną.
+              Każdy objaw ma swój ekran z suwakiem albo obrazkami. Dzięki temu „ból 4” w
+              poniedziałek znaczy to samo, co „ból 4” w piątek.
             </p>
           </Reveal>
           <FeatureTabs />
@@ -244,13 +244,13 @@ export default function V2() {
               <Reveal>
                 <p className={s.sceneKicker}>Przewodnik i jadłospis</p>
                 <h2 className={`${s.h2} ${s.h2Light}`}>
-                  Jedzenie,
+                  Banan tak,
                   <br />
-                  <span className={s.accentMint}>które Ci służy.</span>
+                  <span className={s.accentMint}>ale ile?</span>
                 </h2>
                 <p className={`${s.bodyLight} ${s.foodLead}`}>
-                  Przewodnik po produktach, przepisy low-FODMAP i plan dnia w jednej zakładce. Bez
-                  szukania w tabelach i notatkach.
+                  Wpisujesz produkt i widzisz, czy jest low-FODMAP i jaka porcja jest bezpieczna.
+                  Obok masz przepisy i plan posiłków na cały dzień.
                 </p>
               </Reveal>
               <div className={s.list}>
@@ -305,17 +305,17 @@ export default function V2() {
             <Reveal>
               <p className={`${s.sceneKicker} ${s.kickerDark}`}>Raporty</p>
               <h2 className={s.h2}>
-                Tydzień
+                Siedem dni
                 <br />
-                <span className={s.accentSea}>w jednym widoku.</span>
+                <span className={s.accentSea}>na jednej siatce.</span>
               </h2>
               <p className={s.sub}>
-                Raport pokazuje dni z wpisami oraz posiłki, objawy i wypróżnienia na jednej siatce.
+                Posiłki, objawy i wypróżnienia z całego tygodnia, ułożone dzień obok dnia.
               </p>
               <p className={s.body}>
-                Im ciemniejsze pole, tym silniejszy objaw. Obok widać posiłki, leki i suplementy
-                przyjęte przed wypróżnieniami, więc łatwiej zauważyć, co się powtarza. Wykresy pod
-                spodem pokazują, jak zmieniało się samopoczucie z tygodnia na tydzień.
+                Im ciemniejsze pole, tym silniejszy objaw. Obok widać, co było zjedzone i wzięte
+                przed wypróżnieniami. Jeśli wzdęcia wracają po tym samym posiłku, zobaczysz to
+                bez liczenia. Wykresy niżej pokazują, czy kolejny tydzień był lepszy.
               </p>
             </Reveal>
           </div>
@@ -327,9 +327,9 @@ export default function V2() {
         <div className={s.wrap}>
           <p className={`${s.sceneKicker} ${s.kickerDark}`}>FAQ</p>
           <h2 className={s.h2}>
-            Masz pytania?
+            Zanim pobierzesz,
             <br />
-            <span className={s.accentSea}>Mamy odpowiedzi.</span>
+            <span className={s.accentSea}>kilka odpowiedzi.</span>
           </h2>
           <div className={s.faqList}>
             {faq.map((f, i) => (
@@ -352,15 +352,15 @@ export default function V2() {
         <div className={s.closingInner}>
           <Reveal>
             <h2 className={s.closingTitle}>
-              Zapisuj na bieżąco.
+              Na następną wizytę
               <br />
-              <span>Rozmawiaj z lekarzem konkretnie.</span>
+              <span>przyjdź z raportem.</span>
             </h2>
           </Reveal>
           <Reveal delay={100}>
             <p className={s.closingLead}>
-              Zamiast odtwarzać z pamięci ostatnie tygodnie, otwierasz raport i pokazujesz, kiedy
-              było gorzej i jakie posiłki oraz suplementy były wtedy w planie dnia.
+              Lekarz zapyta, od kiedy jest gorzej i co było wtedy na talerzu. Otwierasz raport i
+              pokazujesz konkretne dni.
             </p>
           </Reveal>
           <Reveal delay={180} className={s.closingCta}>
