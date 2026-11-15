@@ -309,24 +309,53 @@
   line-height: 1.08;
   letter-spacing: -0.02em;
 }
-.sceneFoods {
-  position: absolute;
-  right: 48px;
-  bottom: 40px;
+.sceneLead {
+  margin: 28px 0 0;
+  max-width: 34em;
+  font-size: 18px;
+  color: var(--muted-light);
+}
+.sceneStats {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin: 36px 0 0;
+  padding: 24px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--hair-light);
 }
-.sceneFoods img {
-  width: 150px;
-  height: 150px;
-  object-fit: contain;
-  border-radius: 50%;
-  background: #fff;
-  padding: 18px;
-  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.5);
+.sceneStats li {
+  display: flex;
+  flex-direction: column;
 }
-.sceneFoods img:last-child {
-  transform: translateY(-50px);
+.sceneStats b {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--leaf);
+}
+.sceneStats span {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--muted-light);
+}
+.sceneCta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: 40px;
+}
+.sceneLink {
+  font-weight: 600;
+  color: var(--mist);
+  border-bottom: 1px solid var(--hair-light);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+.sceneLink:hover {
+  border-color: var(--mist);
 }
 
 /* ---------- Food list ---------- */
@@ -608,9 +637,6 @@
   .scenePhone {
     justify-self: center;
   }
-  .sceneFoods {
-    display: none;
-  }
   .foodGrid {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -656,6 +682,17 @@
   }
   .scene {
     margin-top: 80px;
+  }
+  .sceneStats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .sceneStats b {
+    font-size: 32px;
+  }
+  .sceneStats span {
+    font-size: 13px;
   }
   .sceneInner {
     min-height: 0;

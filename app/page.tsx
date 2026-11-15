@@ -207,12 +207,30 @@ export default function V2() {
             <div className={s.sceneCopy}>
               <p className={s.sceneKicker}>Szybkie dodawanie</p>
               <p className={s.sceneBig}>Toaleta. Gazy. Wzdęcia. Ból. Stres. Woda. Kroki. Posiłek.</p>
-            </div>
-            <div className={s.sceneFoods} aria-hidden="true">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset("/foods/banana.png")} alt="" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={asset("/foods/ananas.png")} alt="" />
+              <p className={s.sceneLead}>
+                Dotykasz „+”, wybierasz kafelek i gotowe. Godzina zapisuje się sama, więc nie
+                musisz niczego uzupełniać wieczorem z pamięci.
+              </p>
+              <ul className={s.sceneStats}>
+                <li>
+                  <b>8</b>
+                  <span>rodzajów wpisów</span>
+                </li>
+                <li>
+                  <b>1</b>
+                  <span>dotknięcie, żeby zacząć</span>
+                </li>
+                <li>
+                  <b>0</b>
+                  <span>pisania notatek</span>
+                </li>
+              </ul>
+              <div className={s.sceneCta}>
+                <StoreBadges href={DOWNLOAD} />
+                <a href="#raporty" className={s.sceneLink}>
+                  Zobacz raport tygodnia <span aria-hidden="true">→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
