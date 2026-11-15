@@ -143,10 +143,9 @@ export default function V2() {
                 dniu.
               </p>
               <p className={s.body}>
-                Sibo Diary to dziennik stworzony dla osób z SIBO. Każdy wpis trafia do dnia
-                wybranego w kalendarzu, a zielone kółko przy dacie pokazuje, że ten dzień ma wpisy.
-                Dzięki temu po kilku tygodniach nie musisz zgadywać, kiedy było gorzej i co wtedy
-                było na talerzu — wszystko jest w jednym miejscu, gotowe do rozmowy z lekarzem.
+                Po tygodniu mało kto pamięta, który dzień był gorszy i co było wtedy na obiad.
+                Dlatego zapisujesz na bieżąco, a po kilku tygodniach widać, co się powtarza. Na
+                wizycie pokazujesz lekarzowi konkretne dni, zamiast mówić „raz lepiej, raz gorzej”.
               </p>
             </Reveal>
           </div>
