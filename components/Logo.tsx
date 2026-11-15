@@ -29,13 +29,3 @@ export function LogoMark({
   );
 }
 
-export function Logo({ variant = "color" }: { variant?: "color" | "reversed" }) {
-  return (
-    <span className={`logo logo--${variant}`}>
-      <LogoMark size={36} variant={variant} />
-      <span className="logo__text">
-        <b>Sibo</b>Diary
-      </span>
-    </span>
-  );
-}

@@ -1,11 +1,15 @@
-import { Logo, LogoMark } from "@/components/Logo";
+import { LogoMark } from "@/components/Logo";
 import { Reveal } from "@/components/Reveal";
-import { PhoneShot, ProductCard, ShotCrop } from "@/components/Mockups";
+import { FeatureTabs } from "@/components/FeatureTabs";
+import { StoreBadges } from "@/components/StoreBadges";
+import { SiteNav } from "@/components/SiteNav";
 import { AuthorCredit } from "@/components/AuthorCredit";
-import { VariantSwitch } from "@/components/VariantSwitch";
-import type { ReactNode } from "react";
+import { asset } from "@/lib/asset";
+import s from "./page.module.css";
 
-const APP_URL = "#pobierz";
+const DOWNLOAD = "#pobierz";
+
+const sources = ["Apple Watch", "Garmin", "Samsung", "Fitbit", "Amazfit", "Xiaomi"];
 
 const highlights = [
   { icon: "＋", title: "Wpis jednym dotknięciem", sub: "szybkie dodawanie" },
@@ -14,372 +18,367 @@ const highlights = [
   { icon: "⌚", title: "Kroki i sen", sub: "z telefonu i zegarka" },
 ];
 
-const quickChips = [
-  "Toaleta",
-  "Gazy",
-  "Wzdęcia",
-  "Ból",
-  "Stres",
-  "Woda",
-  "Kroki",
-  "Sen",
-  "Posiłek",
-  "Przepis",
-  "Produkty",
-  "Suplement",
-];
-
-type Story = {
-  kicker: string;
-  quote: string;
-  body: ReactNode;
-  visual: ReactNode;
-};
-
-const stories: Story[] = [
+const foodFeatures = [
   {
-    kicker: "Ty, po obiedzie",
-    quote: "Ból, cztery na dziesięć.",
-    body: (
-      <>
-        Ustawiasz natężenie na skali od 0 do 10, zaznaczasz rodzaj bólu (tępy, kłujący,
-        skurczowy…), miejsce i to, co przynosi ulgę. Wpis zapisuje się z godziną w dniu wybranym w
-        kalendarzu.
-      </>
-    ),
-    visual: <PhoneShot src="/screens/pain.jpg" alt="Ekran Ból: natężenie 4 na 10 i rodzaj bólu" />,
+    title: "Przewodnik po produktach",
+    text: "Wpisz „banan” i zobacz poziom FODMAP, bezpieczną porcję i rozbicie na fruktany, GOS, laktozę, sorbitol i mannitol. Serduszko dodaje produkt do ulubionych.",
   },
   {
-    kicker: "Ty, gdy brzuch puchnie",
-    quote: "Dziś bez wzdęć.",
-    body: (
-      <>
-        Powiększenie brzucha wybierasz z obrazków, a napięcie i uczucie pełności oceniasz osobno, bo
-        to różne objawy. Gazy zapisujesz z częstotliwością, zapachem i dyskomfortem od 0 do 10.
-      </>
-    ),
-    visual: (
-      <PhoneShot src="/screens/bloating.jpg" alt="Ekran Wzdęcia: powiększenie brzucha na obrazkach i napięcie" />
-    ),
+    title: "Jadłospis i plan dnia",
+    text: "Przepisy low-FODMAP z kaloriami i makro. Dodaj posiłek do planu, odhacz, gdy zjesz, albo wymień na inny. Plan dnia możesz powtarzać co tydzień.",
   },
   {
-    kicker: "Ty, rano",
-    quote: "Typ czwarty.",
-    body: (
-      <>
-        W „Toalecie” wybierasz typ stolca na skali Bristol, kolor i wielkość, którą porównujesz do
-        orzecha, śliwki, banana albo ogórka. Do tego godzina i zapach — bez opisywania i bez
-        krępujących notatek.
-      </>
-    ),
-    visual: <PhoneShot src="/screens/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" />,
-  },
-  {
-    kicker: "Ty, w sklepie",
-    quote: "Czy banan jest OK?",
-    body: (
-      <>
-        Wpisz nazwę w Przewodniku i zobacz poziom FODMAP, bezpieczną porcję oraz rozbicie na
-        fruktany, GOS, laktozę, sorbitol i mannitol. Do tego kalorie i makro na 100 g. Serduszko
-        dodaje produkt do ulubionych.
-      </>
-    ),
-    visual: <ProductCard />,
-  },
-  {
-    kicker: "Ty, przy planowaniu",
-    quote: "Co dziś zjem?",
-    body: (
-      <>
-        W Jadłospisie są przepisy low-FODMAP z kaloriami i makro. Dodajesz posiłek do planu dnia,
-        odhaczasz, gdy go zjesz, albo wymieniasz na inny. Plan możesz skopiować z innego dnia lub
-        powtarzać co tydzień, a własne przepisy tworzysz od zera.
-      </>
-    ),
-    visual: <PhoneShot src="/screens/meals.jpg" alt="Ekran Jadłospis z przepisami low-FODMAP" />,
-  },
-  {
-    kicker: "Ty, z suplementami",
-    quote: "Probiotyk o ósmej.",
-    body: (
-      <>
-        Dodaj suplementy i leki, które bierzesz, z godzinami i dawkami. Pojawiają się w planie
-        dnia, a po wzięciu odhaczasz je jednym dotknięciem. Obok przełączasz objawy, które chcesz
-        dziś śledzić.
-      </>
-    ),
-    visual: <PhoneShot src="/screens/plan.jpg" alt="Plan dnia z probiotykiem i magnezem oraz lista objawów" />,
-  },
-  {
-    kicker: "Ty, w niedzielę wieczorem",
-    quote: "Jak minął tydzień?",
-    body: (
-      <>
-        Raport pokazuje dni z wpisami i jedną siatkę z posiłkami, lekami, wypróżnieniami i
-        objawami — im ciemniej, tym silniej. Wykresy pod spodem pokazują godziny posiłków, przyjęć
-        i wypróżnień oraz sen na tle Twojego celu.
-      </>
-    ),
-    visual: <PhoneShot src="/screens/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia" />,
+    title: "Twoje cele i limity",
+    text: "Ustaw kalorie i makro, limity FODMAP, kroki, wodę i sen. Paski na ekranie dnia pokazują, ile zostało do celu.",
   },
 ];
+
+const foods = [
+  { img: "ananas", name: "Ananas", cat: "Owoce", level: "low" },
+  { img: "quinoa", name: "Komosa ryżowa", cat: "Zboża", level: "low" },
+  { img: "herbata", name: "Herbata", cat: "Napoje", level: "low" },
+  { img: "banana", name: "Banan", cat: "Owoce", level: "mid" },
+  { img: "kapusta", name: "Kapusta kiszona", cat: "Warzywa", level: "mid" },
+  { img: "jablko", name: "Jabłko", cat: "Owoce", level: "high" },
+] as const;
+
+const levelLabel = { low: "niski FODMAP", mid: "uważaj na porcję", high: "wysoki FODMAP" };
 
 const faq = [
   {
-    q: "Ile kosztuje Sibo Diary?",
-    a: "Dziennik jest darmowy. Jeśli kiedyś pojawią się funkcje płatne, napiszemy o tym wyraźnie przed premierą w sklepach.",
+    q: "Czy aplikacja jest darmowa?",
+    a: "Tak, dziennik objawów, toalety, posiłków i nawodnienia jest darmowy. Informację o ewentualnych funkcjach płatnych podamy przed premierą w sklepach.",
   },
   {
-    q: "Czy aplikacja diagnozuje SIBO?",
-    a: "Nie. Sibo Diary to dziennik, a nie wyrób medyczny. Pomaga zebrać dane i przygotować się do rozmowy z lekarzem lub dietetykiem, ale diagnozę i leczenie ustala specjalista.",
-  },
-  {
-    q: "Co mogę zapisywać?",
-    a: "Toaletę w skali Bristol, gazy, wzdęcia, ból, stres, wodę, kroki, sen, posiłki, przepisy, produkty, suplementy i leki. Każdy wpis trafia do dnia wybranego w kalendarzu.",
-  },
-  {
-    q: "Czy muszę być na diecie low-FODMAP?",
-    a: "Nie. Przewodnik po produktach i jadłospis przydają się na tej diecie, ale dziennik objawów i toalety działa niezależnie od tego, co jesz.",
+    q: "Czy Sibo Diary stawia diagnozę?",
+    a: "Nie. To dziennik, a nie wyrób medyczny. Pomaga zebrać dane do rozmowy z lekarzem lub dietetykiem, ale diagnozę i leczenie zawsze ustala specjalista.",
   },
   {
     q: "Jak połączyć zegarek?",
-    a: "Otwórz kafelek Kroki albo Sen i dotknij „Połącz”. Aplikacja czyta dane z Apple Zdrowie na iPhonie i z Health Connect na Androidzie, więc działa z Apple Watch, Garminem, Samsungiem, Fitbitem, Amazfitem i innymi. Kroki i sen możesz też dopisać ręcznie.",
+    a: "Otwórz kafelek Kroki albo Sen i dotknij „Połącz”. Aplikacja czyta dane z Apple Zdrowie na iPhonie i z Health Connect na Androidzie, więc działa z większością zegarków. Kroki i sen zawsze możesz też dopisać ręcznie.",
   },
   {
-    q: "Na jakich telefonach działa?",
-    a: "Na iPhonie i na Androidzie. Dane trzymasz na swoim koncie, więc widzisz je na każdym telefonie, na którym się zalogujesz.",
+    q: "Czy muszę być na diecie low-FODMAP?",
+    a: "Nie. Przewodnik po produktach i jadłospis pomagają, jeśli jesteś na tej diecie, ale sam dziennik objawów i toalety działa niezależnie od tego, co jesz.",
+  },
+  {
+    q: "Gdzie są przechowywane moje dane?",
+    a: "Na Twoim koncie, w szyfrowanej bazie. Dane zdrowotne nie są sprzedawane ani udostępniane reklamodawcom, a konto możesz usunąć razem z danymi.",
+  },
+  {
+    q: "Jak wrócić do przewodnika po aplikacji?",
+    a: "Krótki przewodnik pojawia się po pierwszym logowaniu. Możesz go pominąć i obejrzeć później w Ustawieniach.",
   },
 ];
 
-export default function Home() {
+function Phone({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
   return (
-    <>
-      <header className="nav">
-        <div className="container nav__inner">
-          <a href="#" aria-label="Sibo Diary — strona główna">
-            <Logo variant="reversed" />
-          </a>
-          <nav className="nav__links" aria-label="Główna nawigacja">
-            <a href="#jak-to-dziala">Jak to działa</a>
-            <a href="#funkcje">Funkcje</a>
-            <a href="#pytania">Pytania</a>
-          </nav>
-          <a className="btn btn--light btn--sm" href={APP_URL}>
-            Pobierz
-          </a>
-        </div>
-      </header>
-
-      <main>
-        {/* HERO */}
-        <section className="hero">
-          <div className="container hero__grid">
-            <div className="hero__copy">
-              <h1>Twój dziennik SIBO na cały dzień</h1>
-              <p className="lead">
-                Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednej aplikacji. Wpis
-                dodajesz jednym dotknięciem, a raport tygodnia pokazuje objawy obok tego, co było na talerzu.
-              </p>
-              <div className="hero__cta">
-                <StoreButtons />
-              </div>
-            </div>
-            <div className="hero__visual">
-              <div className="chips-float" aria-hidden="true">
-                <span className="chip chip--a">＋ Ból 4/10</span>
-                <span className="chip chip--b">＋ Toaleta · typ 4</span>
-                <span className="chip chip--c">✓ Probiotyk wzięty</span>
-              </div>
-              <PhoneShot
-                src="/screens/today.jpg"
-                alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda"
-                className="shot--hero"
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="container">
-            <ul className="highlights">
-              {highlights.map((h) => (
-                <li key={h.title}>
-                  <span className="highlights__icon" aria-hidden="true">
-                    {h.icon}
-                  </span>
-                  <span>
-                    <b>{h.title}</b>
-                    <small>{h.sub}</small>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* INTRO */}
-        <section className="intro" id="jak-to-dziala">
-          <div className="container intro__inner">
-            <Reveal>
-              <h2>Dotknij „+” i wybierz, co zapisać. Tyle.</h2>
-              <p className="lead lead--dark">
-                Zielony przycisk jest zawsze pod ręką, na każdym ekranie. Wpis trafia do dnia
-                wybranego w kalendarzu, a zielone kółko przy dacie pokazuje, że ten dzień ma wpisy.
-                Krótki przewodnik po pierwszym logowaniu pokaże Ci wszystko w minutę.
-              </p>
-              <div className="chip-cloud">
-                {quickChips.map((c, i) => (
-                  <span key={c} className={`chip chip--soft ${i % 4 === 0 ? "chip--accent" : ""}`}>
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </Reveal>
-            <Reveal delay={120} className="intro__visual">
-              <PhoneShot src="/screens/quickadd.jpg" alt="Panel Szybkie dodawanie z kafelkami wpisów" />
-            </Reveal>
-          </div>
-        </section>
-
-        {/* STORIES */}
-        <section className="stories" id="funkcje">
-          <div className="container">
-            {stories.map((s, i) => (
-              <article className={`story ${i % 2 ? "story--flip" : ""}`} key={s.kicker}>
-                <Reveal className="story__copy">
-                  <p className="kicker">{s.kicker}</p>
-                  <h3>{s.quote}</h3>
-                  <p>{s.body}</p>
-                </Reveal>
-                <Reveal className="story__visual" delay={120}>
-                  {s.visual}
-                </Reveal>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* DARK FEATURE */}
-        <section className="dark">
-          <div className="container dark__grid">
-            <Reveal>
-              <p className="kicker kicker--light">Kroki, sen i woda</p>
-              <h2>
-                Zegarek liczy,
-                <br />
-                <span className="accent">dziennik pamięta.</span>
-              </h2>
-              <p className="lead">
-                Połącz aplikację z Apple Zdrowie albo Health Connect, a kroki i sen pobiorą się
-                same — z długością nocy, godziną zaśnięcia i pobudki oraz fazami snu. Wodę dodajesz
-                szklanka po szklance. Cele ustawiasz w Ustawieniach.
-              </p>
-              <ul className="sources">
-                {["Apple Watch", "Garmin", "Samsung", "Fitbit", "Amazfit", "Xiaomi"].map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
-            </Reveal>
-            <Reveal delay={120}>
-              <ShotCrop
-                src="/screens/today.jpg"
-                alt="Kafelki Kroki 5 500 z 10 000, Sen 7 h 30 min i Woda 1,5 z 3 litrów"
-                position="50% 78%"
-              />
-            </Reveal>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="faq" id="pytania">
-          <div className="container faq__inner">
-            <h2>Pytania i odpowiedzi</h2>
-            <div className="faq__list">
-              {faq.map((f) => (
-                <details key={f.q}>
-                  <summary>{f.q}</summary>
-                  <p>{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="closing" id="pobierz">
-          <div className="container closing__inner">
-            <Reveal>
-              <h2 className="closing__title">
-                Zapisuj na bieżąco.
-                <br />
-                <span>Rozmawiaj z lekarzem konkretnie.</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="closing__lead">
-                Zamiast odtwarzać z pamięci ostatnie tygodnie, otwierasz raport i pokazujesz, kiedy
-                było gorzej i jakie posiłki oraz suplementy były wtedy w planie dnia.
-              </p>
-            </Reveal>
-            <Reveal delay={180}>
-              <div className="closing__cta">
-                <LogoMark size={72} variant="reversed" />
-                <StoreButtons light />
-                <small>Darmowa aplikacja na iPhone&rsquo;a i Androida.</small>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <div className="container footer__inner">
-          <Logo />
-          <p className="footer__disclaimer">
-            Sibo Diary służy do prowadzenia dziennika i nie jest wyrobem medycznym. Nie zastępuje
-            porady lekarza ani dietetyka.
-          </p>
-          <nav className="footer__links" aria-label="Stopka">
-            <a href="#">Polityka prywatności</a>
-            <a href="#">Regulamin</a>
-            <a href="#">Kontakt</a>
-          </nav>
-          <div className="footer__bottom">
-            <AuthorCredit />
-            <small>© {new Date().getFullYear()} Sibo Diary</small>
-            <span aria-hidden="true" />
-          </div>
-        </div>
-      </footer>
-      <VariantSwitch active="a" />
-    </>
-  );
-}
-
-function StoreButtons({ light = false }: { light?: boolean }) {
-  return (
-    <div className="store">
-      <a className={`btn ${light ? "btn--light" : "btn--ink"}`} href={APP_URL}>
-        <AppleIcon /> App Store
-      </a>
-      <a className={`btn ${light ? "btn--ghost-light" : "btn--ghost"}`} href={APP_URL}>
-        <PlayIcon /> Google Play
-      </a>
+    <div className={`${s.phone} ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={asset(src)} alt={alt} loading="lazy" />
     </div>
   );
 }
 
-function AppleIcon() {
+export default function V2() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-      <path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.75.73 1.05 1.6 2.24 2.73 2.2 1.1-.05 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.3-.88-2.3-3.51ZM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.64-1.05 1.67-.92 2.66.97.07 1.96-.49 2.56-1.21Z" />
-    </svg>
-  );
-}
+    <div className={s.page}>
+      <SiteNav downloadHref={DOWNLOAD} />
 
-function PlayIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-      <path d="M4 2.5v19c0 .4.45.65.8.45L21 12.4a.5.5 0 0 0 0-.86L4.8 2.05A.52.52 0 0 0 4 2.5Z" />
-    </svg>
+      {/* HERO */}
+      <section className={s.hero}>
+        <div className={s.heroTitle}>
+          <LogoMark size={88} />
+          <h1>Sibo Diary</h1>
+          <StoreBadges href={DOWNLOAD} className={s.heroBadges} />
+        </div>
+        <Phone src="/screens/today.jpg" alt="Ekran Dziennik: kalendarz tygodnia, postęp, kroki, sen i woda" className={s.heroPhone} />
+        <div className={s.heroCopy}>
+          <p className={s.heroQuote}>
+            Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku.
+          </p>
+          <p className={s.heroQuoteSub}>
+            Zapisujesz w kilka sekund, a po tygodniu widzisz, co dzieje się z Twoimi jelitami.
+          </p>
+        </div>
+        <ul className={s.highlights}>
+          {highlights.map((h) => (
+            <li key={h.title}>
+              <span className={s.highlightIcon} aria-hidden="true">
+                {h.icon}
+              </span>
+              <span>
+                <b>{h.title}</b>
+                <small>{h.sub}</small>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* INTRO */}
+      <section className={s.intro} id="funkcje">
+        <div className={s.wrap}>
+          <div className={s.split}>
+            <Reveal className={s.introPhoneWrap}>
+              <Phone src="/screens/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" className={s.tilt} />
+            </Reveal>
+            <Reveal delay={120}>
+              <p className={`${s.sceneKicker} ${s.kickerDark}`}>Dziennik dnia</p>
+              <h2 className={s.h2}>
+                Poznaj rytm
+                <br />
+                <span className={s.accentSea}>swoich jelit.</span>
+              </h2>
+              <p className={s.sub}>
+                Gazy, wzdęcia, ból, stres i wypróżnienia zapisane z godziną i nasileniem, dzień po
+                dniu.
+              </p>
+              <p className={s.body}>
+                Sibo Diary to dziennik stworzony dla osób z SIBO. Każdy wpis trafia do dnia
+                wybranego w kalendarzu, a zielone kółko przy dacie pokazuje, że ten dzień ma wpisy.
+                Dzięki temu po kilku tygodniach nie musisz zgadywać, kiedy było gorzej i co wtedy
+                było na talerzu — wszystko jest w jednym miejscu, gotowe do rozmowy z lekarzem.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* HEALTH (dark) */}
+      <section className={s.dark} id="zegarek">
+        <div className={s.wrap}>
+          <div className={s.split}>
+            <Reveal>
+              <p className={s.sceneKicker}>Kroki, sen i woda</p>
+              <h2 className={`${s.h2} ${s.h2Light}`}>
+                Zegarek liczy,
+                <br />
+                <span className={s.accentMint}>dziennik pamięta.</span>
+              </h2>
+              <p className={s.bodyLight}>
+                Połącz aplikację z Apple Zdrowie albo Health Connect, a kroki i sen pobiorą się
+                same — z długością nocy, godziną zaśnięcia i pobudki oraz fazami snu. Wodę dodajesz
+                szklanka po szklance. Cele ustawiasz w Ustawieniach.
+              </p>
+              <ul className={s.sources}>
+                {sources.map((src) => (
+                  <li key={src}>{src}</li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={120} className={s.cropWrap}>
+              <div className={s.crop}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={asset("/screens/today.jpg")} alt="Kafelki Kroki, Sen i Woda w aplikacji" loading="lazy" />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* QUICK FEATURES */}
+      <section className={s.light}>
+        <div className={s.wrap}>
+          <Reveal>
+            <p className={`${s.sceneKicker} ${s.kickerDark} ${s.center}`}>Objawy i suplementy</p>
+            <h2 className={`${s.h2} ${s.center}`}>
+              Wpis w kilka sekund,
+              <br />
+              <span className={s.accentSea}>jednym dotknięciem</span>
+            </h2>
+            <p className={`${s.sub} ${s.center} ${s.subCenter}`}>
+              Każdy objaw ma własny, prosty ekran. Zamiast pisać notatki, przesuwasz suwak albo
+              wybierasz obrazek — a wpis od razu trafia do dnia z godziną.
+            </p>
+          </Reveal>
+          <FeatureTabs />
+        </div>
+        <div className={s.scene}>
+          <div className={s.sceneInner}>
+            <Phone src="/screens/quickadd.jpg" alt="Panel Szybkie dodawanie z kafelkami wpisów" className={s.scenePhone} />
+            <div className={s.sceneCopy}>
+              <p className={s.sceneKicker}>Szybkie dodawanie</p>
+              <p className={s.sceneBig}>Toaleta. Gazy. Wzdęcia. Ból. Stres. Woda. Kroki. Posiłek.</p>
+            </div>
+            <div className={s.sceneFoods} aria-hidden="true">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={asset("/foods/banana.png")} alt="" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={asset("/foods/ananas.png")} alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOD (dark) */}
+      <section className={s.dark} id="jedzenie">
+        <div className={s.wrap}>
+          <div className={s.foodGrid}>
+            <div>
+              <Reveal>
+                <p className={s.sceneKicker}>Przewodnik i jadłospis</p>
+                <h2 className={`${s.h2} ${s.h2Light}`}>
+                  Jedzenie,
+                  <br />
+                  <span className={s.accentMint}>które Ci służy.</span>
+                </h2>
+                <p className={`${s.bodyLight} ${s.foodLead}`}>
+                  Przewodnik po produktach, przepisy low-FODMAP i plan dnia w jednej zakładce. Bez
+                  szukania w tabelach i notatkach.
+                </p>
+              </Reveal>
+              <div className={s.list}>
+                {foodFeatures.map((f, i) => (
+                  <Reveal key={f.title} delay={i * 80} className={s.listItem}>
+                    <h3>{f.title}</h3>
+                    <p>{f.text}</p>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+            <Reveal delay={120} className={s.foodArt}>
+              <div className={s.foodGlow} aria-hidden="true" />
+              <Phone src="/screens/meals.jpg" alt="Ekran Jadłospis z przepisami low-FODMAP" className={s.tiltRight} />
+              {(["quinoa", "ananas", "herbata"] as const).map((f, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={f}
+                  src={asset(`/foods/${f}.png`)}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className={`${s.foodBubble} ${s[`foodBubble${i + 1}`]}`}
+                />
+              ))}
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <ul className={s.foods} aria-label="Przykładowe produkty z przewodnika">
+              {foods.map((f) => (
+                <li key={f.name}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={asset(`/foods/${f.img}.png`)} alt="" loading="lazy" />
+                  <b>{f.name}</b>
+                  <small>{f.cat}</small>
+                  <span className={`${s.level} ${s[`level_${f.level}`]}`}>{levelLabel[f.level]}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* REPORTS */}
+      <section className={s.intro} id="raporty">
+        <div className={s.wrap}>
+          <div className={`${s.split} ${s.splitFlip}`}>
+            <Reveal delay={120} className={s.introPhoneWrap}>
+              <Phone src="/screens/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia" className={s.tiltRight} />
+            </Reveal>
+            <Reveal>
+              <p className={`${s.sceneKicker} ${s.kickerDark}`}>Raporty</p>
+              <h2 className={s.h2}>
+                Tydzień
+                <br />
+                <span className={s.accentSea}>w jednym widoku.</span>
+              </h2>
+              <p className={s.sub}>
+                Raport pokazuje dni z wpisami oraz posiłki, objawy i wypróżnienia na jednej siatce.
+              </p>
+              <p className={s.body}>
+                Im ciemniejsze pole, tym silniejszy objaw. Obok widać posiłki, leki i suplementy
+                przyjęte przed wypróżnieniami, więc łatwiej zauważyć, co się powtarza. Wykresy pod
+                spodem pokazują, jak zmieniało się samopoczucie z tygodnia na tydzień.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className={s.faq} id="faq">
+        <div className={s.wrap}>
+          <p className={`${s.sceneKicker} ${s.kickerDark}`}>FAQ</p>
+          <h2 className={s.h2}>
+            Masz pytania?
+            <br />
+            <span className={s.accentSea}>Mamy odpowiedzi.</span>
+          </h2>
+          <div className={s.faqList}>
+            {faq.map((f, i) => (
+              <details key={f.q}>
+                <summary>
+                  <span className={s.faqNum}>{String(i + 1).padStart(2, "0")}</span>
+                  <span className={s.faqQ}>{f.q}</span>
+                  <span className={s.faqPlus} aria-hidden="true" />
+                </summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CLOSING CTA */}
+      <section className={s.closing} id="pobierz">
+        <div className={s.closingGlow} aria-hidden="true" />
+        <div className={s.closingInner}>
+          <Reveal>
+            <h2 className={s.closingTitle}>
+              Zapisuj na bieżąco.
+              <br />
+              <span>Rozmawiaj z lekarzem konkretnie.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className={s.closingLead}>
+              Zamiast odtwarzać z pamięci ostatnie tygodnie, otwierasz raport i pokazujesz, kiedy
+              było gorzej i jakie posiłki oraz suplementy były wtedy w planie dnia.
+            </p>
+          </Reveal>
+          <Reveal delay={180} className={s.closingCta}>
+            <LogoMark size={72} variant="reversed" />
+            <StoreBadges href={DOWNLOAD} className={s.closingBadges} />
+            <small>Darmowa aplikacja na iPhone&rsquo;a i Androida.</small>
+          </Reveal>
+          <Phone src="/screens/today.jpg" alt="" className={s.closingPhone} />
+        </div>
+      </section>
+
+      <footer className={s.footer}>
+        <div className={s.footerTop}>
+          <div className={s.brand}>
+            <LogoMark size={28} />
+            <span>
+              <b>Sibo</b> Diary
+            </span>
+          </div>
+          <nav className={s.footerLinks} aria-label="Stopka">
+            <a href="#funkcje">Funkcje</a>
+            <a href="#faq">FAQ</a>
+            <a href={DOWNLOAD}>Pobierz</a>
+            <a href="#">Polityka prywatności</a>
+          </nav>
+          <a href="#" className={s.toTop}>
+            Do góry ↑
+          </a>
+        </div>
+        <div className={s.footerBottom}>
+          <AuthorCredit />
+          <span className={s.copyright}>© {new Date().getFullYear()} Sibo Diary</span>
+          <span>Sibo Diary nie jest wyrobem medycznym i nie zastępuje porady lekarza.</span>
+        </div>
+      </footer>
+    </div>
   );
 }

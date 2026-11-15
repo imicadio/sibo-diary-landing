@@ -1,4 +1,4 @@
-/* Variant B — minimal, product-style layout. Brand palette from the logo kit. */
+/* Landing page — minimal, product-style layout. Brand palette from the logo kit. */
 .page {
   --sea: #0e5e56;
   --leaf: #7cc57e;
@@ -260,40 +260,10 @@
   transform: scale(1.02);
 }
 
-/* ---------- Light / columns ---------- */
+/* ---------- Light ---------- */
 .light {
   background: var(--paper);
   padding: 140px 0 0;
-}
-.cols {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-top: 72px;
-}
-.colTitle {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 12px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.colTitle span {
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  background: var(--ink);
-  color: var(--leaf);
-  font-size: 15px;
-}
-.colText {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
 }
 
 /* Full-bleed scene */
@@ -554,45 +524,12 @@
   max-width: 60em;
 }
 
-/* ---------- Download ---------- */
-.download {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 640px;
-  background: var(--stone);
-  overflow: hidden;
-}
-.downloadArt {
-  position: relative;
-  background:
-    radial-gradient(60% 60% at 50% 40%, rgba(124, 197, 126, 0.55), transparent 70%),
-    var(--ink);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding-top: 80px;
-}
-.downloadPhone {
-  width: 330px;
-  margin-bottom: -200px;
-  transform: rotate(-6deg);
-}
-.downloadCopy {
-  padding: 120px 64px;
-  align-self: center;
-}
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
-}
 
 /* ---------- Footer ---------- */
 .footer {
   background: var(--ink);
   color: var(--mist);
-  padding: 56px 48px 88px;
+  padding: 56px 48px;
 }
 .footerTop {
   display: flex;
@@ -681,16 +618,6 @@
   .foodArt {
     min-height: 600px;
   }
-  .download {
-    grid-template-columns: 1fr;
-  }
-  .downloadArt {
-    min-height: 420px;
-    order: 2;
-  }
-  .downloadPhone {
-    margin-bottom: -320px;
-  }
 }
 
 @media (max-width: 640px) {
@@ -727,11 +654,6 @@
   .phone {
     width: 250px;
   }
-  .cols {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    margin-top: 40px;
-  }
   .scene {
     margin-top: 80px;
   }
@@ -752,11 +674,8 @@
   .faqList details p {
     padding: 0 0 24px 56px;
   }
-  .downloadCopy {
-    padding: 72px 16px;
-  }
   .footer {
-    padding: 48px 16px 88px;
+    padding: 48px 16px;
   }
 }
 

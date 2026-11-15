@@ -39,7 +39,7 @@ export function SiteNav({ downloadHref }: { downloadHref: string }) {
   return (
     <header className={`${s.nav} ${scrolled || open ? s.scrolled : ""} ${open ? s.open : ""}`}>
       <div className={s.bar}>
-        <Link href="/v2/" className={s.brand} onClick={close} aria-label="Sibo Diary — strona główna">
+        <Link href="/" className={s.brand} onClick={close} aria-label="Sibo Diary — strona główna">
           <LogoMark size={32} />
           <span>
             <b>Sibo</b> Diary
