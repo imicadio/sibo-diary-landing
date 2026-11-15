@@ -10,7 +10,7 @@
   z-index: 60;
   width: min(1180px, calc(100% - 32px));
   transform: translateX(-50%);
-  border-radius: 24px;
+  border-radius: 999px;
   border: 1px solid transparent;
   background: rgba(255, 255, 255, 0.42);
   backdrop-filter: saturate(160%) blur(16px);
@@ -28,6 +28,10 @@
   border-color: var(--hair);
   box-shadow: 0 12px 40px -16px rgba(18, 48, 44, 0.35);
 }
+.nav.open {
+  border-radius: 28px;
+  background: #fff;
+}
 
 .bar {
   display: grid;
@@ -35,7 +39,7 @@
   align-items: center;
   gap: 16px;
   height: 64px;
-  padding: 0 10px 0 14px;
+  padding: 0 10px 0 16px;
 }
 
 .brand {
@@ -80,8 +84,8 @@
   display: inline-flex;
   align-items: center;
   height: 44px;
-  padding: 0 20px;
-  border-radius: 14px;
+  padding: 0 22px;
+  border-radius: 999px;
   background: var(--ink);
   color: #f5fbf8;
   font-size: 15px;
@@ -99,7 +103,7 @@
   display: none;
   width: 44px;
   height: 44px;
-  border-radius: 14px;
+  border-radius: 999px;
   border: 1px solid var(--hair);
   background: #fff;
   cursor: pointer;
@@ -138,7 +142,7 @@
 .menu .menuCta {
   margin-top: 14px;
   border: 0;
-  border-radius: 14px;
+  border-radius: 999px;
   background: var(--ink);
   color: #f5fbf8;
   text-align: center;
