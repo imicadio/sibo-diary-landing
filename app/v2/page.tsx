@@ -7,35 +7,33 @@ import { AuthorCredit } from "@/components/AuthorCredit";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { StoryScroll, type StoryStep } from "@/components/v2/StoryScroll";
 import { FodmapPlayground } from "@/components/v2/FodmapPlayground";
+import { HeroPhones } from "@/components/v2/HeroPhones";
 import { CountUp } from "@/components/v2/CountUp";
 import { asset } from "@/lib/asset";
 import s from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Sibo Diary — dziennik SIBO, plan posiłków i lista zakupów",
+  title: "Sibo Diary — dziennik objawów SIBO, plan posiłków i przepisy low-FODMAP",
   description:
-    "Dziennik objawów przy SIBO, plan dnia, lista zakupów z przepisów, wykres FODMAP produktu i posiłku, ponad 500 przepisów low-FODMAP i raport PDF dla lekarza.",
+    "Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku. Plan posiłków, lista zakupów, wykres FODMAP, ponad 500 przepisów low-FODMAP i raport PDF dla lekarza.",
 };
 
 const DOWNLOAD = "#pobierz";
 
 const navLinks = [
-  { href: "#nowosci", label: "Nowości" },
+  { href: "#funkcje", label: "Funkcje" },
   { href: "#planer", label: "Planer" },
   { href: "#fodmap", label: "FODMAP" },
   { href: "#przepisy", label: "Przepisy" },
-  { href: "#raport", label: "Raport PDF" },
+  { href: "#raporty", label: "Raporty" },
+  { href: "#faq", label: "FAQ" },
 ];
 
-const ticker = [
-  "Lista zakupów",
-  "Plan dnia",
-  "FODMAP posiłku",
-  "Raport PDF",
-  "500+ przepisów",
-  "Nowy wygląd",
-  "Przypomnienia",
-  "Kroki i sen z zegarka",
+const highlights = [
+  { icon: "＋", title: "Wpis jednym dotknięciem", sub: "szybkie dodawanie" },
+  { icon: "🍌", title: "Przewodnik FODMAP", sub: "produkty i porcje" },
+  { icon: "📊", title: "Raport tygodnia", sub: "objawy obok posiłków" },
+  { icon: "⌚", title: "Kroki i sen", sub: "z telefonu i zegarka" },
 ];
 
 const story: StoryStep[] = [
@@ -76,18 +74,11 @@ const recipeRows = [
   ],
 ];
 
-const diaryTiles = [
-  ["🚻", "Toaleta"],
-  ["💨", "Gazy"],
-  ["🫧", "Wzdęcia"],
-  ["🩹", "Ból"],
-  ["🧠", "Stres"],
-  ["💧", "Woda"],
-  ["👟", "Kroki"],
-  ["🍽️", "Testy"],
-  ["🥗", "Posiłek"],
-  ["📖", "Przepis"],
-  ["💊", "Leki"],
+const recipeFacts = [
+  { icon: "🔥", title: "Kalorie i makro", text: "białko, tłuszcz i węglowodany w porcji" },
+  { icon: "⏱️", title: "Czas przygotowania", text: "od 5-minutowych koktajli po obiady" },
+  { icon: "🛒", title: "Składniki do koszyka", text: "jednym przyciskiem na listę zakupów" },
+  { icon: "📶", title: "Także offline", text: "przepisy zapisują się na telefonie" },
 ];
 
 const plans = [
@@ -151,16 +142,16 @@ const faq = [
     a: "Tydzień na jednej stronie: siatka posiłków, objawów i wypróżnień dzień po dniu, średnie i maksima objawów oraz rozkład typów w skali Bristol. Plik wysyłasz lekarzowi albo drukujesz.",
   },
   {
-    q: "Czy przepisy działają bez internetu?",
-    a: "Tak. Katalog produktów i przepisy zapisują się na telefonie, więc wyszukiwanie i filtry działają także offline.",
+    q: "Jak połączyć zegarek?",
+    a: "Otwórz kafelek Kroki albo Sen i dotknij „Połącz”. Aplikacja czyta dane z Apple Zdrowie na iPhonie i z Health Connect na Androidzie, więc działa z większością zegarków. Kroki i sen zawsze możesz też dopisać ręcznie.",
   },
 ];
 
-function Phone({ src, alt, className = "", eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
+function Phone({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   return (
     <div className={`${s.phone} ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={asset(src)} alt={alt} loading={eager ? "eager" : "lazy"} />
+      <img src={asset(src)} alt={alt} loading="lazy" />
     </div>
   );
 }
@@ -181,30 +172,29 @@ export default function VersionB() {
           <div className={s.heroCopy}>
             <p className={s.heroPill}>
               <span className={s.pulse} aria-hidden="true" />
-              Nowa wersja: plan dnia, lista zakupów i raport PDF
+              Dziennik objawów przy SIBO
             </p>
             <h1 className={s.heroTitle}>
               <span className={s.line}>
-                <span>Wiesz, co zjeść.</span>
+                <span>Zapisuj objawy.</span>
               </span>
               <span className={s.line}>
-                <span className={s.lime}>Wiesz, co kupić.</span>
+                <span className={s.lime}>Zobacz, co Ci służy.</span>
               </span>
             </h1>
             <p className={s.heroLead}>
-              Sibo Diary to dziennik objawów przy SIBO, a teraz też planer posiłków z listą
-              zakupów, wykresem FODMAP i ponad 500 przepisami. Na wizytę zabierasz raport PDF.
+              Objawy, toaleta, posiłki, suplementy, woda, kroki i sen w jednym dzienniku. Do tego
+              plan posiłków, lista zakupów i ponad 500 przepisów low-FODMAP. Po kilku tygodniach
+              widzisz, co się powtarza, a lekarzowi pokazujesz raport.
             </p>
             <div className={s.heroCta}>
               <StoreBadges href={DOWNLOAD} />
-              <small>Plan Free za darmo · iPhone i Android</small>
+              <small>Dostępna za darmo do pobrania na iPhone&rsquo;a i Androida.</small>
             </div>
           </div>
 
           <div className={s.heroStage}>
-            <Phone src="/v2/today.jpg" alt="Dziennik: kalendarz tygodnia, kroki, sen i woda" className={s.fanLeft} eager />
-            <Phone src="/v2/plan.jpg" alt="Planer: plan dnia z trzema posiłkami" className={s.fanCenter} eager />
-            <Phone src="/v2/shopping.jpg" alt="Lista zakupów z produktami do kupienia" className={s.fanRight} eager />
+            <HeroPhones />
             <div className={`${s.toast} ${s.toast1}`}>
               <span className={s.toastIcon}>✓</span>
               <span>
@@ -227,92 +217,90 @@ export default function VersionB() {
               </span>
             </div>
           </div>
+
+          <ul className={s.highlights}>
+            {highlights.map((h) => (
+              <li key={h.title}>
+                <span className={s.highlightIcon} aria-hidden="true">
+                  {h.icon}
+                </span>
+                <span>
+                  <b>{h.title}</b>
+                  <small>{h.sub}</small>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* TICKER */}
-      <div className={s.ticker} aria-label="Nowości w aplikacji">
-        <div className={s.tickerTrack}>
-          {[0, 1].map((k) => (
-            <ul key={k} aria-hidden={k === 1 ? true : undefined}>
-              {ticker.map((t) => (
-                <li key={t}>
-                  <span aria-hidden="true">✦</span> {t}
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
-
-      {/* WHAT'S NEW — BENTO */}
-      <section className={s.news} id="nowosci">
+      {/* INTRO — rhythm of the gut */}
+      <section className={s.intro} id="funkcje">
         <div className={s.wrap}>
-          <Reveal>
-            <p className={s.kicker}>Co nowego</p>
-            <h2 className={s.h2}>
-              Sześć nowości,
-              <br />
-              <span className={s.mark}>jeden dziennik.</span>
-            </h2>
-          </Reveal>
-
-          <div className={s.bento}>
-            <Reveal className={`${s.tile} ${s.tileShop}`}>
-              <span className={s.tileTag}>Premium</span>
-              <h3>Lista zakupów</h3>
-              <p>Z przepisu jednym przyciskiem albo z całego planu tygodnia. Dwa razy łosoś po 120 g to na liście 240 g.</p>
-              <ul className={s.miniList} aria-hidden="true">
-                <li>Łosoś świeży <b>240 g</b></li>
-                <li>Kasza jaglana <b>120 g</b></li>
-                <li className={s.checked}>Marchew <b>90 g</b></li>
-                <li>Maliny <b>60 g</b></li>
-              </ul>
+          <div className={s.split}>
+            <Reveal className={s.introPhoneWrap}>
+              <div className={s.introGlow} aria-hidden="true" />
+              <Phone src="/v2/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" className={s.tiltLeft} />
             </Reveal>
-
-            <Reveal className={`${s.tile} ${s.tilePlan}`} delay={80}>
-              <h3>Plan dnia</h3>
-              <p>Posiłki z godzinami, odhaczanie zjedzonych i „Wymień” na inny przepis.</p>
-              <div className={s.miniPlan} aria-hidden="true">
-                <span className={s.done}>08:00 · Omlet z malinami</span>
-                <span>16:00 · Łosoś z kaszą</span>
-                <span>20:00 · Sałatka nicejska</span>
-              </div>
-            </Reveal>
-
-            <Reveal className={`${s.tile} ${s.tileFodmap}`} delay={120}>
-              <h3>FODMAP produktu i posiłku</h3>
-              <p>Wykres pięciu grup FODMAP dla porcji. Od razu widać, czy mieścisz się w limicie.</p>
-              <svg viewBox="0 0 120 120" className={s.miniRadar} aria-hidden="true">
-                <polygon points="60,10 107,44 89,100 31,100 13,44" />
-                <polygon points="60,35 84,52 75,80 45,80 36,52" className={s.miniLimit} />
-                <polygon points="60,22 74,55 66,72 52,76 44,54" className={s.miniShape} />
-              </svg>
-            </Reveal>
-
-            <Reveal className={`${s.tile} ${s.tilePdf}`} delay={80}>
-              <span className={s.tileTag}>Premium</span>
-              <h3>Raport PDF</h3>
-              <p>Tydzień objawów na jednej stronie, gotowy do wysłania lekarzowi.</p>
-              <span className={s.pdfIcon} aria-hidden="true">PDF</span>
-            </Reveal>
-
-            <Reveal className={`${s.tile} ${s.tileRecipes}`} delay={120}>
-              <p className={s.bigNum}>
-                <CountUp to={500} suffix="+" />
+            <Reveal delay={120}>
+              <p className={s.kicker}>Dziennik dnia</p>
+              <h2 className={s.h2}>
+                Poznaj rytm
+                <br />
+                <span className={s.mark}>swoich jelit.</span>
+              </h2>
+              <p className={s.sub}>
+                Gazy, wzdęcia, ból, stres i wypróżnienia zapisane z godziną i nasileniem, dzień po
+                dniu.
               </p>
-              <h3>przepisów low-FODMAP</h3>
-              <p>Śniadania, obiady, zupy, koktajle i desery. Działają bez internetu.</p>
+              <p className={s.body}>
+                Po tygodniu mało kto pamięta, który dzień był gorszy i co było wtedy na obiad.
+                Dlatego zapisujesz na bieżąco, a po kilku tygodniach widać, co się powtarza. Na
+                wizycie pokazujesz lekarzowi konkretne dni, zamiast mówić „raz lepiej, raz gorzej”.
+              </p>
             </Reveal>
+          </div>
+        </div>
+      </section>
 
-            <Reveal className={`${s.tile} ${s.tileDesign}`} delay={160}>
-              <h3>Nowy wygląd</h3>
-              <p>Kolorowe kafelki, wspólny dzień w Dzienniku i Planerze, podpowiedzi przy pierwszym wejściu.</p>
-              <div className={s.swatches} aria-hidden="true">
-                <span style={{ background: "#84cc16" }} />
-                <span style={{ background: "#e8725a" }} />
-                <span style={{ background: "#3f3d8f" }} />
-                <span style={{ background: "#2b8db3" }} />
+      {/* QUICK ADD SCENE */}
+      <section className={s.scene}>
+        <div className={s.sceneInner}>
+          <Reveal className={s.scenePhoneWrap}>
+            <Phone src="/v2/quickadd.jpg" alt="Panel Szybkie dodawanie z 11 kafelkami wpisów" className={s.scenePhone} />
+            <Phone src="/v2/pain.jpg" alt="Ekran Ból: natężenie 4 na 10 i rodzaj bólu" className={s.scenePhoneBack} />
+          </Reveal>
+          <div className={s.sceneCopy}>
+            <Reveal>
+              <p className={`${s.kicker} ${s.kickerLight}`}>Szybkie dodawanie</p>
+              <p className={s.sceneBig}>
+                Toaleta. Gazy. Wzdęcia. Ból. Stres. Woda. Kroki. <span>Posiłek. Przepis. Leki.</span>
+              </p>
+              <p className={s.sceneLead}>
+                Brzuch nie czeka, aż znajdziesz chwilę na notatki. Wpis robisz od razu: w kolejce, w
+                pracy, w środku nocy. Zanim schowasz telefon, jest już zapisany.
+              </p>
+            </Reveal>
+            <Reveal delay={100}>
+              <ul className={s.sceneStats}>
+                <li>
+                  <b>10+</b>
+                  <span>możliwości szybkiego wpisu</span>
+                </li>
+                <li>
+                  <b>1</b>
+                  <span>dotknięcie, żeby zacząć</span>
+                </li>
+                <li>
+                  <b>0</b>
+                  <span>pisania notatek</span>
+                </li>
+              </ul>
+              <div className={s.sceneCta}>
+                <StoreBadges href={DOWNLOAD} />
+                <a href="#raporty" className={s.sceneLink}>
+                  Zobacz raport tygodnia <span aria-hidden="true">→</span>
+                </a>
               </div>
             </Reveal>
           </div>
@@ -375,15 +363,26 @@ export default function VersionB() {
           <div className={s.recipesGrid}>
             <Reveal className={s.recipesCopy}>
               <p className={s.kicker}>Przepisy</p>
+              <p className={s.giantLabel}>ponad</p>
               <p className={s.giant}>
-                <CountUp to={500} suffix="+" />
+                <CountUp to={500} />
               </p>
-              <h2 className={s.h2Small}>przepisów low-FODMAP w aplikacji</h2>
+              <h2 className={s.h2Small}>
+                przepisów <span className={s.nowrap}>low-FODMAP</span> w aplikacji
+              </h2>
               <p className={s.body}>
-                Każdy z kaloriami, makro, czasem przygotowania i listą składników. Filtrujesz po
-                kategorii, czasie, kaloriach albo makro, a ulubione oznaczasz serduszkiem. Własne
-                przepisy też dodasz.
+                Śniadania, obiady, kolacje, zupy, koktajle i desery. Filtrujesz po kategorii, czasie,
+                kaloriach albo makro, ulubione oznaczasz serduszkiem, a własne przepisy dodajesz sam.
               </p>
+              <ul className={s.recipeFacts}>
+                {recipeFacts.map((f) => (
+                  <li key={f.title}>
+                    <span aria-hidden="true">{f.icon}</span>
+                    <b>{f.title}</b>
+                    <small>{f.text}</small>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
             <Reveal delay={120} className={s.recipesPhones}>
               <Phone src="/v2/recipes.jpg" alt="Lista przepisów z kaloriami i makro" className={s.recipesBack} />
@@ -404,78 +403,48 @@ export default function VersionB() {
             </div>
           ))}
         </div>
-      </section>
-
-      {/* PDF REPORT */}
-      <section className={s.report} id="raport">
         <div className={s.wrap}>
-          <div className={s.reportGrid}>
-            <Reveal className={s.reportArt}>
-              <Phone src="/v2/reports.jpg" alt="Ekran Raporty z przyciskiem Wyeksportuj PDF" className={s.reportPhone} />
-              <figure className={s.sheet}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset("/v2/report-pdf.jpg")} alt="Pierwsza strona raportu PDF: siatka objawów, średnie i skala Bristol" loading="lazy" />
-              </figure>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className={s.kicker}>Raport PDF</p>
-              <h2 className={s.h2}>
-                Na wizytę
-                <br />
-                <span className={s.mark}>z jedną kartką.</span>
-              </h2>
-              <p className={s.body}>
-                Raport tygodnia zapisujesz jako PDF jednym przyciskiem. Lekarz widzi siatkę
-                posiłków, objawów i wypróżnień dzień po dniu, średnie i maksima objawów oraz
-                rozkład typów w skali Bristol.
+          <Reveal className={s.recipeCta}>
+            <div>
+              <p className={s.recipeCtaTitle}>
+                Ponad 500 przepisów czeka w aplikacji.
               </p>
-              <ul className={s.stats}>
-                <li>
-                  <b>7</b>
-                  <span>dni na jednej siatce</span>
-                </li>
-                <li>
-                  <b>7</b>
-                  <span>typów w skali Bristol</span>
-                </li>
-                <li>
-                  <b>1</b>
-                  <span>przycisk do eksportu</span>
-                </li>
-              </ul>
-            </Reveal>
-          </div>
+              <p className={s.recipeCtaText}>
+                Pobierz Sibo Diary za darmo i ułóż pierwszy dzień jeszcze dziś.
+              </p>
+            </div>
+            <StoreBadges href={DOWNLOAD} />
+          </Reveal>
         </div>
       </section>
 
-      {/* DIARY */}
-      <section className={s.diary} id="dziennik">
+      {/* REPORTS */}
+      <section className={s.intro} id="raporty">
         <div className={s.wrap}>
-          <div className={s.diaryGrid}>
-            <Reveal>
-              <p className={`${s.kicker} ${s.kickerLight}`}>Dziennik objawów</p>
-              <h2 className={`${s.h2} ${s.h2Light}`}>
-                Jeden plus,
-                <br />
-                <span className={s.limeText}>11 rodzajów wpisu.</span>
-              </h2>
-              <p className={s.bodyLight}>
-                Zielony plus otwiera szybkie dodawanie z każdego ekranu. Ból oceniasz na suwaku
-                0–10, wzdęcia na obrazkach, wypróżnienia w skali Bristol. Kroki i sen pobiorą się
-                same z Apple Zdrowie albo Health Connect.
-              </p>
-              <ul className={s.tiles}>
-                {diaryTiles.map(([icon, label], i) => (
-                  <li key={label} style={{ ["--i" as string]: i }}>
-                    <span aria-hidden="true">{icon}</span>
-                    {label}
-                  </li>
-                ))}
-              </ul>
+          <div className={`${s.split} ${s.splitFlip}`}>
+            <Reveal delay={120} className={s.introPhoneWrap}>
+              <div className={s.introGlow} aria-hidden="true" />
+              <Phone src="/v2/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia i przycisk Wyeksportuj PDF" className={s.tiltRight} />
             </Reveal>
-            <Reveal delay={120} className={s.diaryPhones}>
-              <Phone src="/v2/quickadd.jpg" alt="Panel Szybkie dodawanie z 11 kafelkami" className={s.diaryBack} />
-              <Phone src="/v2/pain.jpg" alt="Ekran Ból: natężenie 4 na 10 i rodzaj bólu" className={s.diaryFront} />
+            <Reveal>
+              <p className={s.kicker}>Raporty</p>
+              <h2 className={s.h2}>
+                Tydzień
+                <br />
+                <span className={s.mark}>w jednym widoku.</span>
+              </h2>
+              <p className={s.sub}>
+                Raport pokazuje dni z wpisami oraz posiłki, objawy i wypróżnienia na jednej siatce.
+              </p>
+              <p className={s.body}>
+                Im ciemniejsze pole, tym silniejszy objaw. Obok widać posiłki, leki i suplementy
+                przyjęte przed wypróżnieniami, więc łatwiej zauważyć, co się powtarza. Przed wizytą
+                zapisujesz cały tydzień jako PDF i wysyłasz go lekarzowi albo drukujesz.
+              </p>
+              <p className={s.pdfNote}>
+                <span aria-hidden="true">PDF</span>
+                Wyeksportuj PDF: siatka objawów, średnie i skala Bristol na jednej stronie
+              </p>
             </Reveal>
           </div>
         </div>
@@ -534,32 +503,29 @@ export default function VersionB() {
         </div>
       </section>
 
-      {/* CLOSING CTA */}
+      {/* CLOSING CTA (from version A) */}
       <section className={s.closing} id="pobierz">
-        <div className={s.blobs} aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
+        <div className={s.closingGlow} aria-hidden="true" />
         <div className={s.closingInner}>
           <Reveal>
-            <LogoMark size={72} variant="reversed" />
-          </Reveal>
-          <Reveal delay={80}>
             <h2 className={s.closingTitle}>
-              Zaplanuj jutro.
+              Zapisuj na bieżąco.
               <br />
-              <span className={s.limeText}>Zapisz dziś.</span>
+              <span>Rozmawiaj z lekarzem konkretnie.</span>
             </h2>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal delay={100}>
             <p className={s.closingLead}>
-              Plan dnia, lista zakupów i dziennik objawów w jednej aplikacji. Zacznij od planu Free.
+              Zamiast odtwarzać z pamięci ostatnie tygodnie, otwierasz raport i pokazujesz, kiedy
+              było gorzej i jakie posiłki oraz suplementy były wtedy w planie dnia.
             </p>
           </Reveal>
-          <Reveal delay={220} className={s.closingCta}>
-            <StoreBadges href={DOWNLOAD} />
+          <Reveal delay={180} className={s.closingCta}>
+            <LogoMark size={72} variant="reversed" />
+            <StoreBadges href={DOWNLOAD} className={s.closingBadges} />
+            <small>Dostępna za darmo do pobrania na iPhone&rsquo;a i Androida.</small>
           </Reveal>
+          <Phone src="/v2/today.jpg" alt="" className={s.closingPhone} />
         </div>
       </section>
 
@@ -572,7 +538,7 @@ export default function VersionB() {
             </span>
           </div>
           <nav className={s.footerLinks} aria-label="Stopka">
-            <a href="#nowosci">Nowości</a>
+            <a href="#funkcje">Funkcje</a>
             <a href="#plany">Plany</a>
             <a href="#faq">FAQ</a>
             <a href="#">Polityka prywatności</a>
