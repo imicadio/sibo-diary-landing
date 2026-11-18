@@ -70,9 +70,7 @@
   letter-spacing: -0.03em;
 }
 .mark {
-  background: linear-gradient(transparent 62%, var(--lime-soft) 62%, var(--lime-soft) 92%, transparent 92%);
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
+  color: var(--sea);
 }
 .lime,
 .limeText {
