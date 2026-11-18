@@ -7,7 +7,6 @@ import { AuthorCredit } from "@/components/AuthorCredit";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { StoryScroll, type StoryStep } from "@/components/v2/StoryScroll";
 import { FodmapPlayground } from "@/components/v2/FodmapPlayground";
-import { HeroPhones } from "@/components/v2/HeroPhones";
 import { CountUp } from "@/components/v2/CountUp";
 import { asset } from "@/lib/asset";
 import s from "./page.module.css";
@@ -47,7 +46,7 @@ const story: StoryStep[] = [
   },
   {
     kicker: "Porcja na miarę",
-    title: "Zmień gramy, zobacz FODMAP.",
+    title: "Dopasuj gramy, sprawdź FODMAP.",
     text: "Dotknij składnika w posiłku i ustaw ilość co 1 g. Wykres FODMAP, kalorie i makro przeliczają się od razu, zanim cokolwiek zapiszesz.",
     points: ["Licznik − / +", "Wykres pięciu grup", "Reset do przepisu"],
     img: "/v2/portion.jpg",
@@ -55,7 +54,7 @@ const story: StoryStep[] = [
   },
   {
     kicker: "Lista zakupów",
-    title: "Zakupy spisują się same.",
+    title: "Sporządź listę zakupów.",
     text: "„Dodaj z planu tygodnia” zbiera składniki ze wszystkich zaplanowanych posiłków i sumuje powtórki. W sklepie odhaczasz to, co już jest w koszyku.",
     points: ["Z przepisu albo z całego tygodnia", "Podpowiedzi z katalogu", "Własne pozycje"],
     img: "/v2/shopping.jpg",
@@ -147,11 +146,11 @@ const faq = [
   },
 ];
 
-function Phone({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+function Phone({ src, alt, className = "", eager = false }: { src: string; alt: string; className?: string; eager?: boolean }) {
   return (
     <div className={`${s.phone} ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={asset(src)} alt={alt} loading="lazy" />
+      <img src={asset(src)} alt={alt} loading={eager ? "eager" : "lazy"} />
     </div>
   );
 }
@@ -190,7 +189,9 @@ export default function VersionB() {
           </div>
 
           <div className={s.heroStage}>
-            <HeroPhones />
+            <Phone src="/v2/today.jpg" alt="Dziennik: kalendarz tygodnia, kroki, sen i woda" className={s.fanLeft} eager />
+            <Phone src="/v2/plan.jpg" alt="Planer: plan dnia z trzema posiłkami" className={s.fanCenter} eager />
+            <Phone src="/v2/shopping.jpg" alt="Lista zakupów z produktami do kupienia" className={s.fanRight} eager />
             <div className={`${s.toast} ${s.toast1}`}>
               <span className={s.toastIcon}>✓</span>
               <span>
@@ -361,7 +362,7 @@ export default function VersionB() {
               <p className={s.kicker}>Przepisy</p>
               <p className={s.giantLabel}>ponad</p>
               <p className={s.giant}>
-                <CountUp to={500} />
+                <CountUp to={500} suffix="+" />
               </p>
               <h2 className={s.h2Small}>
                 przepisów <span className={s.nowrap}>low-FODMAP</span> w aplikacji
