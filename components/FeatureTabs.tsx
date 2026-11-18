@@ -53,7 +53,8 @@ const tabs = [
   },
 ];
 
-export function FeatureTabs() {
+/** `screens` overrides the screenshot per tab key (pain, bloating, supplements). */
+export function FeatureTabs({ screens = {} }: { screens?: Partial<Record<string, string>> } = {}) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -136,7 +137,7 @@ export function FeatureTabs() {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={t.key}
-              src={asset(t.img)}
+              src={asset(screens[t.key] ?? t.img)}
               alt={i === active ? t.alt : ""}
               aria-hidden={i !== active}
               loading="lazy"

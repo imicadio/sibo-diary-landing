@@ -7,6 +7,7 @@ import { AuthorCredit } from "@/components/AuthorCredit";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { StoryScroll, type StoryStep } from "@/components/v2/StoryScroll";
 import { FodmapPlayground } from "@/components/v2/FodmapPlayground";
+import { FeatureTabs } from "@/components/FeatureTabs";
 import { asset } from "@/lib/asset";
 import s from "./page.module.css";
 
@@ -60,6 +61,32 @@ const story: StoryStep[] = [
     alt: "Lista zakupów z 11 produktami do kupienia",
   },
 ];
+
+const foodFeatures = [
+  {
+    title: "Przewodnik po produktach",
+    text: "Wpisz „banan” i zobacz poziom FODMAP, bezpieczną porcję i rozbicie na fruktany, GOS, laktozę, sorbitol i mannitol. Serduszko dodaje produkt do ulubionych.",
+  },
+  {
+    title: "Jadłospis i plan dnia",
+    text: "Przepisy low-FODMAP z kaloriami i makro. Dodaj posiłek do planu, odhacz, gdy zjesz, albo wymień na inny. Plan dnia możesz powtarzać co tydzień.",
+  },
+  {
+    title: "Twoje cele i limity",
+    text: "Ustaw kalorie i makro, limity FODMAP, kroki, wodę i sen. Paski na ekranie dnia pokazują, ile zostało do celu.",
+  },
+];
+
+const foods = [
+  { img: "ananas", name: "Ananas", cat: "Owoce", level: "low" },
+  { img: "quinoa", name: "Komosa ryżowa", cat: "Zboża", level: "low" },
+  { img: "herbata", name: "Herbata", cat: "Napoje", level: "low" },
+  { img: "banana", name: "Banan", cat: "Owoce", level: "mid" },
+  { img: "kapusta", name: "Kapusta kiszona", cat: "Warzywa", level: "mid" },
+  { img: "jablko", name: "Jabłko", cat: "Owoce", level: "high" },
+] as const;
+
+const levelLabel = { low: "niski FODMAP", mid: "uważaj na porcję", high: "wysoki FODMAP" };
 
 const lightMeals = [
   {
@@ -330,7 +357,7 @@ export default function VersionB() {
               <h2 className={s.h2}>
                 Posiłki, które odchudzają,
                 <br />
-                <span className={s.mark}>a nie wzdymają?</span>
+                <span className={s.mark}>a nie wzdymają.</span>
               </h2>
               <p className={s.sub}>
                 Szukasz lekkich posiłków, po których brzuch jest spokojny? Ułożysz je w Sibo Diary.
@@ -358,6 +385,65 @@ export default function VersionB() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* FOOD (dark, from version A) */}
+      <section className={s.foodSection} id="jedzenie">
+        <div className={s.wrap}>
+          <div className={s.foodGrid}>
+            <div>
+              <Reveal>
+                <p className={`${s.kicker} ${s.kickerLight}`}>Przewodnik i jadłospis</p>
+                <h2 className={`${s.h2} ${s.h2Light}`}>
+                  Jedzenie,
+                  <br />
+                  <span className={s.mintText}>które Ci służy.</span>
+                </h2>
+                <p className={`${s.bodyLight} ${s.foodLead}`}>
+                  Przewodnik po produktach, przepisy low-FODMAP i plan dnia w jednej zakładce. Bez
+                  szukania w tabelach i notatkach.
+                </p>
+              </Reveal>
+              <div className={s.list}>
+                {foodFeatures.map((f, i) => (
+                  <Reveal key={f.title} delay={i * 80} className={s.listItem}>
+                    <h3>{f.title}</h3>
+                    <p>{f.text}</p>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+            <Reveal delay={120} className={s.foodArt}>
+              <div className={s.foodGlow} aria-hidden="true" />
+              <Phone src="/v2/recipes.jpg" alt="Lista przepisów low-FODMAP z kaloriami i makro" className={s.tiltRight} />
+              {(["quinoa", "ananas", "herbata"] as const).map((f, i) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={f}
+                  src={asset(`/foods/${f}.png`)}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className={`${s.foodBubble} ${s[`foodBubble${i + 1}`]}`}
+                />
+              ))}
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <ul className={s.foods} aria-label="Przykładowe produkty z przewodnika">
+              {foods.map((f) => (
+                <li key={f.name}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={asset(`/foods/${f.img}.png`)} alt="" loading="lazy" />
+                  <b>{f.name}</b>
+                  <small>{f.cat}</small>
+                  <span className={`${s.level} ${s[`level_${f.level}`]}`}>{levelLabel[f.level]}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
@@ -402,6 +488,25 @@ export default function VersionB() {
               </p>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* QUICK ENTRY TABS (from version A) */}
+      <section className={s.tabsSection}>
+        <div className={s.wrap}>
+          <Reveal>
+            <p className={`${s.kicker} ${s.center}`}>Objawy i suplementy</p>
+            <h2 className={`${s.h2} ${s.center}`}>
+              Wpis w kilka sekund,
+              <br />
+              <span className={s.mark}>jednym dotknięciem</span>
+            </h2>
+            <p className={`${s.sub} ${s.center} ${s.subCenter}`}>
+              Każdy objaw ma własny, prosty ekran. Zamiast pisać notatki, przesuwasz suwak albo
+              wybierasz obrazek, a wpis od razu trafia do dnia z godziną.
+            </p>
+          </Reveal>
+          <FeatureTabs screens={{ pain: "/v2/pain.jpg", bloating: "/v2/bloating.jpg" }} />
         </div>
       </section>
 
