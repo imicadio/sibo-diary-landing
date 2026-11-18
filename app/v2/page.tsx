@@ -404,7 +404,7 @@ export default function VersionB() {
 
           <Reveal className={s.pdfPartsHead}>
             <p className={`${s.kicker} ${s.center}`}>Anatomia raportu</p>
-            <h3>Co zobaczy lekarz?</h3>
+            <h3>Co zobaczy specjalista?</h3>
             <p>Prawdziwy raport wyeksportowany z aplikacji. Wybierz część, żeby ją przybliżyć.</p>
           </Reveal>
           <Reveal>
