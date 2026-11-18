@@ -408,25 +408,18 @@ export default function VersionB() {
             <p>Prawdziwy raport wyeksportowany z aplikacji. Wybierz część, żeby ją przybliżyć.</p>
           </Reveal>
           <Reveal>
-            <ReportAnatomy />
+            <ReportAnatomy ctaHref={DOWNLOAD} />
           </Reveal>
 
           <Reveal className={s.reportCta}>
             <div>
-              <p className={s.reportCtaKicker}>To nie wszystko</p>
               <p className={s.reportCtaTitle}>Zabierz raport na najbliższą wizytę.</p>
               <p className={s.reportCtaText}>
                 Raport PDF jest w planie Premium. Podsumowanie bieżącego tygodnia w aplikacji masz za
                 darmo.
               </p>
             </div>
-            <div className={s.reportCtaActions}>
-              <StoreBadges href={DOWNLOAD} />
-              <a href={asset("/v2/przykladowy-raport-sibodiary.pdf")} className={s.sampleLink} download>
-                <span aria-hidden="true">PDF</span>
-                Pobierz przykładowy raport · 2 strony
-              </a>
-            </div>
+            <StoreBadges href={DOWNLOAD} />
           </Reveal>
         </div>
       </section>

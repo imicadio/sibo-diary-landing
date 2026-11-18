@@ -42,21 +42,12 @@ const parts: Part[] = [
     page: 1,
     box: [0.05, 0.638, 0.95, 0.855],
   },
-  {
-    title: "Kroki, sen i woda",
-    text: "Wykresy z celem i średnią oraz tabela każdego dnia: kroki, sen, woda, posiłki i leki.",
-    page: 2,
-    box: [0.05, 0.085, 0.95, 0.495],
-  },
-  {
-    title: "Dzień po dniu, z godziną",
-    text: "Każdy wpis z godziną i szczegółami: typ stolca, nasilenie bólu, rodzaj wzdęć, stres.",
-    page: 2,
-    box: [0.05, 0.505, 0.95, 0.87],
-  },
 ];
 
-export function ReportAnatomy() {
+/** The last row is a teaser: page 2 stays blurred, with a nudge to try the app. */
+const TEASER = parts.length;
+
+export function ReportAnatomy({ ctaHref }: { ctaHref: string }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [size, setSize] = useState({ w: 0, h: 0 });
@@ -73,11 +64,14 @@ export function ReportAnatomy() {
 
   useEffect(() => {
     if (!inView || paused || prefersReducedMotion()) return;
-    const id = window.setTimeout(() => setActive((a) => (a + 1) % parts.length), DURATION);
+    const id = window.setTimeout(() => setActive((a) => (a + 1) % (parts.length + 1)), DURATION);
     return () => window.clearTimeout(id);
   }, [active, inView, paused]);
 
-  const part = parts[active];
+  const teaser = active === TEASER;
+  const part: Part = teaser
+    ? { title: "I więcej w aplikacji", text: "", page: 2, box: [0, 0, 1, 0.5] }
+    : parts[active];
   const [x0, y0, x1, y1] = part.box;
   const pageW = size.w;
   const pageH = size.w * PAGE_RATIO;
@@ -114,6 +108,22 @@ export function ReportAnatomy() {
             </button>
           </li>
         ))}
+        <li>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={teaser}
+            className={`${s.teaserRow} ${teaser ? s.on : ""}`}
+            onClick={() => setActive(TEASER)}
+          >
+            <span className={s.num}>+</span>
+            <span className={s.label}>
+              <b>I więcej…</b>
+              <small>Druga strona raportu czeka w aplikacji. Przekonaj się sam.</small>
+            </span>
+            {teaser && <span key={active} className={s.progress} style={{ animationDuration: `${DURATION}ms` }} />}
+          </button>
+        </li>
       </ol>
 
       <div className={s.viewerWrap}>
@@ -130,7 +140,7 @@ export function ReportAnatomy() {
           {[1, 2].map((n) => (
             <div
               key={n}
-              className={`${s.sheet} ${part.page === n ? s.sheetOn : ""}`}
+              className={`${s.sheet} ${part.page === n ? s.sheetOn : ""} ${teaser && n === 2 ? s.sheetBlur : ""}`}
               style={
                 {
                   width: pageW || "100%",
@@ -141,7 +151,7 @@ export function ReportAnatomy() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={asset(`/v2/report-page${n}.jpg`)} alt={`Strona ${n} przykładowego raportu PDF`} loading="lazy" />
-              {part.page === n && (
+              {part.page === n && !teaser && (
                 <span
                   className={s.focus}
                   style={{
@@ -154,6 +164,14 @@ export function ReportAnatomy() {
               )}
             </div>
           ))}
+          <div className={`${s.teaser} ${teaser ? s.teaserOn : ""}`} aria-hidden={!teaser}>
+            <span className={s.teaserIcon} aria-hidden="true">🔒</span>
+            <p className={s.teaserTitle}>Kroki, sen, woda i dzień po dniu</p>
+            <p className={s.teaserText}>Resztę raportu zobaczysz w aplikacji, na własnych danych.</p>
+            <a href={ctaHref} className={s.teaserCta} tabIndex={teaser ? 0 : -1}>
+              Przekonaj się sam <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
