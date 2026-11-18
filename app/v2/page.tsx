@@ -85,36 +85,86 @@ const plans = [
     name: "Free",
     tag: "na zawsze",
     lead: "Wszystko, żeby zacząć prowadzić dziennik.",
+    intro: "W planie:",
     items: [
       "Dziennik objawów, toalety, wody, kroków i snu",
       "Katalog FODMAP i bezpieczne porcje",
-      "Przepisy low-FODMAP",
+      "Ponad 500 przepisów low-FODMAP",
       "Planer na dziś i jutro, do 4 posiłków",
       "Leki i przypomnienia o lekach",
+      "Raport bieżącego tygodnia",
     ],
   },
   {
     name: "Standard",
     tag: "najczęściej wybierany",
     lead: "Dla tych, którzy planują cały tydzień.",
+    intro: "Wszystko z Free, a do tego:",
     items: [
       "Plan posiłków na cały tydzień",
       "Kopiowanie dnia i powtarzanie co tydzień",
-      "Limity FODMAP dopasowane do etapu diety",
-      "FODMAP porcji na wykresie",
       "Do 6 posiłków dziennie",
+      "FODMAP porcji na wykresie",
+      "Własne limity FODMAP i kalkulator makro",
+      "Raporty z poprzednich tygodni",
+      "Fazy snu i wszystkie przypomnienia",
     ],
   },
   {
     name: "Premium",
     tag: "pełnia możliwości",
-    lead: "Zakupy, raporty i bez limitów.",
+    lead: "Zakupy, raporty PDF i bez limitów.",
+    intro: "Wszystko ze Standard, a do tego:",
     items: [
       "Lista zakupów z przepisów i planu tygodnia",
       "Raport PDF dla lekarza i dietetyczki",
       "Filtry przepisów po czasie, kaloriach i makro",
-      "Porównanie tygodni",
       "Bez limitu posiłków, przekąsek i napojów",
+    ],
+  },
+];
+
+type Cell = boolean | string;
+const comparison: { group: string; rows: { label: string; hint?: string; cells: [Cell, Cell, Cell] }[] }[] = [
+  {
+    group: "Dziennik",
+    rows: [
+      { label: "Objawy, toaleta (skala Bristol), woda, kroki i sen", cells: [true, true, true] },
+      { label: "Szybkie dodawanie: 10+ rodzajów wpisu", cells: [true, true, true] },
+      { label: "Kroki i sen z Apple Zdrowie / Health Connect", cells: [true, true, true] },
+      { label: "Fazy snu z zegarka", hint: "głęboki, REM, lekki", cells: [false, true, true] },
+      { label: "Leki, suplementy i przypomnienia o lekach", cells: [true, true, true] },
+      { label: "Przypomnienia o wodzie, krokach i objawach po jedzeniu", cells: [false, true, true] },
+    ],
+  },
+  {
+    group: "Jedzenie i FODMAP",
+    rows: [
+      { label: "Katalog FODMAP i bezpieczne porcje", cells: [true, true, true] },
+      { label: "Ponad 500 przepisów low-FODMAP", cells: [true, true, true] },
+      { label: "Własne przepisy i produkty", cells: ["z limitem", "bez limitu", "bez limitu"] },
+      { label: "FODMAP porcji na wykresie", hint: "przy zmianie ilości", cells: [false, true, true] },
+      { label: "Własne limity FODMAP", hint: "dopasowane do etapu diety", cells: [false, true, true] },
+      { label: "Kalkulator kalorii i makro", cells: [false, true, true] },
+      { label: "Filtry przepisów: czas, kalorie, makro", cells: [false, false, true] },
+    ],
+  },
+  {
+    group: "Planer",
+    rows: [
+      { label: "Plan posiłków", cells: ["dziś i jutro", "cały tydzień", "cały tydzień"] },
+      { label: "Posiłków dziennie", cells: ["do 4", "do 6", "bez limitu"] },
+      { label: "Kopiowanie dnia jednym dotknięciem", cells: [false, true, true] },
+      { label: "Plan powtarzany co tydzień", cells: [false, true, true] },
+      { label: "Lista zakupów z przepisów i planu tygodnia", cells: [false, false, true] },
+    ],
+  },
+  {
+    group: "Raporty",
+    rows: [
+      { label: "Raport bieżącego tygodnia", cells: [true, true, true] },
+      { label: "Raporty z poprzednich tygodni i porównanie", cells: [false, true, true] },
+      { label: "Raport PDF dla lekarza i dietetyczki", cells: [false, false, true] },
     ],
   },
 ];
@@ -464,6 +514,7 @@ export default function VersionB() {
                 <span className={s.planTag}>{p.tag}</span>
                 <h3>{p.name}</h3>
                 <p className={s.planLead}>{p.lead}</p>
+                <p className={s.planIntro}>{p.intro}</p>
                 <ul>
                   {p.items.map((it) => (
                     <li key={it}>{it}</li>
@@ -472,6 +523,49 @@ export default function VersionB() {
               </Reveal>
             ))}
           </div>
+          <Reveal className={s.compare}>
+            <h3 className={s.compareTitle}>Porównaj wszystkie funkcje</h3>
+            <table className={s.compareTable}>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span className="sr-only">Funkcja</span>
+                  </th>
+                  <th scope="col">Free</th>
+                  <th scope="col" className={s.colStandard}>Standard</th>
+                  <th scope="col" className={s.colPremium}>Premium</th>
+                </tr>
+              </thead>
+              {comparison.map((g) => (
+                <tbody key={g.group}>
+                  <tr className={s.groupRow}>
+                    <th scope="colgroup" colSpan={4}>
+                      {g.group}
+                    </th>
+                  </tr>
+                  {g.rows.map((r) => (
+                    <tr key={r.label}>
+                      <th scope="row">
+                        {r.label}
+                        {r.hint && <small>{r.hint}</small>}
+                      </th>
+                      {r.cells.map((c, i) => (
+                        <td key={i} className={i === 1 ? s.colStandard : i === 2 ? s.colPremium : undefined}>
+                          {c === true ? (
+                            <span className={s.yes} aria-label="tak">✓</span>
+                          ) : c === false ? (
+                            <span className={s.no} aria-label="nie">–</span>
+                          ) : (
+                            <span className={s.val}>{c}</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              ))}
+            </table>
+          </Reveal>
           <p className={s.planNote}>Zaproś znajomego: oboje dostajecie 7 dni Premium.</p>
         </div>
       </section>

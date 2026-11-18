@@ -1395,3 +1395,141 @@
 .recipeCta > div {
   flex: 1 1 360px;
 }
+
+/* ---------- Plan comparison ---------- */
+.planIntro {
+  margin-top: 24px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.plan .planIntro + ul {
+  margin-top: 12px;
+}
+.compare {
+  margin-top: 72px;
+  padding: 40px;
+  border-radius: 32px;
+  background: #fff;
+  border: 1px solid var(--hair);
+}
+.compareTitle {
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.compareTable {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.compareTable thead th {
+  position: sticky;
+  top: 84px;
+  z-index: 1;
+  padding: 14px 8px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+  border-bottom: 2px solid var(--ink);
+}
+.compareTable thead th:first-child {
+  text-align: left;
+}
+.compareTable th[scope="row"] {
+  padding: 14px 16px 14px 0;
+  text-align: left;
+  font-weight: 500;
+}
+.compareTable th[scope="row"] small {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+.compareTable td {
+  width: 17%;
+  padding: 14px 8px;
+  text-align: center;
+}
+.compareTable tbody tr:not(.groupRow) {
+  border-bottom: 1px solid var(--hair);
+}
+.groupRow th {
+  padding: 32px 0 10px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lime-dark);
+}
+.compareTable .colStandard {
+  background: rgba(132, 204, 22, 0.07);
+}
+.compareTable .colPremium {
+  background: rgba(212, 160, 23, 0.08);
+}
+.groupRow th {
+  background: none !important;
+}
+.yes {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--lime-soft);
+  color: var(--lime-dark);
+  font-size: 13px;
+  font-weight: 800;
+}
+.colPremium .yes {
+  background: #fde68a;
+  color: #4a3500;
+}
+.no {
+  color: rgba(15, 36, 32, 0.28);
+  font-weight: 700;
+}
+.val {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .compare {
+    margin-top: 48px;
+    padding: 20px 14px;
+    border-radius: 24px;
+  }
+  .compareTable {
+    font-size: 13px;
+  }
+  .compareTable thead th {
+    top: 76px;
+    font-size: 12px;
+    padding: 10px 2px;
+  }
+  .compareTable th[scope="row"] {
+    padding: 12px 8px 12px 0;
+  }
+  .compareTable th[scope="row"] small {
+    font-size: 12px;
+  }
+  .compareTable td {
+    width: 21%;
+    padding: 12px 2px;
+  }
+  .val {
+    font-size: 12px;
+  }
+  .yes {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+}
