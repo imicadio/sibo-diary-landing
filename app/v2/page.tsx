@@ -7,7 +7,6 @@ import { AuthorCredit } from "@/components/AuthorCredit";
 import { VariantSwitch } from "@/components/VariantSwitch";
 import { StoryScroll, type StoryStep } from "@/components/v2/StoryScroll";
 import { FodmapPlayground } from "@/components/v2/FodmapPlayground";
-import { CountUp } from "@/components/v2/CountUp";
 import { asset } from "@/lib/asset";
 import s from "./page.module.css";
 
@@ -21,7 +20,7 @@ const DOWNLOAD = "#pobierz";
 
 const navLinks = [
   { href: "#raporty", label: "Raport PDF" },
-  { href: "#przepisy", label: "Przepisy" },
+  { href: "#lekkie-posilki", label: "Przepisy" },
   { href: "#planer", label: "Planer" },
   { href: "#funkcje", label: "Dziennik" },
   { href: "#fodmap", label: "FODMAP" },
@@ -60,24 +59,6 @@ const story: StoryStep[] = [
     img: "/v2/shopping.jpg",
     alt: "Lista zakupów z 11 produktami do kupienia",
   },
-];
-
-const recipeRows = [
-  ["Śniadanie", "Obiad", "Kolacja", "Koktajl", "Zupa", "Sałatka", "Deser", "Przekąska", "Drugie śniadanie"],
-  [
-    "Omlet z malinami i płatkami migdałów · 401 kcal",
-    "Łosoś z surówką z marchewki i kaszą jaglaną · 25 min",
-    "Pulpeciki z indyka z ziemniakami i mizerią · 574 kcal",
-    "Koktajl bananowo-orzechowy z chia · 5 min",
-    "Sałatka nicejska · 202 kcal",
-  ],
-];
-
-const recipeFacts = [
-  { icon: "🥗", title: "Lekkie posiłki z kaloriami", text: "kcal i makro w każdej porcji" },
-  { icon: "⏱️", title: "Czas przygotowania", text: "od 5-minutowych koktajli po obiady" },
-  { icon: "🛒", title: "Składniki do koszyka", text: "jednym przyciskiem na listę zakupów" },
-  { icon: "🎯", title: "Cel kalorii dla Ciebie", text: "kalkulator kalorii i makro" },
 ];
 
 const lightMeals = [
@@ -337,68 +318,6 @@ export default function VersionB() {
               </p>
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* RECIPES */}
-      <section className={s.recipes} id="przepisy">
-        <div className={s.wrap}>
-          <div className={s.recipesGrid}>
-            <Reveal className={s.recipesCopy}>
-              <p className={s.kicker}>Przepisy</p>
-              <p className={s.giantLabel}>ponad</p>
-              <p className={s.giant}>
-                <CountUp to={500} suffix="+" />
-              </p>
-              <h2 className={s.h2Small}>
-                przepisów <span className={s.nowrap}>low-FODMAP</span> w aplikacji
-              </h2>
-              <p className={s.body}>
-                Śniadania, obiady, kolacje, zupy, koktajle i desery. Chcesz jeść lżej? Każdy przepis
-                ma policzone kalorie i makro, więc ułożysz lekkie posiłki low-FODMAP pod swój cel.
-                Filtrujesz po czasie, kaloriach albo makro, a ulubione oznaczasz serduszkiem.
-              </p>
-              <ul className={s.recipeFacts}>
-                {recipeFacts.map((f) => (
-                  <li key={f.title}>
-                    <span aria-hidden="true">{f.icon}</span>
-                    <b>{f.title}</b>
-                    <small>{f.text}</small>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-            <Reveal delay={120} className={s.recipesPhones}>
-              <Phone src="/v2/recipes.jpg" alt="Lista przepisów z kaloriami i makro" className={s.recipesBack} />
-              <Phone src="/v2/meal.jpg" alt="Szczegóły posiłku: łosoś z surówką i kaszą jaglaną" className={s.recipesFront} />
-            </Reveal>
-          </div>
-        </div>
-        <div className={s.marquees} aria-hidden="true">
-          {recipeRows.map((row, r) => (
-            <div key={r} className={`${s.marquee} ${r === 1 ? s.marqueeReverse : ""}`}>
-              <div className={s.marqueeTrack}>
-                {[...row, ...row, ...row, ...row].map((item, i) => (
-                  <span key={i} className={r === 0 ? s.chip : s.recipeChip}>
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className={s.wrap}>
-          <Reveal className={s.recipeCta}>
-            <div>
-              <p className={s.recipeCtaTitle}>
-                Ponad 500 przepisów czeka w aplikacji.
-              </p>
-              <p className={s.recipeCtaText}>
-                Pobierz Sibo Diary za darmo i ułóż pierwszy dzień jeszcze dziś.
-              </p>
-            </div>
-            <StoreBadges href={DOWNLOAD} />
-          </Reveal>
         </div>
       </section>
 
