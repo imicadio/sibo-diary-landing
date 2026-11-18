@@ -219,6 +219,15 @@ export default function VersionB() {
         </div>
         <div className={s.heroInner}>
           <div className={s.heroCopy}>
+            <p className={s.heroBrand}>
+              <LogoMark size={40} />
+              <span>
+                <span>
+                  <b>Sibo</b> Diary
+                </span>
+                <small>dziennik SIBO</small>
+              </span>
+            </p>
             <h1 className={s.heroTitle}>
               <span className={s.line}>
                 <span>Zobacz, co Ci szkodzi.</span>

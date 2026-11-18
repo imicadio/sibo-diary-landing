@@ -227,9 +227,35 @@
     opacity: 0;
   }
 }
+.heroBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  animation: fadeUp 0.8s var(--ease) both;
+}
+.heroBrand > svg {
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+.heroBrand > span {
+  display: grid;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.heroBrand b {
+  font-weight: 800;
+}
+.heroBrand small {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime-soft);
+}
 .heroTitle {
-  margin-top: 0;
-  font-size: clamp(38px, 4.2vw, 68px);
+  margin-top: 26px;
+  font-size: clamp(34px, 3.5vw, 56px);
   font-weight: 800;
   letter-spacing: -0.055em;
   line-height: 0.95;
