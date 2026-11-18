@@ -415,8 +415,8 @@ export default function VersionB() {
             <div>
               <p className={s.reportCtaTitle}>Zabierz raport na najbliższą wizytę.</p>
               <p className={s.reportCtaText}>
-                Raport PDF jest w planie Premium. Podsumowanie bieżącego tygodnia w aplikacji masz za
-                darmo.
+                Szczegółowe dane, jasno podane: liczby, średnie i wykresy, które specjalista odczyta w
+                minutę.
               </p>
             </div>
             <StoreBadges href={DOWNLOAD} />
