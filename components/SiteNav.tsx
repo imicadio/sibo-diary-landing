@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { LogoMark } from "@/components/Logo";
 import s from "./SiteNav.module.css";
 
-const links = [
+const defaultLinks = [
   { href: "#funkcje", label: "Funkcje" },
   { href: "#zegarek", label: "Kroki i sen" },
   { href: "#jedzenie", label: "Jedzenie" },
@@ -13,7 +13,13 @@ const links = [
   { href: "#faq", label: "FAQ" },
 ];
 
-export function SiteNav({ downloadHref }: { downloadHref: string }) {
+export function SiteNav({
+  downloadHref,
+  links = defaultLinks,
+}: {
+  downloadHref: string;
+  links?: { href: string; label: string }[];
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 

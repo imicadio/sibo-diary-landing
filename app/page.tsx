@@ -4,6 +4,7 @@ import { FeatureTabs } from "@/components/FeatureTabs";
 import { StoreBadges } from "@/components/StoreBadges";
 import { SiteNav } from "@/components/SiteNav";
 import { AuthorCredit } from "@/components/AuthorCredit";
+import { VariantSwitch } from "@/components/VariantSwitch";
 import { asset } from "@/lib/asset";
 import s from "./page.module.css";
 
@@ -396,6 +397,7 @@ export default function V2() {
           <span>Sibo Diary nie jest wyrobem medycznym i nie zastępuje porady lekarza.</span>
         </div>
       </footer>
+      <VariantSwitch active="a" />
     </div>
   );
 }
