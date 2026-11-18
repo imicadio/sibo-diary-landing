@@ -80,6 +80,29 @@ const recipeFacts = [
   { icon: "🎯", title: "Cel kalorii dla Ciebie", text: "kalkulator kalorii i makro" },
 ];
 
+const lightMeals = [
+  {
+    icon: "🥗",
+    title: "Lekkie i policzone",
+    text: "Kalorie, białko, tłuszcz i węglowodany przy każdym przepisie i w planie całego dnia.",
+  },
+  {
+    icon: "🎯",
+    title: "Cel kalorii dla Ciebie",
+    text: "Kalkulator liczy dzienny cel z wagi, wzrostu i aktywności, a pasek pokazuje, ile zostało.",
+  },
+  {
+    icon: "🍌",
+    title: "Porcja w limicie FODMAP",
+    text: "Wykres pokazuje fruktany, GOS, laktozę, sorbitol i mannitol w porcji, zanim zjesz.",
+  },
+  {
+    icon: "📓",
+    title: "Sprawdź, po czym Cię wzdyma",
+    text: "Wzdęcia zapisane obok posiłków pokazują, co warto zostawić w planie, a co odstawić.",
+  },
+];
+
 const plans = [
   {
     name: "Free",
@@ -376,6 +399,46 @@ export default function VersionB() {
             </div>
             <StoreBadges href={DOWNLOAD} />
           </Reveal>
+        </div>
+      </section>
+
+      {/* LIGHT MEALS */}
+      <section className={s.light} id="lekkie-posilki">
+        <div className={s.wrap}>
+          <div className={s.lightGrid}>
+            <Reveal>
+              <p className={s.kicker}>Lekkie posiłki low-FODMAP</p>
+              <h2 className={s.h2}>
+                Posiłki, które odchudzają,
+                <br />
+                <span className={s.mark}>a nie wzdymają?</span>
+              </h2>
+              <p className={s.sub}>
+                Szukasz lekkich posiłków, po których brzuch jest spokojny? Ułożysz je w Sibo Diary.
+              </p>
+              <p className={s.body}>
+                Każdy z ponad 500 przepisów low-FODMAP ma policzone kalorie i makro, a kalkulator
+                ustawi Ci dzienny cel. Po jedzeniu zapisujesz, jak się czujesz, więc po kilku dniach
+                widzisz, które posiłki Ci służą, a po których przychodzą wzdęcia.
+              </p>
+              <div className={s.lightCta}>
+                <StoreBadges href={DOWNLOAD} />
+              </div>
+            </Reveal>
+            <div className={s.lightCards}>
+              {lightMeals.map((c, i) => (
+                <Reveal key={c.title} delay={i * 90} className={s.lightCard}>
+                  <span className={s.lightIcon} aria-hidden="true">
+                    {c.icon}
+                  </span>
+                  <div>
+                    <h3>{c.title}</h3>
+                    <p>{c.text}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
