@@ -413,7 +413,9 @@ export default function VersionB() {
 
           <Reveal className={s.reportCta}>
             <div>
-              <p className={s.reportCtaTitle}>Zabierz raport na najbliższą wizytę.</p>
+              <p className={s.reportCtaTitle}>
+                Zabierz raport na <span className={s.mintText}>najbliższą wizytę.</span>
+              </p>
               <p className={s.reportCtaText}>
                 Szczegółowe dane, jasno podane: liczby, średnie i wykresy, które specjalista odczyta w
                 minutę.
