@@ -170,16 +170,12 @@ export default function VersionB() {
         </div>
         <div className={s.heroInner}>
           <div className={s.heroCopy}>
-            <p className={s.heroPill}>
-              <span className={s.pulse} aria-hidden="true" />
-              Dziennik objawów przy SIBO
-            </p>
             <h1 className={s.heroTitle}>
               <span className={s.line}>
-                <span>Zapisuj objawy.</span>
+                <span>Zobacz, co Ci szkodzi.</span>
               </span>
               <span className={s.line}>
-                <span className={s.lime}>Zobacz, co Ci służy.</span>
+                <span className={s.lime}>Jedz bez zgadywania.</span>
               </span>
             </h1>
             <p className={s.heroLead}>
