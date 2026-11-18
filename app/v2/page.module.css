@@ -1892,3 +1892,16 @@
   }
 }
 
+
+/* PDF toast in its own colour (variant D). */
+.toast3 {
+  background: #9f1239;
+  box-shadow: 0 20px 40px -14px rgba(159, 18, 57, 0.6);
+}
+.toast3 small {
+  color: #fecdd3;
+}
+.toast3 .toastPdf {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
