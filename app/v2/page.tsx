@@ -88,6 +88,37 @@ const foods = [
 
 const levelLabel = { low: "niski FODMAP", mid: "uważaj na porcję", high: "wysoki FODMAP" };
 
+const pdfParts = [
+  {
+    title: "Tydzień w liczbach",
+    text: "Dni z wpisami, liczba wypróżnień, średnia w skali Bristol, zjedzone posiłki i wzięte leki.",
+    img: "/v2/pdf-summary.jpg",
+    alt: "Podsumowanie tygodnia w raporcie PDF: 3 z 7 dni z wpisami, 5 wypróżnień, średnia Bristol 4,6",
+    wide: true,
+  },
+  {
+    title: "Siatka dzień po dniu",
+    text: "Posiłki, leki, wypróżnienia i objawy obok siebie. Im ciemniejsze pole, tym silniejszy objaw.",
+    img: "/v2/pdf-grid.jpg",
+    alt: "Siatka posiłków, objawów i wypróżnień od poniedziałku do niedzieli",
+    wide: false,
+  },
+  {
+    title: "Średnia i maksimum",
+    text: "Każdy objaw w swojej skali, z wynikiem dla każdego dnia, średnią i najgorszym dniem tygodnia.",
+    img: "/v2/pdf-table.jpg",
+    alt: "Tabela objawów ze średnią i maksimum dla gazów, wzdęć, stresu i bólu",
+    wide: false,
+  },
+  {
+    title: "Skala Bristol",
+    text: "Rozkład typów stolca z całego tygodnia: od zaparcia, przez normę, po biegunkę.",
+    img: "/v2/pdf-bristol.jpg",
+    alt: "Wykres rozkładu typów w skali Bristol",
+    wide: true,
+  },
+];
+
 const lightMeals = [
   {
     icon: "🥗",
@@ -346,12 +377,28 @@ export default function VersionB() {
       </section>
 
       {/* REPORTS */}
-      <section className={`${s.intro} ${s.introAlt}`} id="raporty">
+      <section className={`${s.intro} ${s.introAlt} ${s.reportSection}`} id="raporty">
         <div className={s.wrap}>
           <div className={`${s.split} ${s.splitFlip}`}>
-            <Reveal delay={120} className={s.introPhoneWrap}>
+            <Reveal delay={120} className={s.reportStage}>
               <div className={s.introGlow} aria-hidden="true" />
-              <Phone src="/v2/reports.jpg" alt="Ekran Raporty: podsumowanie tygodnia i przycisk Wyeksportuj PDF" className={s.tiltRight} />
+              <div className={s.reportPhoneWrap}>
+                <Phone src="/v2/reports.jpg" alt="Ekran Raporty z przyciskiem Wyeksportuj PDF" className={s.reportPhone} />
+                <span className={s.tapPulse} aria-hidden="true" />
+              </div>
+              <figure className={s.reportSheet}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={asset("/v2/report-pdf.jpg")} alt="Pierwsza strona raportu PDF: podsumowanie, siatka objawów, średnie i skala Bristol" loading="lazy" />
+                <figcaption className={s.sheetBadge}>
+                  <span aria-hidden="true">PDF</span>
+                  SiboDiary-raport.pdf · 24 KB
+                </figcaption>
+              </figure>
+              <ul className={s.shareChips} aria-label="Co zrobisz z raportem">
+                <li>✉️ E-mail do lekarza</li>
+                <li>🖨️ Drukuj</li>
+                <li>📁 Zachowaj w Plikach</li>
+              </ul>
             </Reveal>
             <Reveal>
               <p className={s.kicker}>Raport PDF</p>
@@ -368,12 +415,53 @@ export default function VersionB() {
                 drukujesz. Im ciemniejsze pole, tym silniejszy objaw, a obok widać posiłki, leki i
                 suplementy z tego dnia. Zamiast „raz lepiej, raz gorzej” pokazujesz konkretne dni.
               </p>
-              <p className={s.pdfNote}>
-                <span aria-hidden="true">PDF</span>
-                Wyeksportuj PDF: siatka objawów, średnie i skala Bristol na jednej stronie
-              </p>
+              <ul className={s.reportStats}>
+                <li>
+                  <b>1</b>
+                  <span>dotknięcie do gotowego PDF</span>
+                </li>
+                <li>
+                  <b>7</b>
+                  <span>dni na jednej siatce</span>
+                </li>
+                <li>
+                  <b>4</b>
+                  <span>części raportu</span>
+                </li>
+              </ul>
             </Reveal>
           </div>
+
+          <Reveal className={s.pdfPartsHead}>
+            <h3>Co zobaczy lekarz?</h3>
+            <p>Prawdziwe fragmenty raportu wyeksportowanego z aplikacji.</p>
+          </Reveal>
+          <div className={s.pdfParts}>
+            {pdfParts.map((part, i) => (
+              <Reveal key={part.title} delay={i * 90} className={`${s.pdfPart} ${part.wide ? s.pdfPartWide : ""}`}>
+                <div className={s.pdfPartText}>
+                  <span className={s.pdfPartNum}>{String(i + 1).padStart(2, "0")}</span>
+                  <h4>{part.title}</h4>
+                  <p>{part.text}</p>
+                </div>
+                <div className={s.pdfPartImg}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={asset(part.img)} alt={part.alt} loading="lazy" />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className={s.reportCta}>
+            <div>
+              <p className={s.reportCtaTitle}>Zabierz raport na najbliższą wizytę.</p>
+              <p className={s.reportCtaText}>
+                Raport PDF jest w planie Premium. Podsumowanie bieżącego tygodnia w aplikacji masz za
+                darmo.
+              </p>
+            </div>
+            <StoreBadges href={DOWNLOAD} />
+          </Reveal>
         </div>
       </section>
 

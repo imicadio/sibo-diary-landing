@@ -815,29 +815,6 @@
   line-height: 1.35;
   letter-spacing: -0.01em;
 }
-.pdfNote {
-  margin-top: 28px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 18px 10px 10px;
-  border-radius: 999px;
-  background: var(--lime-tint);
-  font-size: 15px;
-  font-weight: 600;
-}
-.pdfNote span {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  flex: none;
-  border-radius: 50%;
-  background: #fff;
-  color: #e11d48;
-  font-size: 11px;
-  font-weight: 800;
-}
 
 /* ---------- Quick-add scene (from version A) ---------- */
 .scene {
@@ -1652,5 +1629,342 @@
     margin-top: 56px;
     padding: 28px 22px;
     border-radius: 28px;
+  }
+}
+
+/* ---------- Report section (WOW) ---------- */
+.reportStage {
+  position: relative;
+  min-height: 680px;
+  display: grid;
+  place-items: center;
+}
+.reportPhoneWrap {
+  position: relative;
+  transform: translateX(70px) rotate(8deg);
+}
+.reportPhone {
+  position: relative;
+}
+/* Pulse over the "Wyeksportuj PDF" button in the screenshot. */
+.tapPulse {
+  position: absolute;
+  left: 50%;
+  top: 33.5%;
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  border-radius: 50%;
+  background: rgba(132, 204, 22, 0.45);
+  box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.6);
+  animation: tap 2.4s ease-out infinite;
+}
+@keyframes tap {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.6);
+  }
+  15% {
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1);
+    box-shadow: 0 0 0 26px rgba(132, 204, 22, 0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.reportSheet {
+  position: absolute;
+  left: -2%;
+  top: 70px;
+  z-index: 3;
+  width: 330px;
+  margin: 0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow:
+    0 2px 0 rgba(15, 36, 32, 0.05),
+    0 50px 90px -40px rgba(15, 36, 32, 0.55);
+  transform: translate(180px, 60px) rotate(10deg) scale(0.55);
+  opacity: 0;
+  transition:
+    transform 1.2s 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.6s 0.5s ease;
+}
+.reportSheet img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+:global(.is-visible) .reportSheet {
+  transform: rotate(-5deg);
+  opacity: 1;
+}
+.reportSheet:hover {
+  transform: rotate(-2deg) translateY(-8px) scale(1.03) !important;
+}
+.sheetBadge {
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #f5fbf8;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.5);
+}
+.sheetBadge span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ffe4e6;
+  color: #be123c;
+  font-size: 10px;
+  font-weight: 800;
+}
+.shareChips {
+  position: absolute;
+  right: 0;
+  bottom: 40px;
+  z-index: 4;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+.shareChips li {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 16px 30px -20px rgba(15, 36, 32, 0.45);
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+:global(.is-visible) .shareChips li {
+  opacity: 1;
+  transform: none;
+}
+:global(.is-visible) .shareChips li:nth-child(1) {
+  transition-delay: 1.5s;
+}
+:global(.is-visible) .shareChips li:nth-child(2) {
+  transition-delay: 1.65s;
+}
+:global(.is-visible) .shareChips li:nth-child(3) {
+  transition-delay: 1.8s;
+}
+.reportStats {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--hair);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.reportStats b {
+  display: block;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--lime-dark);
+}
+.reportStats span {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.pdfPartsHead {
+  margin-top: 110px;
+  text-align: center;
+}
+.pdfPartsHead h3 {
+  font-size: clamp(30px, 3.4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.pdfPartsHead p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+.pdfParts {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.pdfPart {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px;
+  border-radius: 30px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    opacity 0.7s ease;
+}
+.pdfPart:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -30px rgba(15, 36, 32, 0.35);
+}
+.pdfPartWide {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+}
+.pdfPartWide .pdfPartText {
+  flex: 0 0 300px;
+}
+.pdfPartNum {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--lime-dark);
+}
+.pdfPart h4 {
+  margin-top: 6px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.pdfPart p {
+  margin-top: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.pdfPartImg {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--hair);
+  background: #fff;
+}
+.pdfPartImg img {
+  display: block;
+  width: 100%;
+  transition: transform 0.6s var(--ease);
+}
+.pdfPart:hover .pdfPartImg img {
+  transform: scale(1.04);
+}
+
+.reportCta {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  flex-wrap: wrap;
+  padding: 40px 44px;
+  border-radius: 36px;
+  background:
+    radial-gradient(60% 120% at 100% 0%, rgba(132, 204, 22, 0.25), transparent 60%),
+    var(--ink);
+  color: #f5fbf8;
+}
+.reportCta > div {
+  flex: 1 1 360px;
+}
+.reportCtaTitle {
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.reportCtaText {
+  margin-top: 8px;
+  font-size: 16px;
+  color: rgba(245, 251, 248, 0.72);
+}
+
+@media (max-width: 1100px) {
+  .reportStage {
+    min-height: 640px;
+  }
+}
+@media (max-width: 760px) {
+  .reportStage {
+    min-height: 560px;
+  }
+  .reportPhoneWrap {
+    transform: translateX(50px) rotate(8deg);
+  }
+  .reportSheet {
+    width: 210px;
+    left: 0;
+    top: 90px;
+  }
+  .sheetBadge {
+    font-size: 11px;
+  }
+  .shareChips {
+    bottom: 0;
+  }
+  .shareChips li {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  .reportStats b {
+    font-size: 34px;
+  }
+  .reportStats span {
+    font-size: 13px;
+  }
+  .pdfPartsHead {
+    margin-top: 72px;
+  }
+  .pdfParts {
+    grid-template-columns: 1fr;
+  }
+  .pdfPartWide {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pdfPartWide .pdfPartText {
+    flex: none;
+  }
+  .pdfPart {
+    padding: 20px;
+    border-radius: 24px;
+  }
+  .reportCta {
+    padding: 28px 22px;
+    border-radius: 28px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tapPulse {
+    animation: none;
+    opacity: 0;
   }
 }
