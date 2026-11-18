@@ -65,16 +65,16 @@ const story: StoryStep[] = [
 
 const foodFeatures = [
   {
-    title: "Przewodnik po produktach",
-    text: "Wpisz „banan” i zobacz poziom FODMAP, bezpieczną porcję i rozbicie na fruktany, GOS, laktozę, sorbitol i mannitol. Serduszko dodaje produkt do ulubionych.",
+    title: "Szybka wyszukiwarka produktów",
+    text: "Wpisz „banan” i od razu sprawdź bezpieczną porcję oraz rozbicie na fruktany, GOS, laktozę, sorbitol i mannitol.",
   },
   {
-    title: "Jadłospis i plan dnia",
-    text: "Przepisy low-FODMAP z kaloriami i makro. Dodaj posiłek do planu, odhacz, gdy zjesz, albo wymień na inny. Plan dnia możesz powtarzać co tydzień.",
+    title: "Elastyczny jadłospis",
+    text: "Wrzucasz dania w plan dnia, a gdy zmienisz zdanie – podmieniasz posiłek jednym ruchem, bez rozwalania bilansu.",
   },
   {
-    title: "Twoje cele i limity",
-    text: "Ustaw kalorie i makro, limity FODMAP, kroki, wodę i sen. Paski na ekranie dnia pokazują, ile zostało do celu.",
+    title: "Wszystkie limity na jednym ekranie",
+    text: "Śledzisz nie tylko makro i FODMAP, ale też kroki, wodę i sen.",
   },
 ];
 
@@ -264,9 +264,9 @@ export default function VersionB() {
               </span>
             </h1>
             <p className={s.heroLead}>
-              Zapisujesz objawy i posiłki w jednym dzienniku, a aplikacja pomaga zauważyć, po czym
-              jest gorzej. Na wizytę zabierasz raport PDF dla lekarza i dietetyczki. Na co dzień
-              masz ponad 500 przepisów low-FODMAP, plan tygodnia i listę zakupów.
+              Prowadź prosty dziennik objawów i posiłków, żeby wyłapać swoich cichych winowajców. Na
+              wizytę u lekarza lub dietetyka zabierzesz gotowy raport PDF, a na co dzień ułożysz menu
+              z ponad 500 dostępnych przepisów low-FODMAP. Nigdy więcej nie chodź głodny.
             </p>
             <div className={s.heroCta}>
               <StoreBadges href={DOWNLOAD} />
@@ -337,9 +337,10 @@ export default function VersionB() {
                 dniu.
               </p>
               <p className={s.body}>
-                Po tygodniu mało kto pamięta, który dzień był gorszy i co było wtedy na obiad.
-                Dlatego zapisujesz na bieżąco, a po kilku tygodniach widać, co się powtarza. Na
-                wizycie pokazujesz lekarzowi konkretne dni, zamiast mówić „raz lepiej, raz gorzej”.
+                Po tygodniu mało kto pamięta, kiedy dokładnie wrócił ból i co było wtedy na obiad.
+                Krótkie wpisy w trakcie dnia układają się w czytelny obraz – po kilku tygodniach
+                widzisz wyraźne schematy i idziesz do specjalisty z twardymi danymi, a nie
+                wspomnieniami z ostatnich dwóch dni.
               </p>
             </Reveal>
           </div>
@@ -381,22 +382,22 @@ export default function VersionB() {
                 Cały tydzień na jednej stronie: posiłki, objawy i wypróżnienia dzień po dniu.
               </p>
               <p className={s.body}>
-                Jednym przyciskiem zapisujesz raport jako PDF i wysyłasz go przed wizytą albo
-                drukujesz. Im ciemniejsze pole, tym silniejszy objaw, a obok widać posiłki, leki i
-                suplementy z tego dnia. Zamiast „raz lepiej, raz gorzej” pokazujesz konkretne dni.
+                Im ciemniejsze pole, tym silniejszy objaw, a tuż obok widać posiłki, leki i suplementy
+                z tego samego dnia. Lekarz jednym rzutem oka wyłapuje zależności, które normalnie
+                umykają w wywiadzie.
               </p>
               <ul className={s.reportStats}>
                 <li>
                   <b>1</b>
-                  <span>dotknięcie do gotowego PDF</span>
+                  <span>kliknięcie – i plik gotowy do wysłania</span>
                 </li>
                 <li>
                   <b>7</b>
-                  <span>dni na jednej siatce</span>
+                  <span>dni – pełen tydzień na przejrzystej siatce</span>
                 </li>
                 <li>
                   <b>2</b>
-                  <span>strony PDF</span>
+                  <span>strony – zero lania wody, same konkrety</span>
                 </li>
               </ul>
             </Reveal>
@@ -442,9 +443,9 @@ export default function VersionB() {
                 Diary.
               </p>
               <p className={s.body}>
-                Każdy z ponad 500 przepisów low-FODMAP ma policzone kalorie i makro, a kalkulator
-                ustawi Ci dzienny cel. Po jedzeniu zapisujesz, jak się czujesz, więc po kilku dniach
-                widzisz, które posiłki Ci służą, a po których przychodzą wzdęcia.
+                Ponad 500 przepisów low-FODMAP z policzonymi kaloriami i makro – dopasowanych do
+                Twojego dziennego celu. Po jedzeniu oceniasz samopoczucie jednym kliknięciem, dzięki
+                czemu po kilku dniach czarno na białym widzisz, co Ci służy, a co kończy się wzdęciami.
               </p>
             </Reveal>
             <div className={s.lightCards}>
@@ -463,7 +464,7 @@ export default function VersionB() {
           </div>
           <Reveal className={s.recipeCta}>
             <div>
-              <p className={s.recipeCtaTitle}>Ponad 500 przepisów czeka w aplikacji.</p>
+              <p className={s.recipeCtaTitle}>Ponad 500 przepisów dostępnych w aplikacji.</p>
               <p className={s.recipeCtaText}>
                 Pobierz Sibo Diary za darmo i ułóż pierwszy dzień jeszcze dziś.
               </p>
@@ -486,8 +487,9 @@ export default function VersionB() {
                   <span className={s.mintText}>które Ci służy.</span>
                 </h2>
                 <p className={`${s.bodyLight} ${s.foodLead}`}>
-                  Przewodnik po produktach, przepisy low-FODMAP i plan dnia w jednej zakładce. Bez
-                  szukania w tabelach i notatkach.
+                  <b className={s.foodLeadTitle}>Baza produktów pod ręką.</b> Koniec z nerwowym
+                  sprawdzaniem tabelek w internecie przed każdym kęsem. Wszystko masz w jednym
+                  miejscu.
                 </p>
               </Reveal>
               <div className={s.list}>
