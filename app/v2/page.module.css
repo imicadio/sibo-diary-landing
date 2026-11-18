@@ -953,7 +953,7 @@
   position: absolute;
   inset: auto -10% -40% -10%;
   height: 80%;
-  background: radial-gradient(50% 60% at 50% 100%, rgba(132, 204, 22, 0.45), transparent 70%);
+  background: radial-gradient(50% 60% at 50% 100%, rgba(124, 197, 126, 0.45), transparent 70%);
   z-index: -1;
 }
 .closingInner {
@@ -972,7 +972,7 @@
   text-wrap: balance;
 }
 .closingTitle span {
-  color: var(--lime-soft);
+  color: #bfe6d3;
 }
 .closingLead {
   margin: 0 auto;
@@ -993,7 +993,7 @@
   justify-content: center;
 }
 .closingCta small {
-  color: var(--lime-soft);
+  color: #bfe6d3;
   font-size: 14px;
 }
 .closingPhone {
