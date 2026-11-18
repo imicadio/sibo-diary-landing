@@ -8,6 +8,7 @@ import { VariantSwitch } from "@/components/VariantSwitch";
 import { StoryScroll, type StoryStep } from "@/components/v2/StoryScroll";
 import { FodmapPlayground } from "@/components/v2/FodmapPlayground";
 import { FeatureTabs } from "@/components/FeatureTabs";
+import { ReportAnatomy } from "@/components/v2/ReportAnatomy";
 import { asset } from "@/lib/asset";
 import s from "./page.module.css";
 
@@ -87,37 +88,6 @@ const foods = [
 ] as const;
 
 const levelLabel = { low: "niski FODMAP", mid: "uważaj na porcję", high: "wysoki FODMAP" };
-
-const pdfParts = [
-  {
-    title: "Tydzień w liczbach",
-    text: "Dni z wpisami, liczba wypróżnień, średnia w skali Bristol, zjedzone posiłki i wzięte leki.",
-    img: "/v2/pdf-summary.jpg",
-    alt: "Podsumowanie tygodnia w raporcie PDF: 3 z 7 dni z wpisami, 5 wypróżnień, średnia Bristol 4,6",
-    wide: true,
-  },
-  {
-    title: "Siatka dzień po dniu",
-    text: "Posiłki, leki, wypróżnienia i objawy obok siebie. Im ciemniejsze pole, tym silniejszy objaw.",
-    img: "/v2/pdf-grid.jpg",
-    alt: "Siatka posiłków, objawów i wypróżnień od poniedziałku do niedzieli",
-    wide: false,
-  },
-  {
-    title: "Średnia i maksimum",
-    text: "Każdy objaw w swojej skali, z wynikiem dla każdego dnia, średnią i najgorszym dniem tygodnia.",
-    img: "/v2/pdf-table.jpg",
-    alt: "Tabela objawów ze średnią i maksimum dla gazów, wzdęć, stresu i bólu",
-    wide: false,
-  },
-  {
-    title: "Skala Bristol",
-    text: "Rozkład typów stolca z całego tygodnia: od zaparcia, przez normę, po biegunkę.",
-    img: "/v2/pdf-bristol.jpg",
-    alt: "Wykres rozkładu typów w skali Bristol",
-    wide: true,
-  },
-];
 
 const lightMeals = [
   {
@@ -425,42 +395,38 @@ export default function VersionB() {
                   <span>dni na jednej siatce</span>
                 </li>
                 <li>
-                  <b>4</b>
-                  <span>części raportu</span>
+                  <b>2</b>
+                  <span>strony PDF</span>
                 </li>
               </ul>
             </Reveal>
           </div>
 
           <Reveal className={s.pdfPartsHead}>
+            <p className={`${s.kicker} ${s.center}`}>Anatomia raportu</p>
             <h3>Co zobaczy lekarz?</h3>
-            <p>Prawdziwe fragmenty raportu wyeksportowanego z aplikacji.</p>
+            <p>Prawdziwy raport wyeksportowany z aplikacji. Wybierz część, żeby ją przybliżyć.</p>
           </Reveal>
-          <div className={s.pdfParts}>
-            {pdfParts.map((part, i) => (
-              <Reveal key={part.title} delay={i * 90} className={`${s.pdfPart} ${part.wide ? s.pdfPartWide : ""}`}>
-                <div className={s.pdfPartText}>
-                  <span className={s.pdfPartNum}>{String(i + 1).padStart(2, "0")}</span>
-                  <h4>{part.title}</h4>
-                  <p>{part.text}</p>
-                </div>
-                <div className={s.pdfPartImg}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={asset(part.img)} alt={part.alt} loading="lazy" />
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <ReportAnatomy />
+          </Reveal>
 
           <Reveal className={s.reportCta}>
             <div>
+              <p className={s.reportCtaKicker}>To nie wszystko</p>
               <p className={s.reportCtaTitle}>Zabierz raport na najbliższą wizytę.</p>
               <p className={s.reportCtaText}>
                 Raport PDF jest w planie Premium. Podsumowanie bieżącego tygodnia w aplikacji masz za
                 darmo.
               </p>
             </div>
-            <StoreBadges href={DOWNLOAD} />
+            <div className={s.reportCtaActions}>
+              <StoreBadges href={DOWNLOAD} />
+              <a href={asset("/v2/przykladowy-raport-sibodiary.pdf")} className={s.sampleLink} download>
+                <span aria-hidden="true">PDF</span>
+                Pobierz przykładowy raport · 2 strony
+              </a>
+            </div>
           </Reveal>
         </div>
       </section>

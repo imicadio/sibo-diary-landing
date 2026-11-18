@@ -1,0 +1,245 @@
+.anatomy {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* ---------- Part list ---------- */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  align-content: center;
+}
+.list button {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: start;
+  gap: 4px 12px;
+  padding: 16px 18px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.list button:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+.list button.on {
+  background: #fff;
+  border-color: rgba(15, 36, 32, 0.1);
+  box-shadow: 0 20px 40px -28px rgba(15, 36, 32, 0.4);
+}
+.list button:focus-visible {
+  outline: 3px solid #84cc16;
+  outline-offset: 2px;
+}
+.num {
+  padding-top: 2px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(15, 36, 32, 0.35);
+  transition: color 0.3s ease;
+}
+.on .num {
+  color: #416900;
+}
+.label b {
+  display: block;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgba(15, 36, 32, 0.55);
+  transition: color 0.3s ease;
+}
+.on .label b {
+  color: #0f2420;
+}
+.label small {
+  display: grid;
+  grid-template-rows: 0fr;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(15, 36, 32, 0.66);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease,
+    margin 0.3s ease;
+}
+.on .label small {
+  max-height: 80px;
+  opacity: 1;
+  margin-top: 4px;
+}
+.page {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #f2f9e8;
+  font-size: 11px;
+  font-weight: 700;
+  color: #416900;
+  white-space: nowrap;
+}
+.progress {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: #84cc16;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.running .progress {
+  animation: fill linear forwards;
+}
+.paused .progress {
+  animation-play-state: paused;
+}
+@keyframes fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- PDF viewer ---------- */
+.viewerWrap {
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #e9eeec;
+  border: 1px solid rgba(15, 36, 32, 0.1);
+  box-shadow: 0 50px 90px -50px rgba(15, 36, 32, 0.5);
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid rgba(15, 36, 32, 0.08);
+  font-size: 13px;
+}
+.dots {
+  display: flex;
+  gap: 6px;
+}
+.dots i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #e5e7eb;
+}
+.dots i:first-child {
+  background: #fb7185;
+}
+.dots i:nth-child(2) {
+  background: #fbbf24;
+}
+.dots i:nth-child(3) {
+  background: #84cc16;
+}
+.file {
+  font-weight: 700;
+}
+.pageNo {
+  margin-left: auto;
+  color: rgba(15, 36, 32, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+.viewer {
+  position: relative;
+  height: 470px;
+  overflow: hidden;
+}
+.sheet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  opacity: 0;
+  transition:
+    transform 0.9s cubic-bezier(0.65, 0, 0.25, 1),
+    opacity 0.5s ease;
+  will-change: transform;
+}
+.sheetOn {
+  opacity: 1;
+}
+.sheet img {
+  display: block;
+  width: 100%;
+  box-shadow: 0 10px 40px -10px rgba(15, 36, 32, 0.25);
+}
+.focus {
+  position: absolute;
+  border-radius: calc(10px / var(--s, 1));
+  outline: calc(3px / var(--s, 1)) solid #84cc16;
+  outline-offset: calc(6px / var(--s, 1));
+  box-shadow: 0 0 0 9999px rgba(15, 36, 32, 0.06);
+  pointer-events: none;
+  animation: focusIn 0.6s 0.5s ease both;
+}
+@keyframes focusIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1000px) {
+  .anatomy {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .viewerWrap {
+    order: -1;
+  }
+  .viewer {
+    height: 300px;
+  }
+}
+@media (max-width: 760px) {
+  .viewer {
+    height: 230px;
+  }
+  .list button {
+    padding: 12px 14px;
+    grid-template-columns: 28px 1fr auto;
+  }
+  .label b {
+    font-size: 15px;
+  }
+  .label small {
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet {
+    transition: opacity 0.3s ease;
+  }
+  .progress {
+    display: none;
+  }
+}
