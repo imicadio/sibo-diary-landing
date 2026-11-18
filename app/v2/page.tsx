@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 const DOWNLOAD = "#pobierz";
 
 const navLinks = [
+  { href: "#funkcje", label: "Dziennik" },
   { href: "#raporty", label: "Raport PDF" },
   { href: "#lekkie-posilki", label: "Przepisy" },
   { href: "#planer", label: "Planer" },
-  { href: "#funkcje", label: "Dziennik" },
   { href: "#fodmap", label: "FODMAP" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -316,8 +316,37 @@ export default function VersionB() {
         </div>
       </section>
 
+      {/* INTRO — rhythm of the gut */}
+      <section className={s.intro} id="funkcje">
+        <div className={s.wrap}>
+          <div className={s.split}>
+            <Reveal className={s.introPhoneWrap}>
+              <div className={s.introGlow} aria-hidden="true" />
+              <Phone src="/v2/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" className={s.tiltLeft} />
+            </Reveal>
+            <Reveal delay={120}>
+              <p className={s.kicker}>Dziennik dnia</p>
+              <h2 className={s.h2}>
+                Poznaj rytm
+                <br />
+                <span className={s.mark}>swoich jelit.</span>
+              </h2>
+              <p className={s.sub}>
+                Gazy, wzdęcia, ból, stres i wypróżnienia zapisane z godziną i nasileniem, dzień po
+                dniu.
+              </p>
+              <p className={s.body}>
+                Po tygodniu mało kto pamięta, który dzień był gorszy i co było wtedy na obiad.
+                Dlatego zapisujesz na bieżąco, a po kilku tygodniach widać, co się powtarza. Na
+                wizycie pokazujesz lekarzowi konkretne dni, zamiast mówić „raz lepiej, raz gorzej”.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* REPORTS */}
-      <section className={s.intro} id="raporty">
+      <section className={`${s.intro} ${s.introAlt}`} id="raporty">
         <div className={s.wrap}>
           <div className={`${s.split} ${s.splitFlip}`}>
             <Reveal delay={120} className={s.introPhoneWrap}>
@@ -459,35 +488,6 @@ export default function VersionB() {
             </h2>
           </Reveal>
           <StoryScroll steps={story} />
-        </div>
-      </section>
-
-      {/* INTRO — rhythm of the gut */}
-      <section className={s.intro} id="funkcje">
-        <div className={s.wrap}>
-          <div className={s.split}>
-            <Reveal className={s.introPhoneWrap}>
-              <div className={s.introGlow} aria-hidden="true" />
-              <Phone src="/v2/toilet.jpg" alt="Ekran Toaleta: skala Bristol, kolor i wielkość" className={s.tiltLeft} />
-            </Reveal>
-            <Reveal delay={120}>
-              <p className={s.kicker}>Dziennik dnia</p>
-              <h2 className={s.h2}>
-                Poznaj rytm
-                <br />
-                <span className={s.mark}>swoich jelit.</span>
-              </h2>
-              <p className={s.sub}>
-                Gazy, wzdęcia, ból, stres i wypróżnienia zapisane z godziną i nasileniem, dzień po
-                dniu.
-              </p>
-              <p className={s.body}>
-                Po tygodniu mało kto pamięta, który dzień był gorszy i co było wtedy na obiad.
-                Dlatego zapisujesz na bieżąco, a po kilku tygodniach widać, co się powtarza. Na
-                wizycie pokazujesz lekarzowi konkretne dni, zamiast mówić „raz lepiej, raz gorzej”.
-              </p>
-            </Reveal>
-          </div>
         </div>
       </section>
 
