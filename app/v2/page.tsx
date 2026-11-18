@@ -396,9 +396,6 @@ export default function VersionB() {
                 ustawi Ci dzienny cel. Po jedzeniu zapisujesz, jak się czujesz, więc po kilku dniach
                 widzisz, które posiłki Ci służą, a po których przychodzą wzdęcia.
               </p>
-              <div className={s.lightCta}>
-                <StoreBadges href={DOWNLOAD} />
-              </div>
             </Reveal>
             <div className={s.lightCards}>
               {lightMeals.map((c, i) => (

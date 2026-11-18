@@ -1372,9 +1372,6 @@
   gap: 64px;
   align-items: center;
 }
-.lightCta {
-  margin-top: 32px;
-}
 .lightCards {
   display: grid;
   gap: 14px;
