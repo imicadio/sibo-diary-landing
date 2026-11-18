@@ -212,11 +212,6 @@ export default function VersionB() {
 
       {/* HERO */}
       <section className={s.hero}>
-        <div className={s.blobs} aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
         <div className={s.heroInner}>
           <div className={s.heroCopy}>
             <p className={s.heroBrand}>
