@@ -291,12 +291,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 18px 12px 12px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--ink);
-  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
+  padding: 10px 22px 10px 10px;
+  border-radius: 999px;
+  background: #0f2420;
+  color: #fff;
+  box-shadow: 0 20px 40px -14px rgba(15, 36, 32, 0.55);
   animation: toastIn 0.7s var(--ease) both;
 }
 .toast b {
@@ -309,7 +308,7 @@
 .toast small {
   display: block;
   font-size: 12px;
-  color: var(--muted);
+  color: #bfe6d3;
   white-space: nowrap;
 }
 .toastIcon {
@@ -318,13 +317,13 @@
   width: 38px;
   height: 38px;
   flex: none;
-  border-radius: 12px;
-  background: var(--lime-soft);
-  color: var(--lime-dark);
+  border-radius: 50%;
+  background: #84cc16;
+  color: #10240a;
   font-weight: 800;
 }
 .toastPdf {
-  background: #ffe4e6;
+  background: #fff;
   color: #be123c;
   font-size: 11px;
   letter-spacing: 0.04em;
@@ -1063,9 +1062,8 @@
     border-radius: 30px;
   }
   .toast {
-    padding: 8px 12px 8px 8px;
+    padding: 7px 14px 7px 7px;
     gap: 8px;
-    border-radius: 16px;
   }
   .toast b {
     font-size: 12px;
@@ -1076,7 +1074,6 @@
   .toastIcon {
     width: 30px;
     height: 30px;
-    border-radius: 10px;
   }
   .toast1 {
     left: 0;

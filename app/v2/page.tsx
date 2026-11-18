@@ -438,7 +438,8 @@ export default function VersionB() {
                 <span className={s.mark}>a nie wzdymają.</span>
               </h2>
               <p className={s.sub}>
-                Szukasz lekkich posiłków, po których brzuch jest spokojny? Ułożysz je w Sibo Diary.
+                Szukasz lekkich posiłków, po których brzuch jest spokojny? Znajdziesz i ułożysz je w Sibo
+                Diary.
               </p>
               <p className={s.body}>
                 Każdy z ponad 500 przepisów low-FODMAP ma policzone kalorie i makro, a kalkulator
