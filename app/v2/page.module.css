@@ -116,13 +116,15 @@
 
 /* ---------- Hero ---------- */
 .hero {
+  --muted-light: rgba(15, 36, 32, 0.68);
+  --hair-light: rgba(15, 36, 32, 0.12);
   position: relative;
   min-height: 100svh;
   background:
-    radial-gradient(42% 55% at 74% 46%, rgba(132, 204, 22, 0.13), transparent 70%),
-    radial-gradient(70% 60% at 0% 100%, rgba(14, 94, 86, 0.28), transparent 70%),
-    linear-gradient(180deg, #0b1a17 0%, #0e211d 100%);
-  color: #f5fbf8;
+    radial-gradient(45% 60% at 74% 46%, rgba(217, 249, 157, 0.7), transparent 70%),
+    radial-gradient(60% 50% at 0% 0%, rgba(191, 230, 211, 0.55), transparent 70%),
+    linear-gradient(180deg, #f7f9fb 0%, #eef4ee 100%);
+  color: var(--ink);
   overflow: hidden;
   isolation: isolate;
 }
@@ -132,10 +134,20 @@
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(15, 36, 32, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 36, 32, 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(60% 70% at 72% 45%, #000, transparent 75%);
+}
+.hero .lime {
+  color: #4d7c0f;
+}
+.hero .heroBrand small {
+  color: var(--lime-dark);
+}
+.hero .highlightIcon {
+  background: #fff;
+  color: var(--ink);
 }
 .heroInner {
   position: relative;
@@ -261,7 +273,7 @@
   justify-items: start;
   animation: fadeUp 0.9s 0.35s var(--ease) both;
 }
-.heroCta small {
+.heroCta > small {
   font-size: 14px;
   color: var(--muted-light);
 }
