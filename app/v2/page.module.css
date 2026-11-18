@@ -1621,3 +1621,39 @@
 .introAlt {
   background: var(--paper);
 }
+
+/* ---------- Recipes CTA banner ---------- */
+.recipeCta {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  flex-wrap: wrap;
+  padding: 40px 44px;
+  border-radius: 36px;
+  background: var(--lime);
+  color: #10240a;
+  box-shadow: 0 40px 80px -40px rgba(65, 105, 0, 0.7);
+}
+.recipeCta > div {
+  flex: 1 1 360px;
+}
+.recipeCtaTitle {
+  font-size: clamp(26px, 2.8vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.recipeCtaText {
+  margin-top: 8px;
+  font-size: 17px;
+  color: rgba(16, 36, 10, 0.75);
+}
+@media (max-width: 760px) {
+  .recipeCta {
+    margin-top: 56px;
+    padding: 28px 22px;
+    border-radius: 28px;
+  }
+}

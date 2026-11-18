@@ -414,6 +414,15 @@ export default function VersionB() {
               ))}
             </div>
           </div>
+          <Reveal className={s.recipeCta}>
+            <div>
+              <p className={s.recipeCtaTitle}>Ponad 500 przepisów czeka w aplikacji.</p>
+              <p className={s.recipeCtaText}>
+                Pobierz Sibo Diary za darmo i ułóż pierwszy dzień jeszcze dziś.
+              </p>
+            </div>
+            <StoreBadges href={DOWNLOAD} />
+          </Reveal>
         </div>
       </section>
 
